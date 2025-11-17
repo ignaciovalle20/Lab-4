@@ -1,0 +1,131 @@
+# Valores para entorno de Desarrollo
+# Sobrescribe los valores del values.yaml base
+
+global:
+  namespace: appdevops-dev
+  imagePullPolicy: Always
+
+backend:
+  replicaCount: 1  # Solo 1 replica en dev
+  
+  image:
+    pullPolicy: Always  # Siempre pull en dev para testing
+  
+  resources:
+    requests:
+      memory: "128Mi"  # Menor memoria en dev
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "250m"
+  
+  env:
+    - name: NODE_ENV
+      value: "development"
+    - name: PORT
+      value: "5000"
+    - name: DB_HOST
+      value: "mysql-service"
+    - name: DB_PORT
+      value: "3306"
+    - name: DB_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: mysql-config
+          key: mysql-database
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: mysql-secret
+          key: mysql-user
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: mysql-secret
+          key: mysql-password
+    - name: JWT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: backend-secret
+          key: jwt-secret
+    - name: LOG_LEVEL
+      value: "debug"  # Más logs en dev
+
+frontend:
+  replicaCount: 1
+  
+  image:
+    pullPolicy: Always
+  
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "50m"
+    limits:
+      memory: "128Mi"
+      cpu: "100m"
+
+database:
+  replicaCount: 1
+  
+  image:
+    pullPolicy: Always
+  
+  resources:
+    requests:
+      memory: "256Mi"  # Menor memoria en dev
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    accessMode: ReadWriteOnce
+    size: 2Gi  # Menor tamaño en dev
+
+# Secrets para desarrollo (passwords simples para testing)
+secrets:
+  mysql:
+    rootPassword: "ZGV2cm9vdA=="        # devroot (base64)
+    user: "ZGV2dXNlcg=="                # devuser (base64)
+    password: "ZGV2cGFzcw=="            # devpass (base64)
+  
+  backend:
+    jwtSecret: "ZGV2LWp3dC1zZWNyZXQtZm9yLXRlc3Rpbmc="  # dev-jwt-secret-for-testing (base64)
+
+configMaps:
+  mysql:
+    database: "tienda_online_dev"
+    charset: "utf8mb4"
+    collation: "utf8mb4_unicode_ci"
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  hosts:
+    - host: dev.tienda-online.local
+      paths:
+        - path: /
+          pathType: Prefix
+          service: frontend-service
+          port: 80
+        - path: /api
+          pathType: Prefix
+          service: backend-service
+          port: 5000
+
+autoscaling:
+  enabled: false  # Sin autoscaling en dev
+
+monitoring:
+  enabled: true  # Monitoreo habilitado para testing
+  serviceMonitor:
+    enabled: true
+    interval: 60s  # Menos frecuente en dev
+    path: /metrics
+

@@ -1,0 +1,164 @@
+# Valores para entorno de Producción
+# Sobrescribe los valores del values.yaml base
+
+global:
+  namespace: appdevops-prod
+  imagePullPolicy: IfNotPresent
+
+backend:
+  replicaCount: 3  # Más replicas para alta disponibilidad
+  
+  image:
+    pullPolicy: IfNotPresent  # Cachear en prod
+  
+  resources:
+    requests:
+      memory: "512Mi"  # Más recursos en prod
+      cpu: "500m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
+  
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: PORT
+      value: "5000"
+    - name: DB_HOST
+      value: "mysql-service"
+    - name: DB_PORT
+      value: "3306"
+    - name: DB_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: mysql-config
+          key: mysql-database
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: mysql-secret
+          key: mysql-user
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: mysql-secret
+          key: mysql-password
+    - name: JWT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: backend-secret
+          key: jwt-secret
+    - name: LOG_LEVEL
+      value: "info"  # Menos logs en prod
+  
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 5000
+    initialDelaySeconds: 60  # Más tiempo de warmup en prod
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 5  # Más tolerancia antes de reiniciar
+
+frontend:
+  replicaCount: 3  # Alta disponibilidad
+  
+  image:
+    pullPolicy: IfNotPresent
+  
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "200m"
+    limits:
+      memory: "512Mi"
+      cpu: "400m"
+
+database:
+  replicaCount: 1  # MySQL single instance (considerar cluster en futuro)
+  
+  image:
+    pullPolicy: IfNotPresent
+  
+  resources:
+    requests:
+      memory: "1Gi"  # Más recursos para base de datos en prod
+      cpu: "1000m"
+    limits:
+      memory: "2Gi"
+      cpu: "2000m"
+  
+  persistence:
+    enabled: true
+    storageClass: "standard"  # Cambiar a SSD en cloud real
+    accessMode: ReadWriteOnce
+    size: 20Gi  # Mayor capacidad en prod
+  
+  livenessProbe:
+    exec:
+      command:
+        - sh
+        - -c
+        - mysqladmin ping -h localhost -u root -p$MYSQL_ROOT_PASSWORD
+    initialDelaySeconds: 120  # Más tiempo de inicialización
+    periodSeconds: 15
+    timeoutSeconds: 10
+    failureThreshold: 5
+
+# Secrets para producción
+# IMPORTANTE: En producción real estos deben venir de un secret manager externo
+# (HashiCorp Vault, AWS Secrets Manager, etc.)
+secrets:
+  mysql:
+    rootPassword: "cHJvZC1yb290LXNlY3VyZS1wYXNzd29yZC0yMDI1"  # prod-root-secure-password-2025 (base64)
+    user: "cHJvZF91c2Vy"                                    # prod_user (base64)
+    password: "cHJvZC1zZWN1cmUtcGFzc3dvcmQtMjAyNQ=="        # prod-secure-password-2025 (base64)
+  
+  backend:
+    jwtSecret: "cHJvZC1zdXBlci1zZWN1cmUtand0LWtleS0yMDI1LXdpdGgtbG9uZy1zdHJpbmc="  # prod-super-secure-jwt-key-2025-with-long-string (base64)
+
+configMaps:
+  mysql:
+    database: "tienda_online_prod"
+    charset: "utf8mb4"
+    collation: "utf8mb4_unicode_ci"
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # HTTPS obligatorio en prod
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # SSL automático
+    nginx.ingress.kubernetes.io/rate-limit: "100"  # Rate limiting
+  hosts:
+    - host: tienda-online.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: frontend-service
+          port: 80
+        - path: /api
+          pathType: Prefix
+          service: backend-service
+          port: 5000
+  tls:
+    - hosts:
+        - tienda-online.com
+      secretName: tienda-online-tls
+
+autoscaling:
+  enabled: true  # Autoscaling habilitado en prod
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70  # Escalar antes de sobrecarga
+  targetMemoryUtilizationPercentage: 75
+
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    interval: 15s  # Monitoreo frecuente en prod
+    path: /metrics
+

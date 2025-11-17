@@ -1,0 +1,15 @@
+apiVersion: v2
+name: tienda-online
+description: Helm Chart para la aplicación Tienda Online - Lab 4 DevOps
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - ecommerce
+  - nodejs
+  - react
+  - mysql
+maintainers:
+  - name: DevOps Team
+    email: devops@tienda-online.com
+

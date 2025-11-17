@@ -2,10 +2,84 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
 const { specs, swaggerUi } = require('./swagger');
+const promClient = require('prom-client');
 require('dotenv').config({ path: './config.env' });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Configuración de Prometheus
+const register = new promClient.Registry();
+
+// Agregar métricas por defecto (CPU, memoria, etc.)
+promClient.collectDefaultMetrics({ 
+  register,
+  prefix: 'tienda_online_',
+});
+
+// Métricas personalizadas
+const httpRequestDuration = new promClient.Histogram({
+  name: 'tienda_online_http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.1, 0.5, 1, 2, 5]
+});
+
+const httpRequestTotal = new promClient.Counter({
+  name: 'tienda_online_http_requests_total',
+  help: 'Total number of HTTP requests',
+  labelNames: ['method', 'route', 'status_code']
+});
+
+const dbConnectionErrors = new promClient.Counter({
+  name: 'tienda_online_db_connection_errors_total',
+  help: 'Total number of database connection errors'
+});
+
+const pedidosCreados = new promClient.Counter({
+  name: 'tienda_online_pedidos_creados_total',
+  help: 'Total number of orders created'
+});
+
+const productosConsultados = new promClient.Counter({
+  name: 'tienda_online_productos_consultados_total',
+  help: 'Total number of products queried'
+});
+
+const dbQueryDuration = new promClient.Histogram({
+  name: 'tienda_online_db_query_duration_seconds',
+  help: 'Duration of database queries in seconds',
+  labelNames: ['query_type'],
+  buckets: [0.01, 0.05, 0.1, 0.5, 1]
+});
+
+// Registrar métricas personalizadas
+register.registerMetric(httpRequestDuration);
+register.registerMetric(httpRequestTotal);
+register.registerMetric(dbConnectionErrors);
+register.registerMetric(pedidosCreados);
+register.registerMetric(productosConsultados);
+register.registerMetric(dbQueryDuration);
+
+// Middleware para medir duración de requests
+app.use((req, res, next) => {
+  const start = Date.now();
+  
+  res.on('finish', () => {
+    const duration = (Date.now() - start) / 1000;
+    const route = req.route ? req.route.path : req.path;
+    
+    httpRequestDuration
+      .labels(req.method, route, res.statusCode)
+      .observe(duration);
+    
+    httpRequestTotal
+      .labels(req.method, route, res.statusCode)
+      .inc();
+  });
+  
+  next();
+});
 
 // Middleware
 app.use(cors());
@@ -41,8 +115,42 @@ async function initDB() {
     console.log('Conectado a MySQL');
   } catch (error) {
     console.error('Error conectando a MySQL:', error);
+    dbConnectionErrors.inc();
   }
 }
+
+// Endpoint de métricas para Prometheus
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(await register.metrics());
+});
+
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    if (db) {
+      await db.ping();
+      res.json({ 
+        status: 'healthy', 
+        database: 'connected',
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      res.status(503).json({ 
+        status: 'unhealthy', 
+        database: 'disconnected',
+        timestamp: new Date().toISOString()
+      });
+    }
+  } catch (error) {
+    res.status(503).json({ 
+      status: 'unhealthy', 
+      database: 'error',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
 
 // Rutas básicas
 /**
@@ -89,8 +197,12 @@ app.get('/', (req, res) => {
  *               $ref: '#/components/schemas/Error'
  */
 app.get('/api/productos', async (req, res) => {
+  const start = Date.now();
   try {
     const [rows] = await db.execute('SELECT * FROM productos');
+    const duration = (Date.now() - start) / 1000;
+    dbQueryDuration.labels('select_all_products').observe(duration);
+    productosConsultados.inc(rows.length);
     res.json(rows);
   } catch (error) {
     console.error('Error obteniendo productos:', error);
@@ -136,8 +248,13 @@ app.get('/api/productos', async (req, res) => {
  *               $ref: '#/components/schemas/Error'
  */
 app.get('/api/productos/:id', async (req, res) => {
+  const start = Date.now();
   try {
     const [rows] = await db.execute('SELECT * FROM productos WHERE id = ?', [req.params.id]);
+    const duration = (Date.now() - start) / 1000;
+    dbQueryDuration.labels('select_product_by_id').observe(duration);
+    productosConsultados.inc();
+    
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Producto no encontrado' });
     }
@@ -240,6 +357,7 @@ app.get('/api/productos/:id', async (req, res) => {
  *               $ref: '#/components/schemas/Error'
  */
 app.post('/api/pedidos', async (req, res) => {
+  const start = Date.now();
   try {
     const { productos, total, cliente_email, cliente_nombre } = req.body;
     
@@ -257,6 +375,10 @@ app.post('/api/pedidos', async (req, res) => {
         [pedidoId, item.producto_id, item.cantidad, item.precio]
       );
     }
+    
+    const duration = (Date.now() - start) / 1000;
+    dbQueryDuration.labels('create_order').observe(duration);
+    pedidosCreados.inc();
     
     res.status(201).json({ 
       message: 'Pedido creado exitosamente', 
