@@ -1,0 +1,22 @@
+{{- if .Values.database.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: {{ .Values.database.name }}
+    tier: database
+spec:
+  type: {{ .Values.database.service.type }}
+  clusterIP: None  # Headless service para StatefulSet
+  ports:
+  - port: {{ .Values.database.service.port }}
+    targetPort: {{ .Values.database.service.targetPort }}
+    protocol: TCP
+    name: mysql
+  selector:
+    app: {{ .Values.database.name }}
+    tier: database
+{{- end }}
+

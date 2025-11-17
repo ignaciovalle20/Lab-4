@@ -1,0 +1,142 @@
+═══════════════════════════════════════════════════════════════════════════════
+  🎉  Tienda Online ha sido desplegada exitosamente!
+═══════════════════════════════════════════════════════════════════════════════
+
+📦 Chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+🚀 Release: {{ .Release.Name }}
+📍 Namespace: {{ .Values.global.namespace }}
+
+───────────────────────────────────────────────────────────────────────────────
+📋 COMPONENTES DESPLEGADOS
+───────────────────────────────────────────────────────────────────────────────
+
+{{- if .Values.frontend.enabled }}
+✅ Frontend (Nginx + React):
+   - Replicas: {{ .Values.frontend.replicaCount }}
+   - Imagen: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
+   - Puerto: {{ .Values.frontend.service.targetPort }}
+{{- end }}
+
+{{- if .Values.backend.enabled }}
+✅ Backend (Node.js + Express):
+   - Replicas: {{ .Values.backend.replicaCount }}
+   - Imagen: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+   - Puerto: {{ .Values.backend.service.port }}
+{{- end }}
+
+{{- if .Values.database.enabled }}
+✅ Database (MySQL):
+   - Replicas: {{ .Values.database.replicaCount }}
+   - Imagen: {{ .Values.database.image.repository }}:{{ .Values.database.image.tag }}
+   - Persistencia: {{ if .Values.database.persistence.enabled }}Habilitada ({{ .Values.database.persistence.size }}){{ else }}Deshabilitada{{ end }}
+{{- end }}
+
+───────────────────────────────────────────────────────────────────────────────
+🌐 ACCESO A LA APLICACIÓN
+───────────────────────────────────────────────────────────────────────────────
+
+{{- if .Values.ingress.enabled }}
+{{- range .Values.ingress.hosts }}
+
+📱 URL: http://{{ .host }}
+{{- range .paths }}
+   {{ .pathType }}: {{ .path }} → {{ .service }}:{{ .port }}
+{{- end }}
+{{- end }}
+
+Para acceder localmente, agrega esta línea a tu /etc/hosts:
+
+   echo "$(minikube ip) {{ (index .Values.ingress.hosts 0).host }}" | sudo tee -a /etc/hosts
+
+O usa port-forward directamente a los servicios:
+
+   kubectl port-forward -n {{ .Values.global.namespace }} svc/frontend-service 8080:80
+   kubectl port-forward -n {{ .Values.global.namespace }} svc/backend-service 5000:5000
+
+{{- else }}
+
+⚠️  Ingress deshabilitado. Usa port-forward para acceder:
+
+   # Frontend
+   kubectl port-forward -n {{ .Values.global.namespace }} svc/frontend-service 8080:{{ .Values.frontend.service.port }}
+   URL: http://localhost:8080
+
+   # Backend
+   kubectl port-forward -n {{ .Values.global.namespace }} svc/backend-service 5000:{{ .Values.backend.service.port }}
+   URL: http://localhost:5000
+
+{{- end }}
+
+───────────────────────────────────────────────────────────────────────────────
+🔍 COMANDOS ÚTILES
+───────────────────────────────────────────────────────────────────────────────
+
+# Ver el estado de los pods
+kubectl get pods -n {{ .Values.global.namespace }}
+
+# Ver logs del backend
+kubectl logs -n {{ .Values.global.namespace }} -l app={{ .Values.backend.name }} -f
+
+# Ver logs del frontend
+kubectl logs -n {{ .Values.global.namespace }} -l app={{ .Values.frontend.name }} -f
+
+# Ver logs de la base de datos
+kubectl logs -n {{ .Values.global.namespace }} -l app={{ .Values.database.name }} -f
+
+# Acceder a la base de datos
+kubectl exec -it -n {{ .Values.global.namespace }} {{ .Values.database.name }}-0 -- mysql -u root -p
+
+# Ver todos los recursos
+kubectl get all -n {{ .Values.global.namespace }}
+
+# Ver configuración del Helm release
+helm get values {{ .Release.Name }} -n {{ .Values.global.namespace }}
+
+───────────────────────────────────────────────────────────────────────────────
+{{- if .Values.monitoring.enabled }}
+📊 MONITOREO
+───────────────────────────────────────────────────────────────────────────────
+
+✅ Prometheus ServiceMonitor habilitado
+   - Interval: {{ .Values.monitoring.serviceMonitor.interval }}
+   - Path: {{ .Values.monitoring.serviceMonitor.path }}
+
+Para ver las métricas del backend:
+
+   kubectl port-forward -n {{ .Values.global.namespace }} svc/backend-service 5000:5000
+   curl http://localhost:5000/metrics
+
+{{- end }}
+
+───────────────────────────────────────────────────────────────────────────────
+⚙️  ACTUALIZACIÓN Y GESTIÓN
+───────────────────────────────────────────────────────────────────────────────
+
+# Actualizar el release
+helm upgrade {{ .Release.Name }} ./helm-chart/tienda-online -n {{ .Values.global.namespace }}
+
+# Actualizar con valores de desarrollo
+helm upgrade {{ .Release.Name }} ./helm-chart/tienda-online -f ./helm-chart/tienda-online/values-dev.yaml -n {{ .Values.global.namespace }}
+
+# Actualizar con valores de producción
+helm upgrade {{ .Release.Name }} ./helm-chart/tienda-online -f ./helm-chart/tienda-online/values-prod.yaml -n {{ .Values.global.namespace }}
+
+# Desinstalar el release
+helm uninstall {{ .Release.Name }} -n {{ .Values.global.namespace }}
+
+# Rollback a versión anterior
+helm rollback {{ .Release.Name }} -n {{ .Values.global.namespace }}
+
+───────────────────────────────────────────────────────────────────────────────
+📚 DOCUMENTACIÓN
+───────────────────────────────────────────────────────────────────────────────
+
+Para más información sobre la aplicación y su configuración, consulta:
+- README.md en el repositorio
+- /reports/image-analysis.md para análisis de seguridad
+- Helm Chart values.yaml para opciones de configuración
+
+═══════════════════════════════════════════════════════════════════════════════
+  ✨ ¡Gracias por usar Tienda Online! - Lab 4 DevOps UCU
+═══════════════════════════════════════════════════════════════════════════════
+

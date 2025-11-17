@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: mysql
+    tier: database
+data:
+  mysql-database: {{ .Values.configMaps.mysql.database | quote }}
+  mysql-charset: {{ .Values.configMaps.mysql.charset | quote }}
+  mysql-collation: {{ .Values.configMaps.mysql.collation | quote }}
+
