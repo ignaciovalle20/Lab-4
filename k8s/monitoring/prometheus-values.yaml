@@ -1,0 +1,169 @@
+# Valores personalizados para kube-prometheus-stack
+# Instalar con: helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring -f k8s/monitoring/prometheus-values.yaml --create-namespace
+
+# Configuración global
+fullnameOverride: prometheus
+
+# Prometheus Operator
+prometheusOperator:
+  enabled: true
+  
+# Prometheus
+prometheus:
+  enabled: true
+  prometheusSpec:
+    # Retención de datos
+    retention: 7d
+    retentionSize: "10GB"
+    
+    # Recursos
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+    
+    # Almacenamiento
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    
+    # ServiceMonitor selector - buscar en todos los namespaces
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
+    
+    # PodMonitor selector
+    podMonitorNamespaceSelector: {}
+    podMonitorSelector: {}
+    
+    # Configuración adicional de scraping
+    additionalScrapeConfigs:
+      - job_name: 'tienda-backend'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - tienda-online
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_label_app]
+            action: keep
+            regex: tienda-backend
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: http
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: namespace
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: service
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod
+
+# Grafana
+grafana:
+  enabled: true
+  adminPassword: admin123
+  
+  # Recursos
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  
+  # Persistencia
+  persistence:
+    enabled: true
+    size: 5Gi
+  
+  # Datasources
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus-kube-prometheus-prometheus:9090
+          access: proxy
+          isDefault: true
+          editable: true
+  
+  # Dashboards providers
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: 'default'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
+  
+  # Dashboards preconfigurados
+  dashboardsConfigMaps:
+    default: "grafana-dashboards"
+  
+  # Servicio
+  service:
+    type: NodePort
+    nodePort: 30080
+
+# Alertmanager
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+# Node Exporter
+nodeExporter:
+  enabled: true
+
+# Kube State Metrics
+kubeStateMetrics:
+  enabled: true
+
+# Configuración de ServiceMonitors para componentes de K8s
+defaultRules:
+  create: true
+  rules:
+    alertmanager: true
+    etcd: false
+    configReloaders: true
+    general: true
+    k8s: true
+    kubeApiserver: false
+    kubeApiserverAvailability: false
+    kubeApiserverSlos: false
+    kubelet: true
+    kubeProxy: false
+    kubePrometheusGeneral: true
+    kubePrometheusNodeRecording: true
+    kubernetesApps: true
+    kubernetesResources: true
+    kubernetesStorage: true
+    kubernetesSystem: true
+    kubeScheduler: false
+    kubeStateMetrics: true
+    network: true
+    node: true
+    nodeExporterAlerting: true
+    nodeExporterRecording: true
+    prometheus: true
+    prometheusOperator: true
+

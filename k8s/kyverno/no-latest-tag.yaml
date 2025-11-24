@@ -1,0 +1,65 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-latest-tag
+  annotations:
+    policies.kyverno.io/title: Disallow Latest Tag
+    policies.kyverno.io/category: Best Practices
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      El tag 'latest' es mutable y puede causar inconsistencias entre ambientes.
+      Esta política valida que las imágenes de contenedores especifiquen un 
+      tag explícito diferente de 'latest'.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: require-image-tag
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          El uso del tag 'latest' no está permitido. Por favor, especifica 
+          una versión explícita de la imagen (ej: myimage:1.0.0).
+        pattern:
+          spec:
+            containers:
+            - image: "!*:latest"
+    - name: require-image-tag-init-containers
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      preconditions:
+        all:
+        - key: "{{ request.object.spec.initContainers[] || `[]` | length(@) }}"
+          operator: GreaterThanOrEquals
+          value: 1
+      validate:
+        message: >-
+          El uso del tag 'latest' no está permitido en initContainers. 
+          Por favor, especifica una versión explícita.
+        pattern:
+          spec:
+            initContainers:
+            - image: "!*:latest"
+    - name: validate-image-has-tag
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          Todas las imágenes deben tener un tag explícito. 
+          Imágenes sin tag usan 'latest' por defecto, lo cual no está permitido.
+        pattern:
+          spec:
+            containers:
+            - image: "*:*"
+

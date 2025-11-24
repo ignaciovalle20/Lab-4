@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tienda-backend-monitor
+  namespace: tienda-online
+  labels:
+    app: tienda-backend
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: tienda-backend
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+      - tienda-online
+

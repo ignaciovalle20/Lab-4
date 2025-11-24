@@ -1,0 +1,28 @@
+
+Testing /Users/ignaciovalle/Documents/UCU/2025/Devops/entregable-4/backend...
+
+Tested 136 dependencies for known issues, found 3 issues, 3 vulnerable paths.
+
+
+Issues with no direct upgrade or patch:
+  ✗ Missing Release of Resource after Effective Lifetime [Medium Severity][https://security.snyk.io/vuln/SNYK-JS-INFLIGHT-6095116] in inflight@1.0.6
+    introduced by swagger-jsdoc@6.2.8 > glob@7.1.6 > inflight@1.0.6
+  No upgrade or patch available
+  ✗ Prototype Pollution [Medium Severity][https://security.snyk.io/vuln/SNYK-JS-JSYAML-13961110] in js-yaml@4.1.0
+    introduced by swagger-jsdoc@6.2.8 > swagger-parser@10.0.3 > @apidevtools/swagger-parser@10.0.3 > @apidevtools/json-schema-ref-parser@9.1.2 > js-yaml@4.1.0
+  This issue was fixed in versions: 3.14.2, 4.1.1
+  ✗ Improper Validation of Specified Type of Input [Medium Severity][https://security.snyk.io/vuln/SNYK-JS-VALIDATOR-13395830] in validator@13.15.15
+    introduced by swagger-jsdoc@6.2.8 > swagger-parser@10.0.3 > @apidevtools/swagger-parser@10.0.3 > z-schema@5.0.5 > validator@13.15.15
+  This issue was fixed in versions: 13.15.20
+
+
+
+Organization:      ignaciovalle20
+Package manager:   npm
+Target file:       package-lock.json
+Project name:      backend
+Open source:       no
+Project path:      /Users/ignaciovalle/Documents/UCU/2025/Devops/entregable-4/backend
+Licenses:          enabled
+
+
