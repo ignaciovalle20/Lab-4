@@ -1,0 +1,59 @@
+# Jenkins Plugins para Lab 4 - DevOps & DevSecOps
+
+# Plugins esenciales
+workflow-aggregator:latest
+git:latest
+github:latest
+credentials:latest
+credentials-binding:latest
+
+# Docker
+docker-workflow:latest
+docker-plugin:latest
+
+# Kubernetes
+kubernetes:latest
+kubernetes-cli:latest
+
+# Pipeline y stages
+pipeline-stage-view:latest
+pipeline-graph-analysis:latest
+pipeline-rest-api:latest
+
+# Build tools
+nodejs:latest
+
+# Security
+matrix-auth:latest
+role-strategy:latest
+
+# Notifications
+email-ext:latest
+mailer:latest
+
+# Utilities
+timestamper:latest
+ws-cleanup:latest
+build-timeout:latest
+ansicolor:latest
+slack:latest
+
+# Metrics y monitoring
+prometheus:latest
+
+# Git y SCM
+github-branch-source:latest
+git-parameter:latest
+
+# Multibranch
+workflow-multibranch:latest
+
+# Configuration as Code
+configuration-as-code:latest
+
+# BlueOcean (UI moderna)
+blueocean:latest
+
+# Additional tools
+http_request:latest
+

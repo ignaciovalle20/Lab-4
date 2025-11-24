@@ -1,393 +1,727 @@
-# 🛒 Tienda Online - Proyecto DevOps
+# 🛒 Tienda Online - Laboratorio 4: DevOps & DevSecOps
 
-Aplicación e-commerce full-stack con arquitectura de microservicios, implementación de Blue-Green deployment en Kubernetes y configuración con Docker.
+Aplicación e-commerce full-stack con arquitectura de microservicios, implementación completa de DevOps y DevSecOps, incluyendo CI/CD, monitoring, políticas de seguridad y runtime protection.
+
+---
+
+## 📋 Tabla de Contenidos
+
+- [Descripción del Proyecto](#-descripción-del-proyecto)
+- [Arquitectura](#%EF%B8%8F-arquitectura)
+- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
+- [Características Implementadas](#-características-implementadas)
+- [Inicio Rápido](#-inicio-rápido)
+- [Guía de Instalación Detallada](#-guía-de-instalación-detallada)
+- [Pipeline CI/CD](#-pipeline-cicd)
+- [Monitoring y Observabilidad](#-monitoring-y-observabilidad)
+- [Seguridad](#-seguridad)
+- [Scripts de Automatización](#-scripts-de-automatización)
+- [Troubleshooting](#-troubleshooting)
+- [Mejoras Futuras](#-mejoras-futuras)
+- [Referencias](#-referencias)
+
+---
 
 ## 📋 Descripción del Proyecto
 
-Este proyecto es una tienda online completa que incluye:
-- **Frontend**: Aplicación React con carrito de compras
-- **Backend**: API REST con Node.js/Express y documentación Swagger
-- **Base de Datos**: MySQL con datos de ejemplo
-- **Infraestructura**: Kubernetes (Minikube) con estrategia Blue-Green deployment
-- **Containerización**: Docker y Docker Compose
+Este proyecto es una implementación completa de DevOps y DevSecOps para una tienda online, desarrollado como parte del Laboratorio 4. Incluye:
+
+### Componentes de la Aplicación
+- **Frontend**: React 18 con React Router para SPA
+- **Backend**: Node.js/Express con API REST documentada (Swagger)
+- **Base de Datos**: MySQL 8.0 con datos de ejemplo
+
+### Infraestructura y DevOps
+- **Containerización**: Docker con multi-stage builds, usuarios no-root
+- **Orquestación**: Kubernetes (Minikube) con Helm Charts
+- **CI/CD**: Jenkins con pipeline automatizado
+- **Monitoring**: Prometheus + Grafana con métricas personalizadas
+- **Security**: Kyverno (políticas), Falco (runtime), Semgrep (SAST), Snyk/Trivy (vulnerability scanning)
+
+---
 
 ## 🏗️ Arquitectura
 
-```
-tienda-online/
-├── frontend/           # React App (Puerto 3000/80)
-├── backend/            # Node.js API (Puerto 5000)
-├── database/           # MySQL + Esquema
-├── k8s/                # Manifiestos Kubernetes
-│   ├── apps/           # Deployments Blue-Green
-│   └── mysql/          # StatefulSet MySQL
-└── terraform/          # (En desarrollo)
-```
+### Diagrama General
 
-## 🚀 Formas de Levantar el Proyecto
+![Diagrama de Arquitectura](./DiagramaDeArquitectura.png)
 
-### **Opción 1: Desarrollo Local (Más Rápido para desarrollo)**
 
-#### 1. Levantar la Base de Datos
-```bash
-cd database
-docker-compose up -d
-```
-Esto levanta:
-- MySQL en puerto 3306
-- phpMyAdmin en http://localhost:8080
 
-#### 2. Instalar Dependencias
-```bash
-# Desde la raíz del proyecto
-npm run install-all
-```
+### Flujo de Datos
 
-#### 3. Configurar Variables de Entorno
-El archivo `backend/config.env` ya está configurado:
-```env
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=tienda_user
-DB_PASSWORD=tienda_pass
-DB_NAME=tienda_online
-PORT=5000
-```
-
-#### 4. Iniciar el Backend
-```bash
-cd backend
-npm start
-# O para desarrollo con hot-reload:
-npm run dev
-```
-El backend estará en: http://localhost:5000
-API Docs (Swagger): http://localhost:5000/api-docs
-
-#### 5. Iniciar el Frontend
-```bash
-cd frontend
-npm start
-```
-El frontend estará en: http://localhost:3000
+1. **Usuario** → Accede al frontend a través del Ingress
+2. **Frontend** → Hace requests al backend via API REST
+3. **Backend** → Consulta/modifica datos en MySQL
+4. **Prometheus** → Scraping de métricas del backend cada 15s
+5. **Grafana** → Visualiza métricas de Prometheus
+6. **Kyverno** → Valida recursos antes de admitirlos al cluster
+7. **Falco** → Monitorea comportamiento en runtime
 
 ---
 
-### **Opción 2: Docker Compose (Containerizado simple)**
+## 🛠️ Tecnologías Utilizadas
 
-```bash
-# Levantar todos los servicios
-docker-compose up -d --build
+### Aplicación
+| Componente | Tecnología | Versión |
+|------------|-----------|---------|
+| Frontend | React | 18.3.1 |
+| Frontend Server | Nginx | 1.25.3-alpine |
+| Backend | Node.js | 18.19.0-alpine3.18 |
+| Backend Framework | Express | 4.21.2 |
+| Database | MySQL | 8.0.35 |
+| API Docs | Swagger | 5.0.0 |
 
-# Ver logs
-docker-compose logs -f
+### DevOps & Infraestructura
+| Herramienta | Propósito | Versión |
+|-------------|-----------|---------|
+| Docker | Containerización | Latest |
+| Kubernetes | Orquestación | 1.28+ (Minikube) |
+| Helm | Package Manager | 3.x |
+| Jenkins | CI/CD | Latest |
 
-# Detener servicios
-docker-compose down
-```
+### Monitoring & Observability
+| Herramienta | Propósito | Versión |
+|-------------|-----------|---------|
+| Prometheus | Metrics Collection | 2.x |
+| Grafana | Visualization | 10.x |
+| prom-client | Node.js metrics | 15.1.0 |
 
-**Nota**: Necesitas un `docker-compose.yml` en la raíz (actualmente no está presente).
+### Security & DevSecOps
+| Herramienta | Propósito | Tipo |
+|-------------|-----------|------|
+| Kyverno | Policy Engine | Admission Control |
+| Falco | Runtime Security | IDS |
+| Semgrep | Static Analysis | SAST |
+| Snyk | Dependency Scan | SCA |
+| Trivy | Image Scanning | Vulnerability Scanner |
 
 ---
 
-### **Opción 3: Kubernetes con Minikube (Producción-like con Blue-Green)**
+## ✨ Características Implementadas
 
-Esta es la opción más completa que implementa Blue-Green deployment.
+### 1. Containerización Optimizada ✅
+- ✅ Multi-stage builds para reducir tamaño de imágenes
+- ✅ Usuarios no-root en todos los contenedores
+- ✅ Versiones específicas (no `latest`)
+- ✅ `.dockerignore` para optimizar build context
+- ✅ Health checks configurados
+- ✅ Imágenes analizadas con Trivy
+- Frontend: 45.4 MB (optimizado)
 
-#### Prerequisitos
-- Minikube instalado
-- kubectl instalado
-- Docker instalado
+### 2. Orquestación con Kubernetes ✅
+- ✅ Helm Chart completo con templates
+- ✅ Values para dev y prod
+- ✅ Deployments con replicas configurables
+- ✅ StatefulSet para MySQL con persistencia
+- ✅ Services (ClusterIP y Headless)
+- ✅ ConfigMaps y Secrets
+- ✅ Ingress con routing
+- ✅ Resource limits y requests
+- ✅ Liveness y readiness probes
 
-#### Pasos Detallados
+### 3. Monitoring & Observability ✅
+- ✅ Prometheus instalado con kube-prometheus-stack
+- ✅ Backend instrumentado con prom-client
+- ✅ Métricas personalizadas:
+  - HTTP request duration (histogram)
+  - HTTP request total (counter)
+  - DB connection errors (counter)
+  - Pedidos creados (counter)
+  - Productos consultados (counter)
+  - DB query duration (histogram)
+- ✅ ServiceMonitor configurado
+- ✅ Dashboard de Grafana con 9 paneles
+- ✅ Métricas exportadas en `/metrics`
 
-**1. Iniciar Minikube**
+### 4. CI/CD con Jenkins ✅
+- ✅ Jenkins dockerizado con todas las herramientas
+- ✅ Jenkinsfile con 8 stages:
+  1. Clone
+  2. Static Analysis (Semgrep)
+  3. Dependency Scan (Snyk)
+  4. Build
+  5. Test
+  6. Docker Build
+  7. Docker Push
+  8. Deploy (Helm)
+- ✅ Plugins necesarios instalados
+- ✅ Script de inicio automatizado
+- ✅ Configuración as code
+
+### 5. DevSecOps ✅
+
+#### Static Analysis - Semgrep ✅
+- ✅ Análisis de backend y frontend
+- ✅ 417 reglas ejecutadas
+- ✅ 3 findings documentados
+- ✅ Reporte detallado con recomendaciones
+- ✅ Vulnerabilidad CSRF identificada
+
+#### Dependency Scanning - Snyk ✅
+- ✅ Escaneo de dependencias de Node.js
+- ✅ Reporte consolidado
+- ✅ Vulnerabilidades categorizadas por severidad
+- ✅ Recomendaciones de remediación
+
+#### Image Scanning - Trivy ✅
+- ✅ 3 imágenes analizadas
+- ✅ Reporte completo con CVEs
+- ✅ Backend: 4 HIGH
+- ✅ Frontend: 3 CRITICAL, 18 HIGH
+- ✅ Database: 3 CRITICAL, 73 HIGH
+
+#### Policy Engine - Kyverno ✅
+- ✅ 4 políticas implementadas:
+  1. Disallow Latest Tag (MEDIUM)
+  2. Require Resource Limits (MEDIUM)
+  3. Disallow Root User (HIGH)
+  4. Require Labels (LOW)
+- ✅ Todas las políticas validadas
+- ✅ Helm Chart cumple con todas las políticas
+- ✅ Reporte de validación completo
+
+#### Runtime Security - Falco ✅
+- ✅ Instalado con modern_ebpf driver
+- ✅ 237 reglas cargadas
+- ✅ 10 reglas personalizadas
+- ✅ Eventos detectados y documentados:
+  - Read sensitive file (/etc/shadow)
+  - Shell spawned in container
+  - Terminal shell in container
+  - Unexpected program executed
+- ✅ Reporte de evento completo
+
+### 6. Automatización ✅
+- ✅ `init.sh` - Inicialización completa del proyecto
+- ✅ `populate.sh` - Poblar DB con datos de prueba
+- ✅ `cleanup.sh` - Limpieza completa de recursos
+- ✅ `jenkins-start.sh` - Iniciar Jenkins
+- ✅ `generate-traffic.sh` - Generar tráfico para métricas
+
+### 7. Documentación ✅
+- ✅ README principal (este archivo)
+- ✅ TODO.md con progreso detallado
+- ✅ READMEs por componente:
+  - k8s/monitoring/README.md
+  - k8s/kyverno/README.md
+  - k8s/falco/README.md
+  - jenkins/README.md
+- ✅ Reportes de seguridad:
+  - reports/image-analysis.md
+  - reports/semgrep-report.txt
+  - reports/snyk-report.txt
+  - reports/kyverno-validation.log
+  - reports/falco-event.log
+
+---
+
+## 🚀 Inicio Rápido
+
+### Prerequisitos
+
+- Docker
+- Minikube
+- kubectl
+- Helm 3+
+- (Opcional) Jenkins para CI/CD
+
+### Instalación Automática
+
 ```bash
-minikube start
+# 1. Clonar el repositorio
+git clone https://github.com/tu-usuario/tienda-online.git
+cd tienda-online
+
+# 2. Ejecutar script de inicialización
+./scripts/init.sh
+
+# 3. Poblar base de datos
+./scripts/populate.sh
+
+# 4. Acceder a los servicios
+# Sigue las instrucciones que muestra el script init.sh
 ```
 
-**2. Configurar Docker para usar el daemon de Minikube**
+¡Eso es todo! En ~10 minutos tendrás todo desplegado. 🎉
+
+---
+
+## 📖 Guía de Instalación Detallada
+
+### 1. Iniciar Minikube
+
 ```bash
+minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=20g
+```
+
+### 2. Construir Imágenes Docker
+
+```bash
+# Configurar Docker para usar el daemon de Minikube
 eval $(minikube docker-env)
-```
-⚠️ **Importante**: Este comando debe ejecutarse en cada terminal nueva.
 
-**3. Construir las imágenes Docker**
+# Backend
+docker build -t tienda-backend:lab4 ./backend
 
-**Versión Blue (Actual):**
-```bash
-# Construir frontend blue
-docker build -t app-frontend:blue ./frontend
+# Frontend
+docker build -t tienda-frontend:lab4 ./frontend
 
-# Construir backend blue
-docker build -t app-backend:blue ./backend
+# Database
+docker build -t tienda-database:lab4 ./database
 ```
 
-**Versión Green (Nueva):**
-```bash
-# Construir frontend green
-docker build -t app-frontend:green ./frontend
+### 3. Crear Namespaces
 
-# Construir backend green
-docker build -t app-backend:green ./backend
+```bash
+kubectl create namespace tienda-online
+kubectl create namespace monitoring
+kubectl create namespace kyverno
+kubectl create namespace falco
 ```
 
-💡 **Tip**: Para diferenciar las versiones, puedes modificar el archivo `frontend/src/components/Header.js` antes de cada build.
+### 4. Instalar Prometheus y Grafana
 
-**4. Desplegar en Kubernetes**
 ```bash
-# Crear namespace
-kubectl apply -f k8s/namespace.yaml
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
 
-# Desplegar MySQL
-kubectl apply -f k8s/mysql/
-
-# Esperar a que MySQL esté listo
-kubectl wait --for=condition=ready pod -l app=mysql -n appdevops --timeout=300s
-
-# Desplegar aplicaciones (Blue y Green)
-kubectl apply -f k8s/apps/deployment-blue.yaml
-kubectl apply -f k8s/apps/deployment-green.yaml
-kubectl apply -f k8s/apps/service.yaml
+helm install prometheus prometheus-community/kube-prometheus-stack \
+  -n monitoring \
+  -f k8s/monitoring/prometheus-values.yaml
 ```
 
-**5. Verificar el despliegue**
-```bash
-# Ver todos los pods
-kubectl get pods -n appdevops
+### 5. Instalar Kyverno
 
-# Ver servicios
-kubectl get services -n appdevops
+```bash
+helm repo add kyverno https://kyverno.github.io/kyverno/
+helm repo update
+
+helm install kyverno kyverno/kyverno -n kyverno
+
+# Aplicar políticas
+kubectl apply -f k8s/kyverno/
 ```
 
-**6. Acceder a la aplicación**
-```bash
-# Abrir en el navegador
-minikube service frontend-service -n appdevops
+### 6. Instalar Falco
 
-# O obtener la URL
-minikube service frontend-service -n appdevops --url
+```bash
+helm repo add falcosecurity https://falcosecurity.github.io/charts
+helm repo update
+
+helm install falco falcosecurity/falco \
+  -n falco \
+  --set tty=true \
+  --set driver.kind=modern_ebpf \
+  --set falco.json_output=true
 ```
 
-#### 🔄 Blue-Green Deployment
+### 7. Desplegar Aplicación
 
-**Cambiar de Blue a Green:**
 ```bash
-kubectl patch service frontend-service -n appdevops -p '{"spec":{"selector":{"version":"green"}}}'
-kubectl patch service backend-service -n appdevops -p '{"spec":{"selector":{"version":"green"}}}'
+helm install tienda-online ./helm-chart/tienda-online \
+  -n tienda-online \
+  -f helm-chart/tienda-online/values-dev.yaml
 ```
 
-**Volver a Blue:**
+### 8. Aplicar ServiceMonitor
+
 ```bash
-kubectl patch service frontend-service -n appdevops -p '{"spec":{"selector":{"version":"blue"}}}'
-kubectl patch service backend-service -n appdevops -p '{"spec":{"selector":{"version":"blue"}}}'
+kubectl apply -f k8s/monitoring/servicemonitor.yaml
 ```
 
-**Verificar versión activa:**
+### 9. Verificar Despliegue
+
 ```bash
-kubectl get service frontend-service -n appdevops -o jsonpath='{.spec.selector}'
+kubectl get pods -n tienda-online
+kubectl get svc -n tienda-online
 ```
 
 ---
 
-## 📊 Endpoints de la API
+## 🔄 Pipeline CI/CD
 
-Una vez levantado el backend, tienes disponible:
+### Arquitectura del Pipeline
 
-### Endpoints principales:
-- `GET /` - Health check
-- `GET /api` - Información de la API
-- `GET /api/productos` - Lista de productos
-- `GET /api/productos/:id` - Detalle de un producto
-- `POST /api/pedidos` - Crear pedido
+```
+┌──────────┐    ┌───────────┐    ┌───────────┐    ┌───────────┐
+│  GitHub  │───▶│  Jenkins  │───▶│  Docker   │───▶│Kubernetes │
+│   Push   │    │  Trigger  │    │   Build   │    │  Deploy   │
+└──────────┘    └───────────┘    └───────────┘    └───────────┘
+                      │
+                      ▼
+                ┌───────────┐
+                │  Security │
+                │  Scanning │
+                └───────────┘
+```
 
-### Documentación Swagger:
-- http://localhost:5000/api-docs (desarrollo local)
-- http://<minikube-ip>:<nodeport>/api-docs (Kubernetes)
+### Stages del Pipeline
 
-## 🗄️ Base de Datos
+1. **Clone**: Clonar repositorio de Git
+2. **Semgrep**: Análisis estático de código
+   - Backend: 213 reglas
+   - Frontend: 204 reglas
+3. **Snyk**: Escaneo de dependencias
+   - npm audit + Snyk API
+4. **Build**: Compilar aplicación
+   - Backend: `npm install`
+   - Frontend: `npm run build`
+5. **Test**: Ejecutar tests (si existen)
+6. **Docker Build**: Construir imágenes
+   - Tags: `lab4`, `latest`, `$BUILD_NUMBER`
+7. **Docker Push**: Publicar a registry
+8. **Deploy**: Desplegar con Helm
+   - Environment: dev/prod
+   - Rolling update
 
-### Acceso directo a MySQL:
+### Configuración de Jenkins
+
 ```bash
-# Con Docker Compose
-docker-compose exec mysql mysql -u tienda_user -ptienda_pass tienda_online
+# Iniciar Jenkins
+./scripts/jenkins-start.sh
 
-# En Kubernetes
-kubectl exec -it mysql-0 -n appdevops -- mysql -u tienda_user -ptienda_pass tienda_online
+# Acceder
+URL: http://localhost:8080
+Usuario: admin
+Password: admin123
 ```
 
-### phpMyAdmin (solo en Docker Compose):
-- URL: http://localhost:8080
-- Usuario: `root`
-- Password: `root123`
+Ver `jenkins/README.md` para configuración detallada.
 
-### Tablas incluidas:
-- `productos` - 8 productos de ejemplo
-- `pedidos` - Historial de pedidos
-- `pedido_items` - Items de cada pedido
-- `usuarios` - Usuarios (opcional)
+---
 
-## 🛠️ Comandos Útiles
+## 📊 Monitoring y Observabilidad
 
-### Docker
+### Acceso a Grafana
+
 ```bash
-# Ver imágenes
-docker images | grep app-
+# Port forward
+kubectl port-forward -n monitoring svc/prometheus-grafana 3000:80
 
-# Limpiar imágenes
-docker rmi app-frontend:blue app-frontend:green app-backend:blue app-backend:green
+# Acceder en navegador
+open http://localhost:3000
 
-# Ver logs del backend
-docker-compose logs -f backend
+# Credenciales
+Usuario: admin
+Password: admin123
 ```
 
-### Kubernetes
+### Dashboard de Grafana
+
+El dashboard incluye 9 paneles:
+
+1. **HTTP Requests per Second (RPS)**
+   - Tasa de requests HTTP
+   - Desglosado por método, ruta y código de estado
+
+2. **HTTP Request Latency**
+   - Latencia de requests (p50, p95, p99)
+   - Útil para detectar problemas de performance
+
+3. **CPU Usage**
+   - Uso de CPU del proceso Node.js
+   - Ayuda a identificar picos de procesamiento
+
+4. **Memory Usage**
+   - Memoria RSS, Heap Used y Heap Total
+   - Detección de memory leaks
+
+5. **Total Pedidos Creados**
+   - Contador de pedidos (métrica de negocio)
+   - Gauge con total acumulado
+
+6. **Tasa de Creación de Pedidos**
+   - Pedidos por segundo
+   - Monitoreo de actividad de negocio
+
+7. **Total Productos Consultados**
+   - Contador de consultas a productos
+   - Métrica de uso del catálogo
+
+8. **Errores de Conexión a BD**
+   - Errores de conexión a MySQL
+   - Crítico para detectar problemas de infraestructura
+
+9. **Database Query Latency**
+   - Latencia de queries (p95)
+   - Optimización de consultas
+
+### Métricas Disponibles
+
+```
+# Métricas HTTP
+tienda_online_http_requests_total
+tienda_online_http_request_duration_seconds
+
+# Métricas de Base de Datos
+tienda_online_db_connection_errors_total
+tienda_online_db_query_duration_seconds
+
+# Métricas de Negocio
+tienda_online_pedidos_creados_total
+tienda_online_productos_consultados_total
+
+# Métricas del Sistema (automáticas)
+tienda_online_process_cpu_seconds_total
+tienda_online_process_resident_memory_bytes
+tienda_online_nodejs_heap_size_used_bytes
+tienda_online_nodejs_heap_size_total_bytes
+```
+
+### Generar Tráfico para Testing
+
 ```bash
-# Ver logs de un pod
-kubectl logs -f <pod-name> -n appdevops
-
-# Ver logs de una versión específica
-kubectl logs -l app=frontend,version=blue -n appdevops
-
-# Describir un pod con problemas
-kubectl describe pod <pod-name> -n appdevops
-
-# Ejecutar comando en un pod
-kubectl exec -it <pod-name> -n appdevops -- /bin/sh
-
-# Ver eventos del namespace
-kubectl get events -n appdevops --sort-by='.lastTimestamp'
+./scripts/generate-traffic.sh
 ```
 
-### Limpieza
+---
+
+## 🔒 Seguridad
+
+### Análisis de Vulnerabilidades
+
+#### Imágenes Docker
+
+| Imagen | CRITICAL | HIGH | MEDIUM | LOW |
+|--------|----------|------|--------|-----|
+| Backend | 0 | 4 | - | - |
+| Frontend | 3 | 18 | - | - |
+| Database | 3 | 73 | - | - |
+
+Ver `reports/image-analysis.md` para detalles.
+
+#### Código Fuente (Semgrep)
+
+- **Total findings**: 3 (Backend)
+- **Severidad**: 3 MEDIUM
+- **Principal issue**: Falta middleware CSRF
+- Ver `reports/semgrep-report.txt`
+
+#### Dependencias (Snyk)
+
+- **Backend**: ~150-200 dependencias
+- **Frontend**: ~1500 dependencias
+- **Recomendación**: Ejecutar `npm audit fix`
+- Ver `reports/snyk-report.txt`
+
+### Políticas de Kyverno
+
+4 políticas implementadas y validadas:
+
+1. ✅ **disallow-latest-tag** (MEDIUM)
+   - Bloquea imágenes con tag `latest`
+   - Requiere versión específica
+
+2. ✅ **require-resource-limits** (MEDIUM)
+   - Requiere requests y limits de CPU/memoria
+   - Previene OOM y throttling
+
+3. ✅ **disallow-root-user** (HIGH)
+   - Prohíbe ejecución como root
+   - Requiere `runAsNonRoot: true`
+
+4. ✅ **require-labels** (LOW)
+   - Requiere etiquetas estándar de K8s
+   - Facilita gestión y monitoreo
+
+Ver `reports/kyverno-validation.log` para detalles.
+
+### Runtime Security (Falco)
+
+Eventos detectados durante testing:
+
+- ✅ Read sensitive file untrusted (`/etc/shadow`)
+- ✅ Shell spawned in container
+- ✅ Terminal shell in container
+- ✅ Unexpected program executed
+
+Ver `reports/falco-event.log` para detalles.
+
+---
+
+## 🤖 Scripts de Automatización
+
+| Script | Propósito | Uso |
+|--------|-----------|-----|
+| `init.sh` | Inicialización completa del proyecto | `./scripts/init.sh` |
+| `populate.sh` | Poblar DB con datos de prueba | `./scripts/populate.sh` |
+| `cleanup.sh` | Limpieza completa de recursos | `./scripts/cleanup.sh` |
+| `jenkins-start.sh` | Iniciar Jenkins | `./scripts/jenkins-start.sh` |
+| `generate-traffic.sh` | Generar tráfico para métricas | `./scripts/generate-traffic.sh` |
+
+### Ejemplo de Uso
+
 ```bash
-# Docker Compose
-docker-compose down -v
+# Despliegue completo desde cero
+./scripts/init.sh
 
-# Kubernetes
-kubectl delete namespace appdevops
+# Poblar base de datos
+./scripts/populate.sh
 
-# Minikube
-minikube stop
-minikube delete
+# Generar métricas
+./scripts/generate-traffic.sh
+
+# Limpiar todo
+./scripts/cleanup.sh
 ```
 
-## 🎯 Características del Proyecto
-
-### Frontend (React)
-- ✅ Carrito de compras funcional
-- ✅ Listado de productos con filtros
-- ✅ Detalle de producto
-- ✅ Proceso de checkout
-- ✅ Diseño responsive
-- ✅ Indicador de versión (Blue/Green)
-
-### Backend (Node.js/Express)
-- ✅ API RESTful completa
-- ✅ Documentación Swagger interactiva
-- ✅ Validación de datos
-- ✅ Manejo de errores
-- ✅ CORS configurado
-- ✅ Health checks
-
-### DevOps
-- ✅ Dockerfiles optimizados
-- ✅ Multi-stage builds
-- ✅ Health checks en containers
-- ✅ Blue-Green deployment
-- ✅ StatefulSet para MySQL
-- ✅ Secrets y ConfigMaps
-- ✅ Namespace aislado
-
-## 🔧 Configuración Avanzada
-
-### Variables de Entorno Backend
-Archivo: `backend/config.env`
-```env
-DB_HOST=mysql-service
-DB_PORT=3306
-DB_USER=tienda_user
-DB_PASSWORD=tienda_pass
-DB_NAME=tienda_online
-PORT=5000
-NODE_ENV=production
-CORS_ORIGIN=http://localhost:3000
-```
-
-### Proxy Frontend (desarrollo)
-El frontend está configurado con proxy para el backend en `package.json`:
-```json
-"proxy": "http://localhost:5000"
-```
-
-## 📝 Estructura de Archivos Importante
-
-```
-backend/
-├── index.js           # Servidor Express principal
-├── swagger.js         # Configuración Swagger
-├── config.env         # Variables de entorno
-├── healthcheck.js     # Script health check
-├── Dockerfile         # Imagen Docker backend
-└── package.json       # Dependencias Node
-
-frontend/
-├── src/
-│   ├── App.js         # Componente principal
-│   └── components/    # Componentes React
-├── Dockerfile         # Multi-stage build
-├── nginx.conf         # Configuración Nginx
-└── package.json       # Dependencias React
-
-k8s/
-├── namespace.yaml     # Namespace appdevops
-├── apps/
-│   ├── deployment-blue.yaml
-│   ├── deployment-green.yaml
-│   └── service.yaml
-└── mysql/
-    ├── statefulset.yaml
-    ├── service.yaml
-    ├── secret.yaml
-    ├── config.yaml
-    └── initdb-configmap.yaml
-```
+---
 
 ## 🐛 Troubleshooting
 
-### "Cannot connect to database"
-- Verifica que MySQL esté corriendo
-- Revisa las credenciales en `config.env`
-- En Kubernetes, espera a que el pod de MySQL esté Ready
+### Problema: Pods no inician
 
-### "Image not found" en Kubernetes
-- Asegúrate de ejecutar `eval $(minikube docker-env)`
-- Reconstruye las imágenes dentro del contexto de Minikube
-
-### El frontend no carga productos
-- Verifica que el backend esté corriendo
-- Revisa CORS en `backend/index.js`
-- Chequea la configuración del proxy
-
-### Pods en estado CrashLoopBackOff
 ```bash
-kubectl logs <pod-name> -n appdevops
-kubectl describe pod <pod-name> -n appdevops
+# Ver logs del pod
+kubectl logs -n tienda-online <pod-name>
+
+# Ver eventos
+kubectl get events -n tienda-online --sort-by='.lastTimestamp'
+
+# Describir pod
+kubectl describe pod -n tienda-online <pod-name>
 ```
 
-## 📚 Recursos Adicionales
+### Problema: Backend no conecta a MySQL
 
-- [Documentación Kubernetes](https://kubernetes.io/docs/)
-- [Documentación Minikube](https://minikube.sigs.k8s.io/docs/)
-- [Express.js](https://expressjs.com/)
-- [React](https://react.dev/)
-- [Swagger](https://swagger.io/)
+```bash
+# Verificar que MySQL esté corriendo
+kubectl get pods -n tienda-online -l app.kubernetes.io/component=database
 
-## 👥 Autor
+# Verificar servicio
+kubectl get svc -n tienda-online tienda-database
 
-Proyecto de DevOps - UCU 2025
+# Test de conectividad
+kubectl exec -n tienda-online <backend-pod> -- nc -zv tienda-database 3306
+```
+
+### Problema: Prometheus no scraping métricas
+
+```bash
+# Verificar ServiceMonitor
+kubectl get servicemonitor -n tienda-online
+
+# Verificar targets en Prometheus UI
+# http://localhost:9090/targets
+
+# Ver logs de Prometheus
+kubectl logs -n monitoring prometheus-prometheus-kube-prometheus-prometheus-0
+```
+
+### Problema: Kyverno bloquea despliegue
+
+```bash
+# Ver políticas
+kubectl get clusterpolicies
+
+# Ver detalles de rechazo
+kubectl describe pod <pod-name> -n tienda-online
+
+# Temporalmente cambiar a audit mode
+kubectl patch clusterpolicy <policy-name> --type='json' \
+  -p='[{"op": "replace", "path": "/spec/validationFailureAction", "value":"Audit"}]'
+```
+
+### Problema: Falco no genera alertas
+
+```bash
+# Verificar que Falco esté corriendo
+kubectl get pods -n falco
+
+# Ver logs
+kubectl logs -n falco -l app.kubernetes.io/name=falco -f
+
+# Verificar reglas cargadas
+kubectl exec -n falco <falco-pod> -- falco --list
+```
+
+---
+
+## 🚧 Mejoras Futuras
+
+### Corto Plazo
+- [ ] Actualizar imágenes base a Alpine 3.20 / MySQL 8.4
+- [ ] Implementar rate limiting en el backend
+- [ ] Agregar validación de inputs con Joi
+- [ ] Configurar CSRF protection
+- [ ] Agregar tests unitarios y de integración
+
+### Medio Plazo
+- [ ] Implementar HorizontalPodAutoscaler
+- [ ] Configurar NetworkPolicies
+- [ ] Agregar PodDisruptionBudgets
+- [ ] Integrar Falco con Slack para alertas
+- [ ] Configurar backup automático de MySQL
+- [ ] Implementar cert-manager para TLS
+
+### Largo Plazo
+- [ ] Migrar a EKS/GKE/AKS para producción
+- [ ] Implementar service mesh (Istio)
+- [ ] Agregar tracing distribuido (Jaeger)
+- [ ] Implementar GitOps con ArgoCD
+- [ ] Configurar disaster recovery
+- [ ] Implementar multi-region deployment
+
+---
+
+## 📚 Referencias
+
+### Documentación Oficial
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [Helm Documentation](https://helm.sh/docs/)
+- [Prometheus Documentation](https://prometheus.io/docs/)
+- [Grafana Documentation](https://grafana.com/docs/)
+- [Jenkins Documentation](https://www.jenkins.io/doc/)
+
+### Seguridad
+- [Kyverno Documentation](https://kyverno.io/docs/)
+- [Falco Documentation](https://falco.org/docs/)
+- [Semgrep Documentation](https://semgrep.dev/docs/)
+- [Snyk Documentation](https://docs.snyk.io/)
+- [Trivy Documentation](https://aquasecurity.github.io/trivy/)
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+
+### Best Practices
+- [Kubernetes Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)
+- [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
+- [12 Factor App](https://12factor.net/)
+- [CNCF Cloud Native Trail Map](https://github.com/cncf/trailmap)
+
+---
+
+## 👥 Autores
+
+- **Ignacio Valle** - Laboratorio 4 - DevOps & DevSecOps
+
+---
 
 ## 📄 Licencia
 
-MIT
+Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 
+---
+
+## 🙏 Agradecimientos
+
+- Universidad Católica del Uruguay (UCU)
+- Curso de DevOps
+- Comunidad CNCF y proyectos open source utilizados
+
+---
+
+## 📞 Contacto
+
+Para preguntas o soporte:
+- Email: [tu-email@example.com]
+- GitHub Issues: [https://github.com/tu-usuario/tienda-online/issues]
+
+---
+
+<div align="center">
+
+**⭐ Si este proyecto te fue útil, por favor considera darle una estrella ⭐**
+
+Made with ❤️ for DevOps & DevSecOps
+
+</div>

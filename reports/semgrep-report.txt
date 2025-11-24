@@ -1,0 +1,368 @@
+=== SEMGREP STATIC CODE ANALYSIS REPORT ===
+
+Fecha: 17 de Noviembre de 2025
+Build: Lab 4 - DevOps & DevSecOps
+Herramienta: Semgrep v1.144.0
+Configuración: auto (Community rules: 1063)
+
+========================================
+RESUMEN EJECUTIVO
+========================================
+
+Total de archivos escaneados: 25 (7 backend + 18 frontend)
+Total de reglas ejecutadas: 417 (213 backend + 204 frontend)
+Total de findings: 3 (3 backend + 0 frontend)
+Severidad: 3 MEDIUM (3 blocking)
+
+Backend:
+  - Archivos: 7
+  - Findings: 3
+  - Severidad: 3 MEDIUM
+
+Frontend:
+  - Archivos: 18
+  - Findings: 0
+  - Severidad: N/A
+
+========================================
+FINDINGS DETALLADOS - BACKEND
+========================================
+
+────────────────────────────────────────
+Finding #1: HTTP Request sin TLS
+────────────────────────────────────────
+
+Archivo: backend/healthcheck.js
+Línea: 11
+Regla: problem-based-packs.insecure-transport.js-node.http-request.http-request
+Severidad: MEDIUM
+Estado: ACEPTADO (No crítico en este contexto)
+
+Descripción:
+  Checks for requests sent to http:// URLs. This is dangerous as the server 
+  is attempting to connect to a website that does not encrypt traffic with TLS. 
+  Instead, only send requests to https:// URLs.
+
+Código problemático:
+  ```javascript
+  const options = {
+    hostname: 'localhost',
+    port: process.env.PORT || 5000,
+    path: '/',
+    method: 'GET',
+    timeout: 2000
+  };
+  
+  const request = http.request(options, (res) => {
+    console.log(`STATUS: ${res.statusCode}`);
+    // ...
+  });
+  ```
+
+Análisis:
+  Este código es parte del healthcheck interno de Docker que verifica si el 
+  servidor está respondiendo. Usa HTTP en lugar de HTTPS para comunicarse con 
+  localhost.
+
+Justificación:
+  ✓ El healthcheck se ejecuta DENTRO del contenedor
+  ✓ Se conecta a localhost (127.0.0.1), no a un servidor externo
+  ✓ No hay tráfico que salga de la red del contenedor
+  ✓ No se transmiten datos sensibles
+  ✓ El objetivo es solo verificar que el servidor responda
+  ✓ Agregar HTTPS aquí requeriría certificados autofirmados innecesarios
+
+Recomendación: NO CORREGIR
+  Este es un falso positivo. El uso de HTTP para healthchecks locales es 
+  aceptable y común en contenedores Docker.
+
+────────────────────────────────────────
+Finding #2: HTTP Server en lugar de HTTPS
+────────────────────────────────────────
+
+Archivo: backend/healthcheck.js
+Línea: 11
+Regla: problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server
+Severidad: MEDIUM
+Estado: ACEPTADO (No crítico en este contexto)
+
+Descripción:
+  Checks for any usage of http servers instead of https servers. Encourages 
+  the usage of https protocol instead of http, which does not have TLS and is 
+  therefore unencrypted. Using http can lead to man-in-the-middle attacks in 
+  which the attacker is able to read sensitive information.
+
+Código problemático:
+  ```javascript
+  const request = http.request(options, (res) => {
+    // healthcheck logic
+  });
+  ```
+
+Análisis:
+  Similar al Finding #1, este es el healthcheck de Docker que verifica la 
+  disponibilidad del servicio en localhost.
+
+Justificación:
+  ✓ Mismo contexto que Finding #1
+  ✓ El servidor backend (index.js) SÍ debe estar detrás de HTTPS en producción
+  ✓ En Kubernetes, esto se logra con Ingress + TLS/SSL termination
+  ✓ El healthcheck interno usa HTTP porque:
+    - Se ejecuta dentro del contenedor
+    - No sale de localhost
+    - No transmite datos sensibles
+
+Recomendación: NO CORREGIR
+  El healthcheck puede usar HTTP. La terminación TLS debe hacerse en el 
+  Ingress Controller de Kubernetes, no en la aplicación.
+
+Arquitectura de seguridad recomendada:
+  Cliente (HTTPS) → Ingress (TLS termination) → Service (HTTP) → Pod (HTTP)
+                                                                      ↑
+                                                            Healthcheck (HTTP)
+
+────────────────────────────────────────
+Finding #3: Falta middleware CSRF
+────────────────────────────────────────
+
+Archivo: backend/index.js
+Línea: 8
+Regla: javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage
+Severidad: MEDIUM
+Estado: PENDIENTE CORRECCIÓN
+
+Descripción:
+  A CSRF middleware was not detected in your express application. Ensure you 
+  are either using one such as `csurf` or `csrf` (see rule references) and/or 
+  you are properly doing CSRF validation in your routes with a token or cookies.
+
+Código problemático:
+  ```javascript
+  const app = express();
+  const PORT = process.env.PORT || 5000;
+  
+  // ... sin middleware CSRF
+  app.use(cors());
+  app.use(express.json());
+  ```
+
+Análisis:
+  La aplicación Express no tiene protección CSRF (Cross-Site Request Forgery).
+  Esto es importante para endpoints que modifican datos (POST, PUT, DELETE).
+
+Riesgo:
+  ⚠️  Un atacante podría engañar a un usuario autenticado para que realice 
+      acciones no deseadas (crear pedidos, modificar datos, etc.)
+
+Impacto:
+  - Creación no autorizada de pedidos
+  - Modificación de datos del usuario
+  - Acciones en nombre del usuario sin su consentimiento
+
+Corrección recomendada:
+  Opción 1: Usar middleware csurf (tradicional)
+  ```javascript
+  const csrf = require('csurf');
+  const cookieParser = require('cookie-parser');
+  
+  app.use(cookieParser());
+  app.use(csrf({ cookie: true }));
+  
+  // Endpoint para obtener el token
+  app.get('/api/csrf-token', (req, res) => {
+    res.json({ csrfToken: req.csrfToken() });
+  });
+  ```
+
+  Opción 2: SameSite cookies + Verificación de Origin (moderna)
+  ```javascript
+  // Configurar cookies con SameSite
+  app.use(session({
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+      sameSite: 'strict',
+      secure: true, // solo en HTTPS
+      httpOnly: true
+    }
+  }));
+  
+  // Middleware de verificación de origen
+  app.use((req, res, next) => {
+    if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
+      const origin = req.get('origin');
+      const allowedOrigins = ['http://localhost:3000', process.env.FRONTEND_URL];
+      
+      if (!origin || !allowedOrigins.includes(origin)) {
+        return res.status(403).json({ error: 'Invalid origin' });
+      }
+    }
+    next();
+  });
+  ```
+
+  Opción 3: Usar autenticación basada en tokens JWT (ya implementada parcialmente)
+  ```javascript
+  // La aplicación ya usa JWT para autenticación
+  // Agregar verificación adicional de origen en endpoints críticos
+  const verifyCsrf = (req, res, next) => {
+    const token = req.headers['x-csrf-token'];
+    const sessionToken = req.session?.csrfToken;
+    
+    if (token !== sessionToken) {
+      return res.status(403).json({ error: 'CSRF validation failed' });
+    }
+    next();
+  };
+  
+  // Aplicar a rutas críticas
+  app.post('/api/pedidos', verifyCsrf, async (req, res) => {
+    // ...
+  });
+  ```
+
+Recomendación: CORREGIR (Prioridad: MEDIA)
+  Implementar Opción 2 (SameSite cookies + Origin verification) ya que:
+  - Es más moderna y simple
+  - No requiere cambios significativos en el frontend
+  - Es compatible con aplicaciones SPA (Single Page Applications)
+  - Funciona bien con CORS ya configurado
+
+Pasos de implementación:
+  1. Agregar middleware de verificación de origen
+  2. Configurar CORS con origen específico (no wildcard)
+  3. Agregar header 'X-Frame-Options' y 'X-Content-Type-Options'
+  4. Testing con herramientas como OWASP ZAP
+
+========================================
+FINDINGS DETALLADOS - FRONTEND
+========================================
+
+✓ No se encontraron vulnerabilidades en el código del frontend.
+✓ Total de archivos escaneados: 18
+✓ Total de reglas ejecutadas: 204
+
+El código React sigue buenas prácticas de seguridad:
+- No hay uso de dangerouslySetInnerHTML sin sanitización
+- No hay eval() o Function() constructor
+- No hay XSS potenciales detectados
+- Manejo correcto de estado y props
+
+========================================
+ESTADÍSTICAS GENERALES
+========================================
+
+Por lenguaje:
+  JavaScript (Backend): 3 findings
+  JavaScript (Frontend): 0 findings
+  JSON: 0 findings
+  Dockerfile: 0 findings
+
+Por severidad:
+  CRITICAL: 0
+  HIGH: 0
+  MEDIUM: 3
+  LOW: 0
+
+Por estado:
+  ACEPTADO: 2 (Healthcheck HTTP - contexto válido)
+  PENDIENTE: 1 (CSRF middleware)
+  CORREGIDO: 0
+
+========================================
+RECOMENDACIONES GENERALES
+========================================
+
+1. Seguridad de transporte:
+   ✓ La aplicación ya está diseñada para correr detrás de un proxy/ingress
+   ✓ TLS debe terminarse en el Ingress Controller de Kubernetes
+   ✓ Configurar certificados Let's Encrypt o usar cert-manager
+
+2. Protección CSRF:
+   ⚠️  Implementar middleware de protección CSRF
+   ⚠️  Usar SameSite cookies
+   ⚠️  Verificar origen en endpoints que modifican datos
+
+3. Headers de seguridad:
+   ⚠️  Agregar Helmet.js para headers de seguridad
+   ```javascript
+   const helmet = require('helmet');
+   app.use(helmet());
+   ```
+
+4. Rate limiting:
+   ⚠️  Agregar rate limiting para prevenir abusos
+   ```javascript
+   const rateLimit = require('express-rate-limit');
+   const limiter = rateLimit({
+     windowMs: 15 * 60 * 1000, // 15 minutos
+     max: 100 // límite de 100 requests por IP
+   });
+   app.use('/api/', limiter);
+   ```
+
+5. Validación de inputs:
+   ⚠️  Usar bibliotecas como Joi o express-validator
+   ⚠️  Validar y sanitizar todos los inputs del usuario
+
+6. Secrets management:
+   ⚠️  No hardcodear secrets en el código
+   ⚠️  Usar variables de entorno
+   ⚠️  En producción, usar Kubernetes Secrets o Vault
+
+========================================
+SIGUIENTES PASOS
+========================================
+
+Prioridad ALTA:
+  ☐ Implementar protección CSRF (Finding #3)
+  ☐ Agregar Helmet.js para headers de seguridad
+  ☐ Implementar rate limiting
+
+Prioridad MEDIA:
+  ☐ Agregar validación de inputs con Joi/express-validator
+  ☐ Configurar TLS en Ingress con cert-manager
+  ☐ Agregar logging de seguridad
+
+Prioridad BAJA:
+  ☐ Implementar Content Security Policy (CSP)
+  ☐ Agregar auditoría de accesos
+  ☐ Implementar 2FA para usuarios
+
+========================================
+CONCLUSIÓN
+========================================
+
+El análisis de Semgrep identificó 3 findings en el backend, de los cuales:
+- 2 son falsos positivos aceptables (uso de HTTP en healthcheck local)
+- 1 requiere corrección (falta middleware CSRF)
+
+El código frontend está limpio y sigue buenas prácticas de seguridad.
+
+La recomendación principal es implementar protección CSRF en el backend para
+prevenir ataques de Cross-Site Request Forgery en endpoints críticos.
+
+El resto de los findings son mejoras generales de seguridad que deben
+implementarse progresivamente según las prioridades establecidas.
+
+========================================
+REFERENCIAS
+========================================
+
+- Semgrep: https://semgrep.dev/docs/
+- OWASP CSRF: https://owasp.org/www-community/attacks/csrf
+- Helmet.js: https://helmetjs.github.io/
+- Express Security Best Practices: https://expressjs.com/en/advanced/best-practice-security.html
+- OWASP Top 10: https://owasp.org/www-project-top-ten/
+
+========================================
+ARCHIVOS GENERADOS
+========================================
+
+- reports/semgrep-backend.json (Resultados en JSON)
+- reports/semgrep-frontend.json (Resultados en JSON)
+- reports/semgrep-report.txt (Este reporte consolidado)
+
+========================================
+FIN DEL REPORTE
+========================================
+

@@ -1,0 +1,77 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 7 files tracked by git with 1063 Code rules:
+                                                                                
+  Language      Rules   Files          Origin      Rules                        
+ ─────────────────────────────        ───────────────────                       
+  <multilang>      48       7          Community    1063                        
+  js              156       3                                                   
+  json              4       2                                                   
+  dockerfile        6       1                                                   
+                                                                                
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 3 (3 blocking)
+ • Rules run: 213
+ • Targets scanned: 7
+ • Parsed lines: ~100.0%
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 213 rules on 7 files: 3 findings.
+                   
+                   
+┌─────────────────┐
+│ 3 Code Findings │
+└─────────────────┘
+                          
+    backend/healthcheck.js
+    ❯❱ problem-based-packs.insecure-transport.js-node.http-request.http-
+       request                                                          
+          Checks for requests sent to http:// URLs. This is dangerous
+          as the server is attempting to connect to a website that   
+          does not encrypt traffic with TLS. Instead, only send      
+          requests to https:// URLs.                                 
+          Details: https://sg.run/N4Qy                               
+                                                                     
+            3┆ const options = {
+            4┆   hostname: 'localhost',
+            5┆   port: process.env.PORT || 5000,
+            6┆   path: '/',
+            7┆   method: 'GET',
+            8┆   timeout: 2000
+            9┆ };
+           10┆
+           11┆ const request = http.request(options, (res) => {
+           12┆   console.log(`STATUS: ${res.statusCode}`);
+             [hid 6 additional lines, adjust with --max-lines-per-finding] 
+   
+    ❯❱ problem-based-packs.insecure-transport.js-node.using-http-server.using-
+       http-server                                                            
+          Checks for any usage of http servers instead of https      
+          servers. Encourages the usage of https protocol instead of 
+          http, which does not have TLS and is therefore unencrypted.
+          Using http can lead to man-in-the-middle attacks in which  
+          the attacker is able to read sensitive information.        
+          Details: https://sg.run/x1zL                               
+                                                                     
+           11┆ const request = http.request(options, (res) => {
+                    
+    backend/index.js
+     ❱ javascript.express.security.audit.express-check-csurf-middleware-
+       usage.express-check-csurf-middleware-usage                       
+          A CSRF middleware was not detected in your express          
+          application. Ensure you are either using one such as `csurf`
+          or `csrf` (see rule references) and/or you are properly     
+          doing CSRF validation in your routes with a token or        
+          cookies.                                                    
+          Details: https://sg.run/BxzR                                
+                                                                      
+            8┆ const app = express();
+

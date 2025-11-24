@@ -1,0 +1,109 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-root-user
+  annotations:
+    policies.kyverno.io/title: Disallow Root User
+    policies.kyverno.io/category: Security, Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      Ejecutar contenedores como usuario root es una mala práctica de seguridad.
+      Si el contenedor es comprometido, el atacante tiene privilegios de root.
+      Esta política requiere que los contenedores se ejecuten como usuario no-root.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-runAsNonRoot
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          Los contenedores deben ejecutarse como usuario no-root. 
+          Configura 'securityContext.runAsNonRoot: true' y 
+          'securityContext.runAsUser' con un UID > 0.
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+            - name: "*"
+              securityContext:
+                runAsNonRoot: true
+    
+    - name: check-runAsUser-not-zero
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          El campo 'runAsUser' no puede ser 0 (root). 
+          Usa un UID mayor a 0, por ejemplo: runAsUser: 1001
+        pattern:
+          spec:
+            containers:
+            - name: "*"
+              securityContext:
+                =(runAsUser): ">0"
+    
+    - name: check-init-containers-runAsNonRoot
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      preconditions:
+        all:
+        - key: "{{ request.object.spec.initContainers[] || `[]` | length(@) }}"
+          operator: GreaterThanOrEquals
+          value: 1
+      validate:
+        message: >-
+          Los initContainers también deben ejecutarse como usuario no-root.
+        pattern:
+          spec:
+            initContainers:
+            - name: "*"
+              securityContext:
+                runAsNonRoot: true
+    
+    - name: disallow-privilege-escalation
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          No se permite la escalada de privilegios. 
+          Configura 'allowPrivilegeEscalation: false' en el securityContext.
+        pattern:
+          spec:
+            containers:
+            - name: "*"
+              securityContext:
+                allowPrivilegeEscalation: false
+    
+    - name: disallow-privileged-containers
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          No se permiten contenedores privilegiados. 
+          El campo 'privileged' debe ser false o no estar definido.
+        pattern:
+          spec:
+            containers:
+            - name: "*"
+              =(securityContext):
+                =(privileged): false
+

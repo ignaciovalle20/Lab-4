@@ -1,0 +1,103 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-resource-limits
+  annotations:
+    policies.kyverno.io/title: Require Resource Limits
+    policies.kyverno.io/category: Best Practices, Resource Management
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      Es una buena práctica definir límites de CPU y memoria para prevenir 
+      que un contenedor consuma todos los recursos del nodo. Esta política 
+      requiere que todos los contenedores tengan definidos requests y limits.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-cpu-memory-requests
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          Todos los contenedores deben tener definidos CPU y memory requests.
+          Ejemplo: resources.requests.cpu: "100m", resources.requests.memory: "128Mi"
+        pattern:
+          spec:
+            containers:
+            - name: "*"
+              resources:
+                requests:
+                  memory: "?*"
+                  cpu: "?*"
+    
+    - name: validate-cpu-memory-limits
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          Todos los contenedores deben tener definidos CPU y memory limits.
+          Ejemplo: resources.limits.cpu: "500m", resources.limits.memory: "512Mi"
+        pattern:
+          spec:
+            containers:
+            - name: "*"
+              resources:
+                limits:
+                  memory: "?*"
+                  cpu: "?*"
+    
+    - name: validate-init-containers-resources
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      preconditions:
+        all:
+        - key: "{{ request.object.spec.initContainers[] || `[]` | length(@) }}"
+          operator: GreaterThanOrEquals
+          value: 1
+      validate:
+        message: >-
+          Los initContainers también deben tener definidos requests y limits.
+        pattern:
+          spec:
+            initContainers:
+            - name: "*"
+              resources:
+                requests:
+                  memory: "?*"
+                  cpu: "?*"
+                limits:
+                  memory: "?*"
+                  cpu: "?*"
+    
+    - name: validate-reasonable-limits
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: >-
+          Los límites de memoria deben ser razonables (entre 64Mi y 8Gi).
+          Los límites de CPU deben estar entre 10m y 4 cores.
+        deny:
+          conditions:
+            any:
+            # Validar que memory limits no sean menores a 64Mi
+            - key: "{{ request.object.spec.containers[].resources.limits.memory }}"
+              operator: LessThan
+              value: "64Mi"
+            # Validar que memory limits no sean mayores a 8Gi (para prevenir typos)
+            - key: "{{ request.object.spec.containers[].resources.limits.memory }}"
+              operator: GreaterThan
+              value: "8Gi"
+

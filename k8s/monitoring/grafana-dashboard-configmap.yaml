@@ -1,0 +1,113 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  tienda-online.json: |
+    {
+      "annotations": {
+        "list": []
+      },
+      "editable": true,
+      "panels": [
+        {
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "unit": "reqps"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "id": 1,
+          "targets": [
+            {
+              "expr": "rate(tienda_online_http_requests_total[5m])",
+              "legendFormat": "{{method}} {{route}} - {{status_code}}"
+            }
+          ],
+          "title": "HTTP Requests per Second",
+          "type": "graph"
+        },
+        {
+          "datasource": "Prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s"
+            }
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 0
+          },
+          "id": 2,
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.50, sum(rate(tienda_online_http_request_duration_seconds_bucket[5m])) by (le, route))",
+              "legendFormat": "p50 - {{route}}"
+            },
+            {
+              "expr": "histogram_quantile(0.95, sum(rate(tienda_online_http_request_duration_seconds_bucket[5m])) by (le, route))",
+              "legendFormat": "p95 - {{route}}"
+            },
+            {
+              "expr": "histogram_quantile(0.99, sum(rate(tienda_online_http_request_duration_seconds_bucket[5m])) by (le, route))",
+              "legendFormat": "p99 - {{route}}"
+            }
+          ],
+          "title": "HTTP Request Latency",
+          "type": "graph"
+        },
+        {
+          "datasource": "Prometheus",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 8
+          },
+          "id": 3,
+          "targets": [
+            {
+              "expr": "tienda_online_pedidos_creados_total",
+              "legendFormat": "Total Pedidos"
+            }
+          ],
+          "title": "Total Pedidos Creados",
+          "type": "stat"
+        },
+        {
+          "datasource": "Prometheus",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 8
+          },
+          "id": 4,
+          "targets": [
+            {
+              "expr": "tienda_online_productos_consultados_total",
+              "legendFormat": "Total Consultas"
+            }
+          ],
+          "title": "Total Productos Consultados",
+          "type": "stat"
+        }
+      ],
+      "refresh": "10s",
+      "schemaVersion": 27,
+      "title": "Tienda Online - Monitoreo",
+      "uid": "tienda-online"
+    }
+

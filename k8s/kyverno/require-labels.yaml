@@ -1,0 +1,126 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-labels
+  annotations:
+    policies.kyverno.io/title: Require Standard Labels
+    policies.kyverno.io/category: Best Practices, Compliance
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/subject: Pod, Deployment, Service
+    policies.kyverno.io/description: >-
+      Las etiquetas estándar facilitan la gestión, monitoreo y troubleshooting
+      de aplicaciones en Kubernetes. Esta política requiere que todos los
+      recursos tengan etiquetas mínimas recomendadas por Kubernetes.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-for-app-label
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+              - Deployment
+              - StatefulSet
+              - Service
+              - ConfigMap
+      validate:
+        message: >-
+          El recurso debe tener la etiqueta 'app.kubernetes.io/name'.
+          Esta etiqueta identifica el nombre de la aplicación.
+          Ejemplo: app.kubernetes.io/name: tienda-backend
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/name: "?*"
+    
+    - name: check-for-version-label
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+              - Deployment
+              - StatefulSet
+      validate:
+        message: >-
+          El recurso debe tener la etiqueta 'app.kubernetes.io/version'.
+          Esta etiqueta indica la versión de la aplicación.
+          Ejemplo: app.kubernetes.io/version: "1.0.0"
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/version: "?*"
+    
+    - name: check-for-component-label
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+              - Deployment
+              - StatefulSet
+              - Service
+      validate:
+        message: >-
+          El recurso debe tener la etiqueta 'app.kubernetes.io/component'.
+          Esta etiqueta indica el rol del componente en la arquitectura.
+          Ejemplo: app.kubernetes.io/component: backend|frontend|database
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/component: "?*"
+    
+    - name: check-for-managed-by-label
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+              - Deployment
+              - StatefulSet
+              - Service
+              - ConfigMap
+              - Secret
+      validate:
+        message: >-
+          El recurso debe tener la etiqueta 'app.kubernetes.io/managed-by'.
+          Esta etiqueta indica la herramienta que gestiona el recurso.
+          Ejemplo: app.kubernetes.io/managed-by: Helm
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/managed-by: "?*"
+    
+    - name: validate-label-values
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+              - Deployment
+              - StatefulSet
+              - Service
+      validate:
+        message: >-
+          Los valores de las etiquetas deben seguir las convenciones:
+          - Máximo 63 caracteres
+          - Solo caracteres alfanuméricos, '-', '_' y '.'
+          - Debe comenzar y terminar con carácter alfanumérico
+        deny:
+          conditions:
+            any:
+            # Verificar que app.kubernetes.io/name no tenga más de 63 caracteres
+            - key: "{{ request.object.metadata.labels.\"app.kubernetes.io/name\" | length(@) }}"
+              operator: GreaterThan
+              value: 63
+            # Verificar que app.kubernetes.io/version no tenga más de 63 caracteres
+            - key: "{{ request.object.metadata.labels.\"app.kubernetes.io/version\" | length(@) }}"
+              operator: GreaterThan
+              value: 63
+            # Verificar que app.kubernetes.io/component no tenga más de 63 caracteres
+            - key: "{{ request.object.metadata.labels.\"app.kubernetes.io/component\" | length(@) }}"
+              operator: GreaterThan
+              value: 63
+
