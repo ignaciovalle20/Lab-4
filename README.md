@@ -44,7 +44,7 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
 
 ### Diagrama General
 
-![Diagrama de Arquitectura](./DiagramaDeArquitectura.png)
+![Diagrama de Arquitectura](./DiagramaDeArquitectura.svg)
 
 
 
