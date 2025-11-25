@@ -100,43 +100,43 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
 
 ## ✨ Características Implementadas
 
-### 1. Containerización Optimizada ✅
-- ✅ Multi-stage builds para reducir tamaño de imágenes
-- ✅ Usuarios no-root en todos los contenedores
-- ✅ Versiones específicas (no `latest`)
-- ✅ `.dockerignore` para optimizar build context
-- ✅ Health checks configurados
-- ✅ Imágenes analizadas con Trivy
+### 1. Containerización Optimizada
+- Multi-stage builds para reducir tamaño de imágenes
+- Usuarios no-root en todos los contenedores
+- Versiones específicas (no `latest`)
+- `.dockerignore` para optimizar build context
+- Health checks configurados
+- Imágenes analizadas con Trivy
 - Frontend: 45.4 MB (optimizado)
 
-### 2. Orquestación con Kubernetes ✅
-- ✅ Helm Chart completo con templates
-- ✅ Values para dev y prod
-- ✅ Deployments con replicas configurables
-- ✅ StatefulSet para MySQL con persistencia
-- ✅ Services (ClusterIP y Headless)
-- ✅ ConfigMaps y Secrets
-- ✅ Ingress con routing
-- ✅ Resource limits y requests
-- ✅ Liveness y readiness probes
+### 2. Orquestación con Kubernetes
+- Helm Chart completo con templates
+- Values para dev y prod
+- Deployments con replicas configurables
+- StatefulSet para MySQL con persistencia
+- Services (ClusterIP y Headless)
+- ConfigMaps y Secrets
+- Ingress con routing
+- Resource limits y requests
+- Liveness y readiness probes
 
-### 3. Monitoring & Observability ✅
-- ✅ Prometheus instalado con kube-prometheus-stack
-- ✅ Backend instrumentado con prom-client
-- ✅ Métricas personalizadas:
+### 3. Monitoring & Observability
+- Prometheus instalado con kube-prometheus-stack
+- Backend instrumentado con prom-client
+- Métricas personalizadas:
   - HTTP request duration (histogram)
   - HTTP request total (counter)
   - DB connection errors (counter)
   - Pedidos creados (counter)
   - Productos consultados (counter)
   - DB query duration (histogram)
-- ✅ ServiceMonitor configurado
-- ✅ Dashboard de Grafana con 9 paneles
-- ✅ Métricas exportadas en `/metrics`
+- ServiceMonitor configurado
+- Dashboard de Grafana con 9 paneles
+- Métricas exportadas en `/metrics`
 
-### 4. CI/CD con Jenkins ✅
-- ✅ Jenkins dockerizado con todas las herramientas
-- ✅ Jenkinsfile con 8 stages:
+### 4. CI/CD con Jenkins
+- Jenkins dockerizado con todas las herramientas
+- Jenkinsfile con 8 stages:
   1. Clone
   2. Static Analysis (Semgrep)
   3. Dependency Scan (Snyk)
@@ -145,69 +145,68 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
   6. Docker Build
   7. Docker Push
   8. Deploy (Helm)
-- ✅ Plugins necesarios instalados
-- ✅ Script de inicio automatizado
-- ✅ Configuración as code
+- Plugins necesarios instalados
+- Script de inicio automatizado
+- Configuración as code
 
-### 5. DevSecOps ✅
+### 5. DevSecOps 
+#### Static Analysis - Semgrep
+- Análisis de backend y frontend
+- 417 reglas ejecutadas
+- 3 findings documentados
+- Reporte detallado con recomendaciones
+- Vulnerabilidad CSRF identificada
 
-#### Static Analysis - Semgrep ✅
-- ✅ Análisis de backend y frontend
-- ✅ 417 reglas ejecutadas
-- ✅ 3 findings documentados
-- ✅ Reporte detallado con recomendaciones
-- ✅ Vulnerabilidad CSRF identificada
+#### Dependency Scanning - Snyk
+- Escaneo de dependencias de Node.js
+- Reporte consolidado
+- Vulnerabilidades categorizadas por severidad
+- Recomendaciones de remediación
 
-#### Dependency Scanning - Snyk ✅
-- ✅ Escaneo de dependencias de Node.js
-- ✅ Reporte consolidado
-- ✅ Vulnerabilidades categorizadas por severidad
-- ✅ Recomendaciones de remediación
+#### Image Scanning - Trivy
+- 3 imágenes analizadas
+- Reporte completo con CVEs
+- Backend: 4 HIGH
+- Frontend: 3 CRITICAL, 18 HIGH
+- Database: 3 CRITICAL, 73 HIGH
 
-#### Image Scanning - Trivy ✅
-- ✅ 3 imágenes analizadas
-- ✅ Reporte completo con CVEs
-- ✅ Backend: 4 HIGH
-- ✅ Frontend: 3 CRITICAL, 18 HIGH
-- ✅ Database: 3 CRITICAL, 73 HIGH
-
-#### Policy Engine - Kyverno ✅
-- ✅ 4 políticas implementadas:
+#### Policy Engine - Kyverno
+- 4 políticas implementadas:
   1. Disallow Latest Tag (MEDIUM)
   2. Require Resource Limits (MEDIUM)
   3. Disallow Root User (HIGH)
   4. Require Labels (LOW)
-- ✅ Todas las políticas validadas
-- ✅ Helm Chart cumple con todas las políticas
-- ✅ Reporte de validación completo
+- Todas las políticas validadas
+- Helm Chart cumple con todas las políticas
+- Reporte de validación completo
 
-#### Runtime Security - Falco ✅
-- ✅ Instalado con modern_ebpf driver
-- ✅ 237 reglas cargadas
-- ✅ 10 reglas personalizadas
-- ✅ Eventos detectados y documentados:
+#### Runtime Security - Falco
+- Instalado con modern_ebpf driver
+- 237 reglas cargadas
+- 10 reglas personalizadas
+- Eventos detectados y documentados:
   - Read sensitive file (/etc/shadow)
   - Shell spawned in container
   - Terminal shell in container
   - Unexpected program executed
-- ✅ Reporte de evento completo
+- Reporte de evento completo
 
-### 6. Automatización ✅
-- ✅ `init.sh` - Inicialización completa del proyecto
-- ✅ `populate.sh` - Poblar DB con datos de prueba
-- ✅ `cleanup.sh` - Limpieza completa de recursos
-- ✅ `jenkins-start.sh` - Iniciar Jenkins
-- ✅ `generate-traffic.sh` - Generar tráfico para métricas
+### 6. Automatización
+- `init.sh` - Inicialización completa del proyecto
+- `populate.sh` - Poblar DB con datos de prueba
+- `cleanup.sh` - Limpieza completa de recursos
+- `jenkins-start.sh` - Iniciar Jenkins
+- `generate-traffic.sh` - Generar tráfico para métricas
 
-### 7. Documentación ✅
-- ✅ README principal (este archivo)
-- ✅ TODO.md con progreso detallado
-- ✅ READMEs por componente:
+### 7. Documentación
+- README principal (este archivo)
+- TODO.md con progreso detallado
+- READMEs por componente:
   - k8s/monitoring/README.md
   - k8s/kyverno/README.md
   - k8s/falco/README.md
   - jenkins/README.md
-- ✅ Reportes de seguridad:
+- Reportes de seguridad:
   - reports/image-analysis.md
   - reports/semgrep-report.txt
   - reports/snyk-report.txt
@@ -509,19 +508,19 @@ Ver `reports/image-analysis.md` para detalles.
 
 4 políticas implementadas y validadas:
 
-1. ✅ **disallow-latest-tag** (MEDIUM)
+1. **disallow-latest-tag** (MEDIUM)
    - Bloquea imágenes con tag `latest`
    - Requiere versión específica
 
-2. ✅ **require-resource-limits** (MEDIUM)
+2. **require-resource-limits** (MEDIUM)
    - Requiere requests y limits de CPU/memoria
    - Previene OOM y throttling
 
-3. ✅ **disallow-root-user** (HIGH)
+3. **disallow-root-user** (HIGH)
    - Prohíbe ejecución como root
    - Requiere `runAsNonRoot: true`
 
-4. ✅ **require-labels** (LOW)
+4. **require-labels** (LOW)
    - Requiere etiquetas estándar de K8s
    - Facilita gestión y monitoreo
 
@@ -531,10 +530,10 @@ Ver `reports/kyverno-validation.log` para detalles.
 
 Eventos detectados durante testing:
 
-- ✅ Read sensitive file untrusted (`/etc/shadow`)
-- ✅ Shell spawned in container
-- ✅ Terminal shell in container
-- ✅ Unexpected program executed
+- Read sensitive file untrusted (`/etc/shadow`)
+-  Shell spawned in container
+-  Terminal shell in container
+-  Unexpected program executed
 
 Ver `reports/falco-event.log` para detalles.
 
@@ -638,90 +637,4 @@ kubectl exec -n falco <falco-pod> -- falco --list
 
 ---
 
-## 🚧 Mejoras Futuras
 
-### Corto Plazo
-- [ ] Actualizar imágenes base a Alpine 3.20 / MySQL 8.4
-- [ ] Implementar rate limiting en el backend
-- [ ] Agregar validación de inputs con Joi
-- [ ] Configurar CSRF protection
-- [ ] Agregar tests unitarios y de integración
-
-### Medio Plazo
-- [ ] Implementar HorizontalPodAutoscaler
-- [ ] Configurar NetworkPolicies
-- [ ] Agregar PodDisruptionBudgets
-- [ ] Integrar Falco con Slack para alertas
-- [ ] Configurar backup automático de MySQL
-- [ ] Implementar cert-manager para TLS
-
-### Largo Plazo
-- [ ] Migrar a EKS/GKE/AKS para producción
-- [ ] Implementar service mesh (Istio)
-- [ ] Agregar tracing distribuido (Jaeger)
-- [ ] Implementar GitOps con ArgoCD
-- [ ] Configurar disaster recovery
-- [ ] Implementar multi-region deployment
-
----
-
-## 📚 Referencias
-
-### Documentación Oficial
-- [Kubernetes Documentation](https://kubernetes.io/docs/)
-- [Helm Documentation](https://helm.sh/docs/)
-- [Prometheus Documentation](https://prometheus.io/docs/)
-- [Grafana Documentation](https://grafana.com/docs/)
-- [Jenkins Documentation](https://www.jenkins.io/doc/)
-
-### Seguridad
-- [Kyverno Documentation](https://kyverno.io/docs/)
-- [Falco Documentation](https://falco.org/docs/)
-- [Semgrep Documentation](https://semgrep.dev/docs/)
-- [Snyk Documentation](https://docs.snyk.io/)
-- [Trivy Documentation](https://aquasecurity.github.io/trivy/)
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-
-### Best Practices
-- [Kubernetes Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)
-- [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
-- [12 Factor App](https://12factor.net/)
-- [CNCF Cloud Native Trail Map](https://github.com/cncf/trailmap)
-
----
-
-## 👥 Autores
-
-- **Ignacio Valle** - Laboratorio 4 - DevOps & DevSecOps
-
----
-
-## 📄 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
-
----
-
-## 🙏 Agradecimientos
-
-- Universidad Católica del Uruguay (UCU)
-- Curso de DevOps
-- Comunidad CNCF y proyectos open source utilizados
-
----
-
-## 📞 Contacto
-
-Para preguntas o soporte:
-- Email: [tu-email@example.com]
-- GitHub Issues: [https://github.com/tu-usuario/tienda-online/issues]
-
----
-
-<div align="center">
-
-**⭐ Si este proyecto te fue útil, por favor considera darle una estrella ⭐**
-
-Made with ❤️ for DevOps & DevSecOps
-
-</div>
