@@ -2,7 +2,7 @@
 # Sobrescribe los valores del values.yaml base
 
 global:
-  namespace: appdevops-prod
+  namespace: tienda-online
   imagePullPolicy: IfNotPresent
 
 backend:

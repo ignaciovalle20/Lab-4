@@ -84,16 +84,18 @@ grafana:
     size: 5Gi
   
   # Datasources
-  datasources:
-    datasources.yaml:
-      apiVersion: 1
-      datasources:
-        - name: Prometheus
-          type: prometheus
-          url: http://prometheus-kube-prometheus-prometheus:9090
-          access: proxy
-          isDefault: true
-          editable: true
+  # Nota: El chart crea automáticamente un datasource de Prometheus por defecto
+  # No es necesario definirlo manualmente aquí para evitar conflictos
+  # datasources:
+  #   datasources.yaml:
+  #     apiVersion: 1
+  #     datasources:
+  #       - name: Prometheus
+  #         type: prometheus
+  #         url: http://prometheus-kube-prometheus-prometheus:9090
+  #         access: proxy
+  #         isDefault: true
+  #         editable: true
   
   # Dashboards providers
   dashboardProviders:

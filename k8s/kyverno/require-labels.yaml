@@ -25,6 +25,22 @@ spec:
               - StatefulSet
               - Service
               - ConfigMap
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
+        - resources:
+            kinds:
+              - Secret
+              - Job
+            names:
+              - "sh.helm.release.v1.*"
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/name'.
@@ -43,6 +59,16 @@ spec:
               - Pod
               - Deployment
               - StatefulSet
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/version'.
@@ -62,6 +88,16 @@ spec:
               - Deployment
               - StatefulSet
               - Service
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/component'.
@@ -82,7 +118,16 @@ spec:
               - StatefulSet
               - Service
               - ConfigMap
-              - Secret
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/managed-by'.
@@ -102,6 +147,16 @@ spec:
               - Deployment
               - StatefulSet
               - Service
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
       validate:
         message: >-
           Los valores de las etiquetas deben seguir las convenciones:
