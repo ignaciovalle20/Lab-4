@@ -281,12 +281,18 @@ kubectl create namespace falco
 ### 4. Instalar Prometheus y Grafana
 
 ```bash
+# Crear ConfigMap de Grafana dashboards (requerido antes de instalar)
+kubectl apply -f k8s/monitoring/grafana-dashboard-configmap.yaml
+
+# Agregar repositorio de Helm
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
+# Instalar Prometheus y Grafana
 helm install prometheus prometheus-community/kube-prometheus-stack \
   -n monitoring \
-  -f k8s/monitoring/prometheus-values.yaml
+  -f k8s/monitoring/prometheus-values.yaml \
+  --wait --timeout=5m
 ```
 
 ### 5. Instalar Kyverno
@@ -407,7 +413,7 @@ Password: admin123
 
 ### Dashboard de Grafana
 
-El dashboard incluye 9 paneles:
+El dashboard se carga automáticamente desde el ConfigMap `grafana-dashboards` al instalar Prometheus. El dashboard incluye 9 paneles:
 
 1. **HTTP Requests per Second (RPS)**
    - Tasa de requests HTTP
@@ -514,14 +520,18 @@ Ver `reports/image-analysis.md` para detalles.
 2. **require-resource-limits** (MEDIUM)
    - Requiere requests y limits de CPU/memoria
    - Previene OOM y throttling
+   - **Excluye**: namespaces del sistema (`monitoring`, `kube-system`, `kyverno`, `falco`) y Jobs
 
 3. **disallow-root-user** (HIGH)
    - Prohíbe ejecución como root
    - Requiere `runAsNonRoot: true`
+   - **Excluye**: namespaces del sistema (`monitoring`, `kube-system`, `kyverno`, `falco`) y Jobs
 
 4. **require-labels** (LOW)
    - Requiere etiquetas estándar de K8s
    - Facilita gestión y monitoreo
+
+**Nota**: Las políticas `require-resource-limits` y `disallow-root-user` excluyen namespaces del sistema y Jobs para permitir la instalación de componentes de infraestructura como Prometheus y sus Helm hooks.
 
 Ver `reports/kyverno-validation.log` para detalles.
 
@@ -619,6 +629,22 @@ kubectl describe pod <pod-name> -n tienda-online
 # Temporalmente cambiar a audit mode
 kubectl patch clusterpolicy <policy-name> --type='json' \
   -p='[{"op": "replace", "path": "/spec/validationFailureAction", "value":"Audit"}]'
+```
+
+### Problema: Grafana no inicia (ConfigMap faltante)
+
+```bash
+# Verificar si el ConfigMap existe
+kubectl get configmap grafana-dashboards -n monitoring
+
+# Si no existe, crearlo
+kubectl apply -f k8s/monitoring/grafana-dashboard-configmap.yaml
+
+# Ver logs del pod de Grafana
+kubectl logs -n monitoring -l app.kubernetes.io/name=grafana -c grafana
+
+# Ver eventos del pod
+kubectl describe pod -n monitoring -l app.kubernetes.io/name=grafana
 ```
 
 ### Problema: Falco no genera alertas
