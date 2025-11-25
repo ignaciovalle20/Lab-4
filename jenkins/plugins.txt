@@ -57,3 +57,6 @@ blueocean:latest
 # Additional tools
 http_request:latest
 
+# SSH Agent (para conectar nodos remotos)
+ssh-slaves:latest
+

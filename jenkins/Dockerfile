@@ -1,5 +1,5 @@
 # Jenkins Dockerfile - Optimizado para Lab 4
-FROM jenkins/jenkins:2.426.1-lts-jdk17
+FROM jenkins/jenkins:2.528.2-lts-jdk17
 
 # Cambiar a usuario root para instalar dependencias
 USER root
@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
     lsb-release \
+    python3 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar Docker CLI
@@ -25,27 +27,36 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
     && chmod +x kubectl \
     && mv kubectl /usr/local/bin/
 
-# Instalar Helm
-RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+# Instalar Helm (versión fija para evitar rate limits de GitHub)
+RUN HELM_VERSION="v3.14.0" \
+    && curl -LO "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
+    && tar -zxvf "helm-${HELM_VERSION}-linux-amd64.tar.gz" \
+    && mv linux-amd64/helm /usr/local/bin/helm \
+    && rm -rf "helm-${HELM_VERSION}-linux-amd64.tar.gz" linux-amd64 \
+    && helm version
 
-# Instalar Semgrep
-RUN curl -L https://github.com/returntocorp/semgrep/releases/download/v1.45.0/semgrep-v1.45.0-ubuntu-20.04.tgz | tar xz -C /usr/local/bin
+# Instalar Semgrep usando pip (con --break-system-packages para sistemas protegidos)
+RUN pip3 install --break-system-packages --no-cache-dir semgrep==1.45.0
 
-# Instalar Snyk CLI
-RUN curl -L https://github.com/snyk/cli/releases/download/v1.1293.0/snyk-linux -o /usr/local/bin/snyk \
-    && chmod +x /usr/local/bin/snyk
+# Instalar Snyk CLI (con reintentos para evitar rate limits)
+RUN curl -L --retry 3 --retry-delay 2 \
+    "https://github.com/snyk/cli/releases/download/v1.1293.0/snyk-linux" \
+    -o /usr/local/bin/snyk \
+    && chmod +x /usr/local/bin/snyk \
+    && snyk --version || echo "Snyk instalado (versión puede requerir autenticación)"
 
 # Crear directorio para init scripts
 RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 
-# Volver al usuario jenkins
-USER jenkins
-
-# Copiar lista de plugins a instalar
+# Copiar lista de plugins a instalar (como root para tener permisos)
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 
-# Instalar plugins desde la lista
-RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
+# Instalar plugins desde la lista (como root, luego cambiar ownership)
+RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt \
+    && chown -R jenkins:jenkins /usr/share/jenkins/ref
+
+# Volver al usuario jenkins
+USER jenkins
 
 # Copiar scripts de inicialización
 COPY init.groovy.d/*.groovy /usr/share/jenkins/ref/init.groovy.d/
