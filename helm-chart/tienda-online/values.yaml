@@ -10,7 +10,7 @@ global:
 backend:
   enabled: true
   name: backend
-  replicaCount: 2
+  replicaCount: 1
   
   image:
     repository: tienda-backend
