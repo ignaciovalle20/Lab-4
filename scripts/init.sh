@@ -262,11 +262,11 @@ if helm list -n tienda-online | grep -q tienda-online; then
     print_warning "Aplicación ya está desplegada, actualizando..."
     helm upgrade tienda-online ./helm-chart/tienda-online \
         -n tienda-online \
-        -f helm-chart/tienda-online/values-dev.yaml
+        -f helm-chart/tienda-online/values.yaml
 else
     helm install tienda-online ./helm-chart/tienda-online \
         -n tienda-online \
-        -f helm-chart/tienda-online/values-dev.yaml \
+        -f helm-chart/tienda-online/values.yaml \
         --wait --timeout=5m
 fi
 print_success "Aplicación desplegada"

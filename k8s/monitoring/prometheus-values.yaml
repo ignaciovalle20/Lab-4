@@ -25,14 +25,10 @@ prometheus:
         cpu: 500m
         memory: 1Gi
     
-    # Almacenamiento
+    # Almacenamiento - usando emptyDir (datos se pierden al reiniciar el pod)
+    # Útil para desarrollo/testing, NO recomendado para producción
     storageSpec:
-      volumeClaimTemplate:
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 10Gi
+      emptyDir: {}
     
     # ServiceMonitor selector - buscar en todos los namespaces
     serviceMonitorNamespaceSelector: {}
@@ -78,19 +74,15 @@ grafana:
       cpu: 500m
       memory: 512Mi
   
-  # Persistencia
+  # Persistencia - deshabilitada (usando emptyDir)
+  # Los dashboards vienen de ConfigMaps, no necesitan persistencia
   persistence:
-    enabled: true
-    size: 5Gi
-    storageClassName: standard
-    accessModes:
-      - ReadWriteOnce
+    enabled: false
   
-  # Configuración de seguridad para permisos del volumen
+  # Configuración de seguridad (recomendado mantener)
   securityContext:
     runAsUser: 472
     runAsGroup: 472
-    fsGroup: 472
     runAsNonRoot: true
   
   # Datasources
