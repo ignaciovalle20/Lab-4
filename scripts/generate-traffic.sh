@@ -16,8 +16,8 @@ echo -e "${BLUE}  Generador de Tráfico - Tienda Online${NC}"
 echo -e "${BLUE}========================================${NC}\n"
 
 # Verificar si se proporcionó la URL base o usar la por defecto
-BACKEND_URL="${1:-http://localhost:30000}"
-FRONTEND_URL="${2:-http://localhost:30001}"
+BACKEND_URL="${1:-http://localhost:5000}"
+FRONTEND_URL="${2:-http://localhost:3001}"
 
 echo -e "${GREEN}Backend URL:${NC} $BACKEND_URL"
 echo -e "${GREEN}Frontend URL:${NC} $FRONTEND_URL\n"
@@ -26,7 +26,7 @@ echo -e "${GREEN}Frontend URL:${NC} $FRONTEND_URL\n"
 echo -e "${YELLOW}Verificando conectividad...${NC}"
 if ! curl -s "$BACKEND_URL/health" > /dev/null; then
     echo -e "${YELLOW}⚠️  No se puede conectar al backend. Verifica que esté corriendo.${NC}"
-    echo -e "Intenta con: kubectl port-forward -n tienda-online svc/tienda-backend 30000:5000"
+    echo -e "Intenta con: kubectl port-forward -n tienda-online svc/backend-service 5000:5000"
     exit 1
 fi
 echo -e "${GREEN}✓ Conectividad OK${NC}\n"
@@ -73,20 +73,23 @@ while true; do
     # 4. Crear un pedido (20%)
     if [ $((COUNTER % 5)) -eq 0 ]; then
         # Generar datos aleatorios para el pedido
-        PRODUCT_ID=$((RANDOM % 10 + 1))
-        CANTIDAD=$((RANDOM % 5 + 1))
+        PRODUCT_ID=$((RANDOM % 20 + 1))
+        CANTIDAD=$((RANDOM % 3 + 1))
+        PRECIO=$((RANDOM % 1000 + 50))
+        TOTAL=$((PRECIO * CANTIDAD))
         
         PEDIDO_DATA=$(cat <<EOF
 {
   "cliente_nombre": "Cliente Test $COUNTER",
   "cliente_email": "test$COUNTER@example.com",
-  "cliente_direccion": "Calle Test $COUNTER",
-  "items": [
+  "productos": [
     {
       "producto_id": $PRODUCT_ID,
-      "cantidad": $CANTIDAD
+      "cantidad": $CANTIDAD,
+      "precio": $PRECIO
     }
-  ]
+  ],
+  "total": $TOTAL
 }
 EOF
 )
@@ -129,7 +132,9 @@ echo -e "${GREEN}Duración: ${DURATION} segundos${NC}"
 echo -e "${GREEN}Promedio: $((COUNTER / DURATION)) req/s${NC}\n"
 
 echo -e "${BLUE}Ahora puedes revisar las métricas en:${NC}"
-echo -e "  - Prometheus: http://localhost:30090"
-echo -e "  - Grafana: http://localhost:30080 (admin/admin123)"
-echo -e "\n${YELLOW}Tip: En Grafana, importa el dashboard desde grafana/dashboard.json${NC}"
+echo -e "  - Prometheus: kubectl port-forward -n monitoring svc/prometheus-kube-prometheus-prometheus 9090:9090"
+echo -e "    URL: http://localhost:9090"
+echo -e "  - Grafana: kubectl port-forward -n monitoring svc/prometheus-grafana 3000:80"
+echo -e "    URL: http://localhost:3000 (admin/admin123)"
+echo -e "\n${YELLOW}Tip: El dashboard 'Tienda Online - Monitoreo' debería estar disponible automáticamente en Grafana${NC}"
 
