@@ -3,7 +3,7 @@
 
 # Configuración global
 global:
-  namespace: appdevops
+  namespace: tienda-online
   imagePullPolicy: IfNotPresent
 
 # Configuración del Backend
