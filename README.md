@@ -44,7 +44,7 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
 
 ### Diagrama General
 
-<img width="1223" height="1402" alt="Image" src="https://github.com/user-attachments/assets/179eae32-020a-4ef4-b957-4b67c575659a" />
+<img width="611" height="701" alt="Image" src="https://github.com/user-attachments/assets/179eae32-020a-4ef4-b957-4b67c575659a" />
 
 
 ### Flujo de Datos
