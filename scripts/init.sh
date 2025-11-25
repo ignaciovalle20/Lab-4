@@ -152,6 +152,11 @@ echo ""
 print_header "PASO 5: Instalando Prometheus y Grafana"
 echo ""
 
+print_step "Creando ConfigMap de Grafana dashboards..."
+kubectl apply -f k8s/monitoring/grafana-dashboard-configmap.yaml
+print_success "ConfigMap creado"
+echo ""
+
 print_step "Agregando repositorio de Prometheus..."
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
@@ -160,15 +165,26 @@ echo ""
 
 print_step "Instalando kube-prometheus-stack..."
 if helm list -n monitoring | grep -q prometheus; then
-    print_warning "Prometheus ya está instalado, actualizando..."
-    helm upgrade prometheus prometheus-community/kube-prometheus-stack \
-        -n monitoring \
-        -f k8s/monitoring/prometheus-values.yaml
+    # Verificar si el release está en estado failed
+    if helm list -n monitoring | grep prometheus | grep -q failed; then
+        print_warning "Release de Prometheus en estado failed, eliminando para reinstalar..."
+        helm uninstall prometheus -n monitoring || true
+        sleep 2
+        helm install prometheus prometheus-community/kube-prometheus-stack \
+            -n monitoring \
+            -f k8s/monitoring/prometheus-values.yaml \
+            --wait --timeout=5m
+    else
+        print_warning "Prometheus ya está instalado, actualizando..."
+        helm upgrade prometheus prometheus-community/kube-prometheus-stack \
+            -n monitoring \
+            -f k8s/monitoring/prometheus-values.yaml \
+            --wait --timeout=5m
+    fi
 else
     helm install prometheus prometheus-community/kube-prometheus-stack \
         -n monitoring \
-        -f k8s/monitoring/prometheus-values.yaml \
-        --wait --timeout=5m
+        -f k8s/monitoring/prometheus-values.yaml
 fi
 print_success "Prometheus y Grafana instalados"
 echo ""
