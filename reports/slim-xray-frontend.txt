@@ -1,0 +1,439 @@
+cmd=xray state=started
+cmd=xray info=cmd.input.params add-image-config='false' rm-file-artifacts='false' runtime='auto/docker' target='tienda-frontend:lab4' add-image-manifest='false' 
+cmd=xray state=image.api.inspection.start
+cmd=xray info=image size.human='0 B' architecture='arm64' id='sha256:15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00' size.bytes='0' 
+cmd=xray info=image.users exe='nginx-app' all='nginx-app' 
+cmd=xray info=image.stack index='0' name='tienda-frontend:lab4' id='sha256:15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00' instructions='23' message='see report file for details' 
+cmd=xray info=image.exposed_ports list='80/tcp,8080/tcp' 
+cmd=xray state=image.api.inspection.done
+cmd=xray state=image.data.inspection.start
+cmd=xray info=image.data.inspection.save.image.start
+cmd=xray info=image.data.inspection.save.image.end
+cmd=xray info=image.data.inspection.process.image.start
+cmd=xray info=image.data.inspection.process.image.end
+cmd=xray state=image.data.inspection.done
+cmd=xray info=image.package.details
+cmd=xray info=layers.count value='11' 
+cmd=xray info=image.identities.stats user_count='28' group_count='49' 
+cmd=xray info=image.identities.user shell='/bin/sync' no_login_shell='false' no_password_login='true' username='sync' uid='5' home='/sbin' 
+cmd=xray info=image.identities.user username='shutdown' uid='6' home='/sbin' shell='/sbin/shutdown' no_login_shell='false' no_password_login='true' 
+cmd=xray info=image.identities.user uid='7' home='/sbin' shell='/sbin/halt' no_login_shell='false' no_password_login='true' username='halt' 
+cmd=xray info=image.identities.user uid='209' home='/var/spool/mqueue' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='smmsp' 
+cmd=xray info=image.identities.user home='/dev/null' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='guest' uid='405' 
+cmd=xray info=image.identities.user username='nobody' uid='65534' home='/' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user username='nginx' uid='101' home='/var/cache/nginx' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user no_password_login='true' username='root' uid='0' home='/root' shell='/bin/ash' no_login_shell='false' 
+cmd=xray info=image.identities.user shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='daemon' uid='2' home='/sbin' 
+cmd=xray info=image.identities.user no_password_login='true' username='cron' uid='16' home='/var/spool/cron' shell='/sbin/nologin' no_login_shell='true' 
+cmd=xray info=image.identities.user username='sshd' uid='22' home='/dev/null' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user uid='31' home='/var/cache/squid' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='squid' 
+cmd=xray info=image.identities.user shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='ntp' uid='123' home='/var/empty' 
+cmd=xray info=image.identities.user username='bin' uid='1' home='/bin' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='uucp' uid='10' home='/var/spool/uucppublic' 
+cmd=xray info=image.identities.user no_login_shell='true' no_password_login='true' username='operator' uid='11' home='/root' shell='/sbin/nologin' 
+cmd=xray info=image.identities.user username='ftp' uid='21' home='/var/lib/ftp' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user username='at' uid='25' home='/var/spool/cron/atjobs' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user home='/etc/X11/fs' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='xfs' uid='33' 
+cmd=xray info=image.identities.user home='/var/vpopmail' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='vpopmail' uid='89' 
+cmd=xray info=image.identities.user username='adm' uid='3' home='/var/adm' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user username='lp' uid='4' home='/var/spool/lpd' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user username='mail' uid='8' home='/var/mail' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user uid='9' home='/usr/lib/news' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' username='news' 
+cmd=xray info=image.identities.user username='man' uid='13' home='/usr/man' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user username='postmaster' uid='14' home='/var/mail' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user username='games' uid='35' home='/usr/games' shell='/sbin/nologin' no_login_shell='true' no_password_login='true' 
+cmd=xray info=image.identities.user no_login_shell='true' no_password_login='true' username='cyrus' uid='85' home='/usr/cyrus' shell='/sbin/nologin' 
+cmd=xray info=image.stats.duplicates file_size.human='22 kB' file_total_size.bytes='47054' file_total_size.human='47 kB' wasted.bytes='25432' wasted.human='25 kB' file_count='17' file_total_count='66' file_size.bytes='21622' 
+cmd=xray info=layer.start
+cmd=xray info=layer index='0' id='7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef' path='blobs/sha256/7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef' 
+cmd=xray info=distro name='Alpine Linux' version='3.18.6' display='Alpine Linux v3.18' 
+cmd=xray info=change.instruction index='0:0' type='ADD' snippet='ADD file:6dc287a22d6cc7723b0576dd3a9a644468d...' all='ADD file:6dc287a22d6cc7723b0576dd3a9a644468d133c54d42c8a8eda403e3117648f7 /' 
+cmd=xray info=other.instructions count='4' 
+cmd=xray info=other.instruction index='0:1' type='CMD' snippet='CMD ["/bin/sh"]
+' all='CMD ["/bin/sh"]
+' pos='0' 
+cmd=xray info=other.instruction pos='1' index='0:2' type='LABEL' snippet='LABEL maintainer=NGINX Docker Maintainers <d...' all='LABEL maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>' 
+cmd=xray info=other.instruction type='ENV' snippet='ENV NGINX_VERSION=1.25.3' all='ENV NGINX_VERSION=1.25.3' pos='2' index='0:3' 
+cmd=xray info=other.instruction pos='3' index='0:4' type='ENV' snippet='ENV PKG_RELEASE=1' all='ENV PKG_RELEASE=1' 
+cmd=xray info=layer.stats all_size.human='7.7 MB' all_size.bytes='7655316' 
+cmd=xray info=layer.stats object_count='527' 
+cmd=xray info=layer.stats dir_count='101' 
+cmd=xray info=layer.stats file_count='90' 
+cmd=xray info=layer.stats link_count='336' 
+cmd=xray info=layer.stats max_file_size.human='3.8 MB' max_file_size.bytes='3811224' 
+cmd=xray info=layer.stats added_size.bytes='7655316' added_size.human='7.7 MB' 
+cmd=xray info=layer.change.summary deleted='0' modified='0' added='527' all='527' 
+cmd=xray info=layer.objects.count value='527' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object size.human='3.8 MB' uid='0' gid='0' mtime='2024-01-26T01:52:51Z' object.name='/lib/libcrypto.so.3' mode='-rwxr-xr-x' size.bytes='3811224' H='[A:0]' hash='fd23f8925f6c9455c008e33f3abf7c11a1360dad' 
+cmd=xray info=object object.name='/bin/busybox' size.human='919 kB' uid='0' gid='0' mtime='2023-11-06T11:32:24Z' mode='-rwxr-xr-x' size.bytes='919152' H='[A:0]' hash='a2c91ca96e715ebd3f85ad169405ad49a73c6f6e' 
+cmd=xray info=object size.human='658 kB' gid='0' mtime='2023-10-06T09:30:53Z' H='[A:0]' object.name='/lib/ld-musl-aarch64.so.1' mode='-rwxr-xr-x' size.bytes='657784' uid='0' hash='a8b46891342d270df3b54fc989579e0878f66eac' 
+cmd=xray info=object gid='0' mtime='2024-01-26T01:52:51Z' hash='070c5831a7970b4fef2342b59375bf2c08264ff4' object.name='/lib/libssl.so.3' mode='-rwxr-xr-x' uid='0' H='[A:0]' size.human='606 kB' size.bytes='606008' 
+cmd=xray info=object gid='0' H='[A:0/M:7]' mode='-rw-r--r--' uid='0' mtime='2023-05-06T12:08:21Z' hash='b132b312a42c8be5d632069aecc6797b629f1264' object.name='/etc/ssl/certs/ca-certificates.crt' size.human='214 kB' size.bytes='214509' 
+cmd=xray info=object object.name='/lib/libapk.so.2.14.0' mode='-rwxr-xr-x' size.human='200 kB' size.bytes='200152' uid='0' gid='0' mtime='2023-05-10T14:00:30Z' hash='28a901d5e9d55e8c1497a12b3607d7ab99e61b5e' H='[A:0]' 
+cmd=xray info=object object.name='/sbin/apk' size.human='135 kB' size.bytes='134640' mode='-rwxr-xr-x' uid='0' gid='0' mtime='2023-05-10T14:00:30Z' H='[A:0]' hash='aed4c0e57064bb1dd7854ca5909addc8e2ea4c60' 
+cmd=xray info=object mode='-rwxr-xr-x' size.human='133 kB' uid='0' gid='0' mtime='2023-04-11T16:01:21Z' hash='c54b098ec11abf00fafb7a9bea89c65a9b1e5e74' size.bytes='132880' H='[A:0]' object.name='/lib/libz.so.1.2.13' 
+cmd=xray info=object size.bytes='132848' uid='0' H='[A:0]' hash='933bbe745fcccca824ea978899ff1e4ea7c2f664' size.human='133 kB' gid='0' mtime='2024-01-26T01:52:51Z' object.name='/usr/lib/ossl-modules/legacy.so' mode='-rwxr-xr-x' 
+cmd=xray info=object mode='-rwxr-xr-x' size.bytes='132840' gid='0' mtime='2023-04-11T16:01:21Z' H='[A:0]' hash='08184dd4e2da763527d141099ed6670a737e816d' size.human='133 kB' uid='0' object.name='/usr/bin/scanelf' 
+cmd=xray info=object H='[A:0]' hash='3d603103a06c9e8be8f9109e1a3ecf1874d773f7' object.name='/usr/bin/getent' mode='-rwxr-xr-x' size.human='95 kB' size.bytes='94888' gid='0' mtime='2023-10-06T09:30:53Z' uid='0' 
+cmd=xray info=object mtime='2023-10-06T09:30:53Z' object.name='/usr/bin/getconf' size.human='81 kB' H='[A:0]' hash='8b3656a2574e02a7935bb4e861d625b155dabf41' mode='-rwxr-xr-x' size.bytes='81344' uid='0' gid='0' 
+cmd=xray info=object object.name='/usr/bin/iconv' mode='-rwxr-xr-x' gid='0' mtime='2023-10-06T09:30:53Z' size.human='79 kB' size.bytes='78704' uid='0' H='[A:0]' hash='8416ce424ebd9129dae408c613749c2dc3227605' 
+cmd=xray info=object mode='-rwxr-xr-x' size.human='68 kB' size.bytes='67792' uid='0' gid='0' H='[A:0]' object.name='/usr/lib/engines-3/loader_attic.so' mtime='2024-01-26T01:52:51Z' hash='4a9733da4ff26a80d208475bb50be5287b9f813c' 
+cmd=xray info=object H='[A:0]' hash='b17d05b03f7ae4d9364f6ae86dadc7ca066ffe5c' size.bytes='67512' uid='0' gid='0' object.name='/usr/lib/engines-3/afalg.so' mode='-rwxr-xr-x' size.human='68 kB' mtime='2024-01-26T01:52:51Z' 
+cmd=xray info=object size.human='67 kB' uid='0' object.name='/usr/bin/ssl_client' mode='-rwxr-xr-x' size.bytes='67336' gid='0' mtime='2023-11-06T11:32:24Z' H='[A:0]' hash='985a09092d119e18b442b1655f89927f5847de10' 
+cmd=xray info=object hash='46694dbf9ec62c4ad3295f96ce469f885e2949d4' size.human='67 kB' gid='0' H='[A:0]' object.name='/usr/lib/engines-3/padlock.so' mode='-rwxr-xr-x' size.bytes='67016' uid='0' mtime='2024-01-26T01:52:51Z' 
+cmd=xray info=object uid='0' gid='0' mode='-rwxr-xr-x' mtime='2024-01-26T01:52:51Z' H='[A:0]' hash='52374128b1dd6e47f4c9cd833bc4bcbc4ac6c98c' object.name='/usr/lib/engines-3/capi.so' size.human='67 kB' size.bytes='67008' 
+cmd=xray info=object size.human='15 kB' gid='0' mtime='2024-01-26T20:45:49Z' H='[A:0/M:1,7]' hash='eb9778c9f45a75d9963e9191e8aec0fabd40c488' object.name='/lib/apk/db/installed' mode='-rw-r--r--' size.bytes='14708' uid='0' 
+cmd=xray info=object size.human='13 kB' size.bytes='12813' mtime='2023-05-09T14:21:47Z' H='[A:0]' object.name='/etc/services' mode='-rw-r--r--' uid='0' gid='0' hash='a0d7a229bf049f7fe17e8445226236e4024535d0' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer path='blobs/sha256/d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d' index='1' id='d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d' 
+cmd=xray info=change.instruction snippet='RUN set -x && \
+	addgroup -g 101 -S nginx &&...' all='RUN set -x && \
+	addgroup -g 101 -S nginx && \
+	adduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx && \
+	apkArch="$(cat /etc/apk/arch)" && \
+	nginxPackages="         nginx=${NGINX_VERSION}-r${PKG_RELEASE}     " && \
+	apk add --no-cache --virtual .checksum-deps         openssl && \
+	case "$apkArch" in         x86_64|aarch64)             set -x && \
+	KEY_SHA512="e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655" && \
+	wget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \
+	if echo "$KEY_SHA512 */tmp/nginx_signing.rsa.pub" | sha512sum -c -; then                 echo "key verification succeeded!";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo "key verification failed!";                 exit 1;             fi && \
+	apk add -X "https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release)/main" --no-cache $nginxPackages             ;;         *)             set -x && \
+	tempDir="$(mktemp -d)" && \
+	chown nobody:nobody $tempDir && \
+	apk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 bash                 alpine-sdk                 findutils && \
+	su nobody -s /bin/sh -c "                 export HOME=${tempDir} && \
+	cd ${tempDir} && \
+	curl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \
+	PKGOSSCHECKSUM=\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\" && \
+	if [ \"\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\" = \"\$PKGOSSCHECKSUM\" ]; then                     echo \"pkg-oss tarball checksum verification succeeded!\";                 else                     echo \"pkg-oss tarball checksum verification failed!\";                     exit 1;                 fi && \
+	tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \
+	cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} && \
+	cd alpine && \
+	make base && \
+	apk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk && \
+	abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 " && \
+	cp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/ && \
+	apk del --no-network .build-deps && \
+	apk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac && \
+	apk del --no-network .checksum-deps && \
+	if [ -n "$tempDir" ]; then rm -rf "$tempDir"; fi && \
+	if [ -f "/etc/apk/keys/abuild-key.rsa.pub" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi && \
+	if [ -f "/etc/apk/keys/nginx_signing.rsa.pub" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi && \
+	apk add --no-cache --virtual .gettext gettext && \
+	mv /usr/bin/envsubst /tmp/ && \
+	runDeps="$(         scanelf --needed --nobanner /tmp/envsubst             | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }'             | sort -u             | xargs -r apk info --installed             | sort -u     )" && \
+	apk add --no-cache $runDeps && \
+	apk del --no-network .gettext && \
+	mv /tmp/envsubst /usr/local/bin/ && \
+	apk add --no-cache tzdata && \
+	ln -sf /dev/stdout /var/log/nginx/access.log && \
+	ln -sf /dev/stderr /var/log/nginx/error.log && \
+	mkdir /docker-entrypoint.d' index='0:5' type='RUN' 
+cmd=xray info=layer.stats all_size.human='4.8 MB' all_size.bytes='4837503' 
+cmd=xray info=layer.stats object_count='1306' 
+cmd=xray info=layer.stats dir_count='71' 
+cmd=xray info=layer.stats file_count='738' 
+cmd=xray info=layer.stats link_count='497' 
+cmd=xray info=layer.stats max_file_size.human='1.5 MB' max_file_size.bytes='1496152' 
+cmd=xray info=layer.stats added_size.human='4.7 MB' added_size.bytes='4748020' 
+cmd=xray info=layer.stats modified_size.human='90 kB' modified_size.bytes='89483' 
+cmd=xray info=layer.change.summary deleted='0' modified='24' added='1282' all='1306' 
+cmd=xray info=layer.objects.count value='1306' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object gid='0' size.human='1.5 MB' uid='0' mtime='2023-10-24T16:48:50Z' H='[A:1]' hash='9c3b781ccc9dd8dbd94a6f3dfe341db25f4f50b1' object.name='/usr/sbin/nginx-debug' mode='-rwxr-xr-x' size.bytes='1496152' 
+cmd=xray info=object size.bytes='1361904' gid='0' mtime='2023-10-24T16:48:50Z' H='[A:1]' size.human='1.4 MB' uid='0' hash='c60c3cd988f271f220b0cfb4fbf7e34a5818da60' object.name='/usr/sbin/nginx' mode='-rwxr-xr-x' 
+cmd=xray info=object mode='-rwxr-xr-x' size.human='592 kB' uid='0' gid='0' H='[A:1]' hash='b50b931ba9abd0bd35d3b0f2752df3e960b7c3dd' object.name='/usr/lib/libpcre2-8.so.0.11.2' size.bytes='591824' mtime='2023-04-11T16:01:21Z' 
+cmd=xray info=object H='[A:0/M:1,7]' hash='d2ba4aec30035cba197a395b90bd028fd641ec3a' object.name='/lib/apk/db/installed' mode='-rw-r--r--' size.human='71 kB' size.bytes='71051' uid='0' gid='0' mtime='2024-01-27T20:31:01Z' 
+cmd=xray info=object mode='-rwxr-xr-x' size.human='67 kB' size.bytes='67248' uid='0' mtime='2023-05-16T15:45:43Z' hash='afd483334fe29e7493b680773863dedd690e479a' object.name='/usr/local/bin/envsubst' gid='0' H='[A:1]' 
+cmd=xray info=object gid='0' H='[A:1]' size.bytes='67184' mtime='2023-04-11T16:01:21Z' hash='929b9282062375e50266283d185d697bed847ffd' object.name='/usr/lib/libpcre2-posix.so.3.0.4' mode='-rwxr-xr-x' size.human='67 kB' uid='0' 
+cmd=xray info=object size.human='67 kB' size.bytes='67176' uid='0' H='[A:1]' object.name='/usr/lib/libintl.so.8.3.0' mode='-rwxr-xr-x' gid='0' mtime='2023-05-16T15:45:43Z' hash='b9baf06f6e4c52d86c0473c2c138f35a52671ffe' 
+cmd=xray info=object object.name='/usr/share/zoneinfo/zone.tab' mode='-r--r--r--' size.human='19 kB' size.bytes='18846' uid='0' H='[A:1]' gid='0' mtime='2023-12-23T00:08:56Z' hash='c3242af3df53d6cc9cdb216dec8f1c8c1a72ca46' 
+cmd=xray info=object mtime='2023-12-23T00:08:56Z' object.name='/usr/share/zoneinfo/zone1970.tab' size.human='18 kB' size.bytes='17582' uid='0' H='[A:1]' hash='b70f8145471db010644593dcb01c9f2f5631f89e' mode='-r--r--r--' gid='0' 
+cmd=xray info=object H='[A:0/M:1,7]' hash='972470255c6d0c7b148c3f4a811217ae0fe5e8d9' object.name='/lib/apk/db/scripts.tar' mode='-rw-r--r--' size.human='16 kB' size.bytes='15872' uid='0' gid='0' mtime='2024-01-27T20:31:01Z' 
+cmd=xray info=object mode='-rw-r--r--' size.human='11 kB' size.bytes='10662' uid='0' gid='0' mtime='2023-12-23T00:08:56Z' H='[A:1]' hash='67a04420f72edbf6e8d02956d6236191e607dd8e' object.name='/usr/share/zoneinfo/leap-seconds.list' 
+cmd=xray info=object mtime='2023-10-24T16:48:50Z' gid='0' H='[A:1]' hash='9b85e5091018455091d7f135c4a160ad9487516a' object.name='/etc/nginx/mime.types' mode='-rw-r--r--' size.human='5.3 kB' size.bytes='5349' uid='0' 
+cmd=xray info=object mode='-r--r--r--' size.bytes='4791' gid='0' mtime='2023-12-23T00:08:56Z' object.name='/usr/share/zoneinfo/iso3166.tab' size.human='4.8 kB' uid='0' H='[A:1]' hash='8f7821bdaf1b0eaee43f7807f84323b14f096846' 
+cmd=xray info=object mode='-rw-r--r--' size.bytes='4430' gid='0' mtime='2023-12-23T00:08:56Z' H='[A:1]' hash='603df41ffbab041824d6b170b5712f31107a0729' object.name='/usr/share/zoneinfo/right/Asia/Hebron' size.human='4.4 kB' uid='0' 
+cmd=xray info=object size.human='4.4 kB' size.bytes='4402' gid='0' mtime='2023-12-23T00:08:56Z' object.name='/usr/share/zoneinfo/right/Asia/Gaza' mode='-rw-r--r--' uid='0' H='[A:1]' hash='e3d98d79999dc07f8dfdf61e3269d7612c526fcf' 
+cmd=xray info=object size.human='4.2 kB' gid='0' H='[A:1]' hash='35e53cc471bcb41ea30fdd605d256827d40dfa3b' object.name='/usr/share/zoneinfo/right/Europe/Belfast' mode='-rw-r--r--' size.bytes='4204' uid='0' mtime='2023-12-23T00:08:56Z' 
+cmd=xray info=object mode='-rw-r--r--' size.bytes='4195' gid='0' H='[A:1]' hash='275884d8816a77e945c3b6f6e8e0a5b8bbdb6d32' object.name='/usr/share/zoneinfo/right/America/St_Johns' size.human='4.2 kB' uid='0' mtime='2023-12-23T00:08:56Z' 
+cmd=xray info=object mtime='2023-12-23T00:08:56Z' H='[A:1]' size.human='4.1 kB' uid='0' hash='9400083ba972c74ab159ad7cc0ef4b70649bdd63' object.name='/usr/share/zoneinfo/right/America/Chicago' mode='-rw-r--r--' size.bytes='4132' gid='0' 
+cmd=xray info=object size.bytes='4092' uid='0' hash='b10f0378289c2e0075d8dcb1ebfc4a82b5991e5f' object.name='/usr/share/zoneinfo/right/America/New_York' size.human='4.1 kB' gid='0' mtime='2023-12-23T00:08:56Z' H='[A:1]' mode='-rw-r--r--' 
+cmd=xray info=object object.name='/usr/share/zoneinfo/right/Atlantic/Madeira' uid='0' H='[A:1]' hash='6afcc316faa559a7c6d6465871757a160051eafa' mode='-rw-r--r--' size.human='4.0 kB' size.bytes='4043' gid='0' mtime='2023-12-23T00:08:56Z' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer id='abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87' path='blobs/sha256/abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87' index='2' 
+cmd=xray info=change.instruction index='0:6' type='COPY' snippet='COPY docker-entrypoint.sh /' all='COPY docker-entrypoint.sh /' 
+cmd=xray info=layer.stats all_size.human='1.6 kB' all_size.bytes='1620' 
+cmd=xray info=layer.stats object_count='1' 
+cmd=xray info=layer.stats file_count='1' 
+cmd=xray info=layer.stats max_file_size.human='1.6 kB' max_file_size.bytes='1620' 
+cmd=xray info=layer.stats added_size.human='1.6 kB' added_size.bytes='1620' 
+cmd=xray info=layer.change.summary deleted='0' modified='0' added='1' all='1' 
+cmd=xray info=layer.objects.count value='1' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object size.human='1.6 kB' gid='0' hash='d2e418bfd5a25fa0752e237286041526094bf86a' object.name='/docker-entrypoint.sh' size.bytes='1620' uid='0' mtime='2024-01-27T20:30:56Z' H='[A:2]' mode='-rwxr-xr-x' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='3' id='a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab' path='blobs/sha256/a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab' 
+cmd=xray info=change.instruction index='0:7' type='COPY' snippet='COPY 10-listen-on-ipv6-by-default.sh /docker...' all='COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d' 
+cmd=xray info=layer.stats all_size.human='2.1 kB' all_size.bytes='2125' 
+cmd=xray info=layer.stats object_count='2' 
+cmd=xray info=layer.stats dir_count='1' 
+cmd=xray info=layer.stats file_count='1' 
+cmd=xray info=layer.stats max_file_size.human='2.1 kB' max_file_size.bytes='2125' 
+cmd=xray info=layer.stats added_size.human='2.1 kB' added_size.bytes='2125' 
+cmd=xray info=layer.change.summary deleted='0' modified='1' added='1' all='2' 
+cmd=xray info=layer.objects.count value='2' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object size.bytes='2125' H='[A:3]' size.human='2.1 kB' uid='0' gid='0' mtime='2024-01-27T20:30:56Z' hash='3222acb5f99934962f90df16c4091e9aa5d1ecb4' object.name='/docker-entrypoint.d/10-listen-on-ipv6-by-default.sh' mode='-rwxr-xr-x' 
+cmd=xray info=object hash='' object.name='/docker-entrypoint.d' mode='drwxr-xr-x' size.human='0 B' uid='0' size.bytes='0' gid='0' mtime='2024-01-27T20:31:01Z' H='[A:1/M:3,4,5,6]' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='4' id='586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e' path='blobs/sha256/586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e' 
+cmd=xray info=change.instruction index='0:8' type='COPY' snippet='COPY 15-local-resolvers.envsh /docker-entryp...' all='COPY 15-local-resolvers.envsh /docker-entrypoint.d' 
+cmd=xray info=layer.stats all_size.human='298 B' all_size.bytes='298' 
+cmd=xray info=layer.stats object_count='2' 
+cmd=xray info=layer.stats dir_count='1' 
+cmd=xray info=layer.stats file_count='1' 
+cmd=xray info=layer.stats max_file_size.human='298 B' max_file_size.bytes='298' 
+cmd=xray info=layer.stats added_size.human='298 B' added_size.bytes='298' 
+cmd=xray info=layer.change.summary modified='1' added='1' all='2' deleted='0' 
+cmd=xray info=layer.objects.count value='2' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object mtime='2024-01-27T20:30:56Z' hash='977408a2d8f947dfcf2b9291555d2a6f24a1725c' mode='-rwxr-xr-x' uid='0' H='[A:4]' object.name='/docker-entrypoint.d/15-local-resolvers.envsh' size.human='298 B' size.bytes='298' gid='0' 
+cmd=xray info=object mode='drwxr-xr-x' gid='0' mtime='2024-01-27T20:31:01Z' H='[A:1/M:3,4,5,6]' hash='' size.human='0 B' size.bytes='0' uid='0' object.name='/docker-entrypoint.d' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='5' id='12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988' path='blobs/sha256/12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988' 
+cmd=xray info=change.instruction index='0:9' type='COPY' snippet='COPY 20-envsubst-on-templates.sh /docker-ent...' all='COPY 20-envsubst-on-templates.sh /docker-entrypoint.d' 
+cmd=xray info=layer.stats all_size.human='3.0 kB' all_size.bytes='3018' 
+cmd=xray info=layer.stats object_count='2' 
+cmd=xray info=layer.stats dir_count='1' 
+cmd=xray info=layer.stats file_count='1' 
+cmd=xray info=layer.stats max_file_size.human='3.0 kB' max_file_size.bytes='3018' 
+cmd=xray info=layer.stats added_size.human='3.0 kB' added_size.bytes='3018' 
+cmd=xray info=layer.change.summary modified='1' added='1' all='2' deleted='0' 
+cmd=xray info=layer.objects.count value='2' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object mtime='2024-01-27T20:30:56Z' H='[A:5]' hash='fd68b1ab3e27314493ffe24a275b8cef6483a083' mode='-rwxr-xr-x' size.human='3.0 kB' uid='0' gid='0' object.name='/docker-entrypoint.d/20-envsubst-on-templates.sh' size.bytes='3018' 
+cmd=xray info=object size.human='0 B' uid='0' gid='0' hash='' object.name='/docker-entrypoint.d' size.bytes='0' mtime='2024-01-27T20:31:01Z' H='[A:1/M:3,4,5,6]' mode='drwxr-xr-x' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='6' id='2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9' path='blobs/sha256/2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9' 
+cmd=xray info=change.instruction type='COPY' snippet='COPY 30-tune-worker-processes.sh /docker-ent...' all='COPY 30-tune-worker-processes.sh /docker-entrypoint.d' index='0:10' 
+cmd=xray info=other.instructions count='5' 
+cmd=xray info=other.instruction all='ENTRYPOINT ["/docker-entrypoint.sh"]
+' pos='0' index='0:11' type='ENTRYPOINT' snippet='ENTRYPOINT ["/docker-entrypoint.sh"]
+' 
+cmd=xray info=other.instruction all='EXPOSE 80/tcp' pos='1' index='0:12' type='EXPOSE' snippet='EXPOSE 80/tcp' 
+cmd=xray info=other.instruction snippet='STOPSIGNAL SIGQUIT' all='STOPSIGNAL SIGQUIT' pos='2' index='0:13' type='STOPSIGNAL' 
+cmd=xray info=other.instruction all='CMD ["nginx","-g","daemon off;"]
+' pos='3' index='0:14' type='CMD' snippet='CMD ["nginx","-g","daemon off;"]
+' 
+cmd=xray info=other.instruction pos='4' index='0:15' type='ENV' snippet='ENV NJS_VERSION=0.8.2' all='ENV NJS_VERSION=0.8.2' 
+cmd=xray info=layer.stats all_size.human='4.6 kB' all_size.bytes='4619' 
+cmd=xray info=layer.stats object_count='2' 
+cmd=xray info=layer.stats dir_count='1' 
+cmd=xray info=layer.stats file_count='1' 
+cmd=xray info=layer.stats max_file_size.human='4.6 kB' max_file_size.bytes='4619' 
+cmd=xray info=layer.stats added_size.human='4.6 kB' added_size.bytes='4619' 
+cmd=xray info=layer.change.summary modified='1' added='1' all='2' deleted='0' 
+cmd=xray info=layer.objects.count value='2' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object size.human='4.6 kB' gid='0' hash='12d595b7d7c2d55b2634a5d9f2ea1057cb2f752f' object.name='/docker-entrypoint.d/30-tune-worker-processes.sh' mode='-rwxr-xr-x' size.bytes='4619' uid='0' mtime='2024-01-27T20:30:56Z' H='[A:6]' 
+cmd=xray info=object size.bytes='0' uid='0' gid='0' mtime='2024-01-27T20:31:01Z' H='[A:1/M:3,4,5,6]' mode='drwxr-xr-x' size.human='0 B' hash='' object.name='/docker-entrypoint.d' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='7' id='238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd' path='blobs/sha256/238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd' 
+cmd=xray info=change.instruction index='0:16' type='RUN' snippet='RUN set -x && \
+	apkArch="$(cat /etc/apk/arc...' all='RUN set -x && \
+	apkArch="$(cat /etc/apk/arch)" && \
+	nginxPackages="         nginx=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-xslt=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-geoip=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-image-filter=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-njs=${NGINX_VERSION}.${NJS_VERSION}-r${PKG_RELEASE}     " && \
+	apk add --no-cache --virtual .checksum-deps         openssl && \
+	case "$apkArch" in         x86_64|aarch64)             set -x && \
+	KEY_SHA512="e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655" && \
+	wget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \
+	if echo "$KEY_SHA512 */tmp/nginx_signing.rsa.pub" | sha512sum -c -; then                 echo "key verification succeeded!";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo "key verification failed!";                 exit 1;             fi && \
+	apk add -X "https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release)/main" --no-cache $nginxPackages             ;;         *)             set -x && \
+	tempDir="$(mktemp -d)" && \
+	chown nobody:nobody $tempDir && \
+	apk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 libxslt-dev                 gd-dev                 geoip-dev                 libedit-dev                 bash                 alpine-sdk                 findutils && \
+	su nobody -s /bin/sh -c "                 export HOME=${tempDir} && \
+	cd ${tempDir} && \
+	curl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \
+	PKGOSSCHECKSUM=\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\" && \
+	if [ \"\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\" = \"\$PKGOSSCHECKSUM\" ]; then                     echo \"pkg-oss tarball checksum verification succeeded!\";                 else                     echo \"pkg-oss tarball checksum verification failed!\";                     exit 1;                 fi && \
+	tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \
+	cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} && \
+	cd alpine && \
+	make module-geoip module-image-filter module-njs module-xslt && \
+	apk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk && \
+	abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 " && \
+	cp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/ && \
+	apk del --no-network .build-deps && \
+	apk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac && \
+	apk del --no-network .checksum-deps && \
+	if [ -n "$tempDir" ]; then rm -rf "$tempDir"; fi && \
+	if [ -f "/etc/apk/keys/abuild-key.rsa.pub" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi && \
+	if [ -f "/etc/apk/keys/nginx_signing.rsa.pub" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi && \
+	apk add --no-cache curl ca-certificates' 
+cmd=xray info=layer.stats all_size.human='31 MB' all_size.bytes='30981620' 
+cmd=xray info=layer.stats object_count='1020' 
+cmd=xray info=layer.stats dir_count='116' 
+cmd=xray info=layer.stats file_count='530' 
+cmd=xray info=layer.stats link_count='374' 
+cmd=xray info=layer.stats max_file_size.human='5.1 MB' max_file_size.bytes='5070856' 
+cmd=xray info=layer.stats added_size.human='31 MB' added_size.bytes='30614543' 
+cmd=xray info=layer.stats modified_size.human='367 kB' modified_size.bytes='367077' 
+cmd=xray info=layer.change.summary deleted='0' modified='25' added='995' all='1020' 
+cmd=xray info=layer.objects.count value='1020' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object uid='0' mtime='2023-05-10T17:42:45Z' hash='33865b0095425c205de1f5f337a5265c00959a9a' mode='-rwxr-xr-x' size.human='5.1 MB' size.bytes='5070856' gid='0' H='[A:7]' object.name='/usr/lib/libaom.so.3.6.1' 
+cmd=xray info=object size.bytes='1771200' gid='0' H='[A:7]' object.name='/usr/lib/libunistring.so.5.0.0' mode='-rwxr-xr-x' uid='0' mtime='2023-04-11T16:01:21Z' hash='e27b496e8fd8d86e44cb996ffcff2a539e0f9910' size.human='1.8 MB' 
+cmd=xray info=object size.human='1.3 MB' uid='0' gid='0' mtime='2023-11-01T07:51:44Z' H='[A:7]' hash='3b125de54fe2fd7d1a8e7e92d2f22379c447b4e9' object.name='/usr/lib/libX11.so.6.4.0' mode='-rwxr-xr-x' size.bytes='1258432' 
+cmd=xray info=object size.bytes='1248456' uid='0' object.name='/usr/lib/libxml2.so.2.11.6' mode='-rwxr-xr-x' size.human='1.2 MB' gid='0' mtime='2023-11-19T12:19:28Z' H='[A:7]' hash='47e95846cfe484d1723d5d2db755f21078e4bcc1' 
+cmd=xray info=object uid='0' gid='0' mtime='2023-04-11T16:01:21Z' hash='9c09cfa2673d0179bd81956981495505d77d639a' object.name='/usr/lib/libgcrypt.so.20.4.2' mode='-rwxr-xr-x' size.human='935 kB' size.bytes='934688' H='[A:7]' 
+cmd=xray info=object size.bytes='917616' hash='74afddcc064e0ef0422ae859aa2accc093adfffe' object.name='/usr/lib/nginx/modules/ngx_http_js_module-debug.so' mode='-rwxr-xr-x' size.human='918 kB' uid='0' gid='0' mtime='2023-10-24T16:50:31Z' H='[A:7]' 
+cmd=xray info=object mode='-rwxr-xr-x' size.bytes='917608' uid='0' gid='0' mtime='2023-10-24T16:50:31Z' H='[A:7]' hash='514bc48c032d5a15ddea151f15a14d62e22d922e' size.human='918 kB' object.name='/usr/lib/nginx/modules/ngx_http_js_module.so' 
+cmd=xray info=object uid='0' mtime='2023-10-24T16:50:31Z' hash='e8a81a3cfe8aa1bb315a426cff4ff5f1eb28685b' gid='0' H='[A:7]' object.name='/usr/lib/nginx/modules/ngx_stream_js_module-debug.so' mode='-rwxr-xr-x' size.human='916 kB' size.bytes='916104' 
+cmd=xray info=object hash='c8a77c72b4169fe709346294649660ae7821f2a8' object.name='/usr/lib/nginx/modules/ngx_stream_js_module.so' size.human='916 kB' uid='0' gid='0' mtime='2023-10-24T16:50:31Z' H='[A:7]' mode='-rwxr-xr-x' size.bytes='916096' 
+cmd=xray info=object size.bytes='788480' gid='0' object.name='/usr/lib/libfreetype.so.6.19.0' mode='-rwxr-xr-x' size.human='788 kB' uid='0' mtime='2023-04-22T13:00:09Z' H='[A:7]' hash='db30fa1a0f5125edbfcefcdcdd882a3a3a18882c' 
+cmd=xray info=object uid='0' gid='0' object.name='/usr/lib/libdav1d.so.6.9.0' size.bytes='788088' mtime='2023-06-02T02:03:34Z' H='[A:7]' hash='db3f1d932ee72486f49b19a6283adeabc39acaa2' mode='-rwxr-xr-x' size.human='788 kB' 
+cmd=xray info=object mtime='2023-10-24T16:50:31Z' object.name='/usr/bin/njs' size.human='775 kB' gid='0' H='[A:7]' hash='270d5cfd1a3685a95fcf0a4a567c49ffc2dc1446' mode='-rwxr-xr-x' size.bytes='774664' uid='0' 
+cmd=xray info=object mode='-rwxr-xr-x' size.bytes='666816' uid='0' gid='0' mtime='2023-12-07T04:12:03Z' H='[A:7]' size.human='667 kB' hash='9ed9f83ab7793a31c2f68c8f20e564d56c2a1c88' object.name='/usr/lib/libcurl.so.4.8.0' 
+cmd=xray info=object mode='-rwxr-xr-x' size.human='657 kB' size.bytes='657104' H='[A:7]' object.name='/usr/lib/libzstd.so.1.5.5' uid='0' gid='0' mtime='2023-05-06T16:12:08Z' hash='be1a4d6d43c88bbbd2b62b3ff32ffdd5fe2affad' 
+cmd=xray info=object mode='-rwxr-xr-x' size.human='592 kB' size.bytes='591920' uid='0' mtime='2023-04-18T16:02:21Z' H='[A:7]' gid='0' hash='ac2f2e6967fe587a1fbd45c1d5c6ff576c4521c9' object.name='/usr/lib/libbrotlienc.so.1.0.9' 
+cmd=xray info=object uid='0' H='[A:7]' object.name='/usr/lib/libtiff.so.6.0.1' size.bytes='460656' gid='0' mtime='2023-06-14T21:27:04Z' hash='2e779b84739fce6fc09c2951c03b6616c9bfa8fe' mode='-rwxr-xr-x' size.human='461 kB' 
+cmd=xray info=object H='[A:7]' hash='74b58450307137ccf977c946dc12369d778de6b3' object.name='/usr/share/X11/locale/en_US.UTF-8/Compose' mode='-rw-r--r--' mtime='2023-11-01T07:51:44Z' size.human='455 kB' size.bytes='454647' uid='0' gid='0' 
+cmd=xray info=object uid='0' gid='0' H='[A:7]' hash='325a88a2d878f82f2f7792ec0f434a83c96ab662' object.name='/usr/lib/libXt.so.6.0.0' size.human='409 kB' mtime='2023-05-05T02:00:48Z' mode='-rwxr-xr-x' size.bytes='408584' 
+cmd=xray info=object gid='0' size.bytes='396064' uid='0' mtime='2023-05-08T02:03:35Z' H='[A:7]' hash='94871e8c00b25f07a588c5c2cc5ed52e7a5a5c70' object.name='/usr/lib/libncursesw.so.6.4' mode='-rwxr-xr-x' size.human='396 kB' 
+cmd=xray info=object size.human='395 kB' size.bytes='395336' gid='0' mtime='2023-06-14T19:12:28Z' H='[A:7]' hash='d716ab014a893d8cd4eb251a8f905b97a9263844' mode='-rwxr-xr-x' uid='0' object.name='/usr/lib/libturbojpeg.so.0.2.0' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='8' id='2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e' path='blobs/sha256/2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e' 
+cmd=xray info=change.instruction all='RUN addgroup -g 1001 -S nginx-app && \
+	adduser -S nginx-app -u 1001 -G nginx-app && \
+	chown -R nginx-app:nginx-app /usr/share/nginx/html && \
+	chown -R nginx-app:nginx-app /var/cache/nginx && \
+	chown -R nginx-app:nginx-app /var/log/nginx && \
+	touch /var/run/nginx.pid && \
+	chown -R nginx-app:nginx-app /var/run/nginx.pid' index='0:17' type='RUN' snippet='RUN addgroup -g 1001 -S nginx-app && \
+	addu...' 
+cmd=xray info=layer.stats all_size.human='6.0 kB' all_size.bytes='6032' 
+cmd=xray info=layer.stats object_count='24' 
+cmd=xray info=layer.stats dir_count='13' 
+cmd=xray info=layer.stats file_count='9' 
+cmd=xray info=layer.stats link_count='2' 
+cmd=xray info=layer.stats max_file_size.human='1.3 kB' max_file_size.bytes='1291' 
+cmd=xray info=layer.stats modified_size.human='6.0 kB' modified_size.bytes='6032' 
+cmd=xray info=layer.change.summary deleted='0' modified='22' added='2' all='24' 
+cmd=xray info=layer.objects.count value='24' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object gid='0' hash='8c186a9d17cadd5abee450fa3c1ada86b2de3a04' object.name='/etc/passwd' size.bytes='1291' uid='0' mtime='2025-11-17T02:17:38Z' H='[A:0/M:1,8]' mode='-rw-r--r--' size.human='1.3 kB' 
+cmd=xray info=object gid='0' H='[A:1/M:8]' object.name='/etc/passwd-' mode='-rw-r--r--' size.human='1.2 kB' size.bytes='1225' uid='0' mtime='2024-01-27T20:30:56Z' hash='6d5dc22b2f25065920239ea92b21781ca6add33a' 
+cmd=xray info=object hash='27941117dd55a95596a646e0bc31aedac5c9b00d' mode='-rw-r--r--' gid='0' H='[A:0/M:1,8]' object.name='/etc/group' size.human='742 B' size.bytes='742' uid='0' mtime='2025-11-17T02:17:38Z' 
+cmd=xray info=object mode='-rw-r--r--' size.bytes='733' gid='0' mtime='2025-11-17T02:17:38Z' H='[A:1/M:8]' size.human='733 B' uid='0' hash='c3e928ac4e928f4947661f3f29ed080c921ea5cb' object.name='/etc/group-' 
+cmd=xray info=object size.human='615 B' gid='1001' mtime='2023-10-24T16:48:50Z' mode='-rw-r--r--' size.bytes='615' uid='1001' H='[A:1/M:8,9]' hash='c51a3f0e6de4eb802d5630941c3fd9e1d0efae4b' object.name='/usr/share/nginx/html/index.html' 
+cmd=xray info=object mode='-rw-r--r--' size.human='497 B' uid='1001' H='[A:1/M:8]' size.bytes='497' gid='1001' mtime='2023-10-24T16:48:50Z' hash='835b9dec419c01420e78602527a9fba8c463521c' object.name='/usr/share/nginx/html/50x.html' 
+cmd=xray info=object object.name='/etc/shadow' size.human='480 B' gid='42' mtime='2025-11-17T02:17:38Z' H='[A:0/M:1,8]' hash='5fe9cdb2e804ec61131b6ef27abd1ba267f3c02d' mode='-rw-r-----' size.bytes='480' uid='0' 
+cmd=xray info=object uid='0' gid='42' mtime='2024-01-27T20:30:56Z' hash='73f16b16172aafe4bd0ccf1720620284b7c14679' mode='-rw-r-----' size.human='449 B' size.bytes='449' H='[A:1/M:8]' object.name='/etc/shadow-' 
+cmd=xray info=object gid='0' object.name='/usr/share/nginx' mode='drwxr-xr-x' size.human='0 B' mtime='2024-01-27T20:30:59Z' H='[A:1/M:8,9]' hash='' size.bytes='0' uid='0' 
+cmd=xray info=object mode='drwxr-xr-x' size.bytes='0' hash='' object.name='/usr/share' size.human='0 B' uid='0' gid='0' mtime='2024-01-28T00:37:00Z' H='[A:0/M:1,7,8,9]' 
+cmd=xray info=object mode='drwxr-xr-x' gid='0' H='[A:0/M:1,7,8,9]' object.name='/usr' size.human='0 B' size.bytes='0' uid='0' mtime='2024-01-26T20:45:49Z' hash='' 
+cmd=xray info=object mode='-rw-r--r--' size.human='0 B' size.bytes='0' uid='1001' gid='1001' H='[A:8]' object.name='/run/nginx.pid' mtime='2025-11-17T02:17:38Z' hash='da39a3ee5e6b4b0d3255bfef95601890afd80709' 
+cmd=xray info=object uid='1001' mtime='2024-01-27T20:30:59Z' H='[A:1/M:8]' hash='' object.name='/var/cache/nginx' size.human='0 B' size.bytes='0' gid='1001' mode='drwxr-xr-x' 
+cmd=xray info=object size.bytes='0' uid='1001' mtime='2024-01-27T20:30:59Z' hash='' object.name='/usr/share/nginx/html' mode='drwxr-xr-x' size.human='0 B' gid='1001' H='[A:1/M:8,9]' 
+cmd=xray info=object hash='' mode='drwxr-xr-x' size.human='0 B' size.bytes='0' uid='0' object.name='/run' gid='0' mtime='2025-11-17T02:17:38Z' H='[A:0/M:8]' 
+cmd=xray info=object hash='' mode='drwxr-xr-x' size.human='0 B' uid='0' mtime='2024-01-28T00:36:58Z' H='[A:0/M:1,7,8]' object.name='/var/cache' size.bytes='0' gid='0' 
+cmd=xray info=object size.bytes='0' uid='0' mtime='2024-01-26T20:45:49Z' size.human='0 B' gid='0' H='[A:0/M:1,7,8]' hash='' object.name='/var' mode='drwxr-xr-x' 
+cmd=xray info=object size.human='0 B' size.bytes='0' uid='1001' gid='1001' mtime='2025-11-17T02:17:38Z' H='[A:8]' hash='' mode='dgrwxr-xr-x' object.name='/home/nginx-app' 
+cmd=xray info=object size.human='0 B' size.bytes='0' gid='0' mtime='2025-11-17T02:17:38Z' hash='' mode='drwxr-xr-x' uid='0' H='[A:0/M:8]' object.name='/home' 
+cmd=xray info=object object.name='/var/log/nginx/error.log' link.target='/dev/stderr' mode='Lrwxrwxrwx' size.human='0 B' uid='1001' gid='1001' mtime='2024-01-27T20:31:01Z' size.bytes='0' H='[A:1/M:8]' hash='' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer path='blobs/sha256/e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26' index='9' id='e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26' 
+cmd=xray info=change.instruction index='0:18' type='COPY' snippet='COPY --chown=nginx-app:nginx-app /app/build ...' all='COPY --chown=nginx-app:nginx-app /app/build /usr/share/nginx/html' 
+cmd=xray info=layer.stats all_size.human='1.9 MB' all_size.bytes='1860682' 
+cmd=xray info=layer.stats object_count='21' 
+cmd=xray info=layer.stats dir_count='7' 
+cmd=xray info=layer.stats file_count='14' 
+cmd=xray info=layer.stats max_file_size.human='1.5 MB' max_file_size.bytes='1501528' 
+cmd=xray info=layer.stats added_size.bytes='1860038' added_size.human='1.9 MB' 
+cmd=xray info=layer.stats modified_size.human='644 B' modified_size.bytes='644' 
+cmd=xray info=layer.change.summary added='16' all='21' deleted='0' modified='5' 
+cmd=xray info=layer.objects.count value='21' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object mtime='2025-11-17T02:35:43Z' object.name='/usr/share/nginx/html/static/js/main.60cb7f0b.js.map' size.human='1.5 MB' size.bytes='1501528' H='[A:9]' hash='852e3dc94a6c92dc99ca2d770d11d190fcb41285' mode='-rw-r--r--' uid='1001' gid='1001' 
+cmd=xray info=object mode='-rw-r--r--' size.human='281 kB' size.bytes='281042' uid='1001' H='[A:9]' hash='b61aeb2b93a99bde6a45a385f62cf1674074b88d' gid='1001' mtime='2025-11-17T02:35:43Z' object.name='/usr/share/nginx/html/static/js/main.60cb7f0b.js' 
+cmd=xray info=object object.name='/usr/share/nginx/html/static/css/main.30edaaa6.css.map' size.bytes='27168' uid='1001' gid='1001' mtime='2025-11-17T02:35:43Z' mode='-rw-r--r--' size.human='27 kB' H='[A:9]' hash='45af5b2f94f924e89aceca0268a240640d7bb54d' 
+cmd=xray info=object mtime='2025-11-17T02:35:43Z' object.name='/usr/share/nginx/html/static/css/main.30edaaa6.css' mode='-rw-r--r--' size.human='14 kB' uid='1001' gid='1001' H='[A:9]' hash='59b5616e522f4bbfd092815999e976392f044942' size.bytes='13837' 
+cmd=xray info=object size.human='11 kB' size.bytes='10597' uid='1001' gid='1001' H='[A:9]' hash='70831f3a7d0a3d24867dc290583b5171943070fb' object.name='/usr/share/nginx/html/static/js/453.670e15c7.chunk.js.map' mode='-rw-r--r--' mtime='2025-11-17T02:35:43Z' 
+cmd=xray info=object mode='-rw-r--r--' size.human='9.7 kB' uid='1001' H='[A:9]' hash='46915f9d02694ed49bfc7a9534947684103dc3fe' object.name='/usr/share/nginx/html/logo512.png' size.bytes='9664' gid='1001' mtime='2025-11-17T02:35:32Z' 
+cmd=xray info=object size.human='5.3 kB' gid='1001' mtime='2025-11-17T02:35:32Z' hash='7f4f2d68782a7fafceda84554ecab9b489877500' object.name='/usr/share/nginx/html/logo192.png' mode='-rw-r--r--' size.bytes='5347' uid='1001' H='[A:9]' 
+cmd=xray info=object H='[A:9]' uid='1001' gid='1001' mtime='2025-11-17T02:35:43Z' hash='af02d0ff3fc0c1356d6027444fe4413cdb9a4961' object.name='/usr/share/nginx/html/static/js/453.670e15c7.chunk.js' mode='-rw-r--r--' size.human='4.5 kB' size.bytes='4476' 
+cmd=xray info=object uid='1001' H='[A:9]' mode='-rw-r--r--' gid='1001' mtime='2025-11-17T02:35:32Z' hash='1120538c77ad1f28a89243b4b53fe2ac16cc3bc6' object.name='/usr/share/nginx/html/favicon.ico' size.human='3.9 kB' size.bytes='3870' 
+cmd=xray info=object object.name='/usr/share/nginx/html/static/js/main.60cb7f0b.js.LICENSE.txt' mode='-rw-r--r--' size.human='1.4 kB' size.bytes='1433' uid='1001' gid='1001' mtime='2025-11-17T02:35:43Z' H='[A:9]' hash='e0f10adace2d4ab799eb037561a8a30608a6158a' 
+cmd=xray info=object mode='-rw-r--r--' size.human='644 B' gid='1001' mtime='2025-11-17T02:35:43Z' H='[A:1/M:8,9]' hash='a8ec9d4023862e8cbdabb36b3e661223d1cebee8' object.name='/usr/share/nginx/html/index.html' size.bytes='644' uid='1001' 
+cmd=xray info=object mode='-rw-r--r--' mtime='2025-11-17T02:35:43Z' H='[A:9]' object.name='/usr/share/nginx/html/asset-manifest.json' size.human='517 B' size.bytes='517' uid='1001' gid='1001' hash='63ee748460fa5d8753f7ccf7af4bc545ece3f55d' 
+cmd=xray info=object size.human='492 B' gid='1001' mtime='2025-11-17T02:35:32Z' object.name='/usr/share/nginx/html/manifest.json' mode='-rw-r--r--' size.bytes='492' uid='1001' H='[A:9]' hash='4e0afe7f81a71f41366cd7859ca34776b8107923' 
+cmd=xray info=object gid='1001' hash='044ce68f83ee8543475fea16f6e3a73d28a1c6d5' object.name='/usr/share/nginx/html/robots.txt' size.bytes='67' mtime='2025-11-17T02:35:32Z' H='[A:9]' mode='-rw-r--r--' size.human='67 B' uid='1001' 
+cmd=xray info=object size.human='0 B' H='[A:9]' hash='' size.bytes='0' uid='1001' gid='1001' mtime='2025-11-17T02:35:43Z' object.name='/usr/share/nginx/html/static/css' mode='drwxr-xr-x' 
+cmd=xray info=object H='[A:9]' mode='drwxr-xr-x' size.bytes='0' uid='1001' gid='1001' mtime='2025-11-17T02:35:43Z' hash='' object.name='/usr/share/nginx/html/static' size.human='0 B' 
+cmd=xray info=object mode='drwxr-xr-x' uid='0' gid='0' mtime='2024-01-27T20:30:59Z' hash='' object.name='/usr/share/nginx' size.human='0 B' size.bytes='0' H='[A:1/M:8,9]' 
+cmd=xray info=object size.human='0 B' size.bytes='0' uid='1001' gid='1001' mtime='2025-11-17T02:35:43Z' H='[A:9]' hash='' object.name='/usr/share/nginx/html/static/js' mode='drwxr-xr-x' 
+cmd=xray info=object mode='drwxr-xr-x' size.human='0 B' size.bytes='0' uid='1001' H='[A:1/M:8,9]' object.name='/usr/share/nginx/html' gid='1001' mtime='2025-11-17T02:35:43Z' hash='' 
+cmd=xray info=object hash='' mode='drwxr-xr-x' size.human='0 B' mtime='2024-01-28T00:37:00Z' object.name='/usr/share' size.bytes='0' uid='0' gid='0' H='[A:0/M:1,7,8,9]' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=layer.start
+cmd=xray info=layer index='10' id='dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648' path='blobs/sha256/dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648' 
+cmd=xray info=change.instruction snippet='COPY --chown=nginx-app:nginx-app nginx.conf ...' all='COPY --chown=nginx-app:nginx-app nginx.conf /etc/nginx/conf.d/default.conf' index='0:19' type='COPY' 
+cmd=xray info=other.instructions count='3' 
+cmd=xray info=other.instruction index='0:20' type='USER' snippet='USER nginx-app' all='USER nginx-app' pos='0' 
+cmd=xray info=other.instruction index='0:21' type='EXPOSE' snippet='EXPOSE 8080/tcp' all='EXPOSE 8080/tcp' pos='1' 
+cmd=xray info=other.instruction type='CMD' snippet='CMD ["nginx","-g","daemon off;"]
+' all='CMD ["nginx","-g","daemon off;"]
+' pos='2' index='0:22' 
+cmd=xray info=layer.stats all_size.human='1.3 kB' all_size.bytes='1270' 
+cmd=xray info=layer.stats object_count='4' 
+cmd=xray info=layer.stats dir_count='3' 
+cmd=xray info=layer.stats file_count='1' 
+cmd=xray info=layer.stats max_file_size.human='1.3 kB' max_file_size.bytes='1270' 
+cmd=xray info=layer.stats modified_size.bytes='1270' modified_size.human='1.3 kB' 
+cmd=xray info=layer.change.summary deleted='0' modified='4' added='0' all='4' 
+cmd=xray info=layer.objects.count value='4' 
+cmd=xray info=layer.objects.top.start
+cmd=xray info=object uid='1001' gid='1001' mode='-rw-r--r--' size.human='1.3 kB' size.bytes='1270' mtime='2025-11-17T02:15:50Z' H='[A:1/M:10]' hash='54f32923ba25af9b7a235531a39da71f6557c086' object.name='/etc/nginx/conf.d/default.conf' 
+cmd=xray info=object mode='drwxr-xr-x' size.human='0 B' uid='0' gid='0' mtime='2025-11-17T02:35:44Z' H='[A:1/M:10]' hash='' size.bytes='0' object.name='/etc/nginx/conf.d' 
+cmd=xray info=object size.human='0 B' size.bytes='0' gid='0' mtime='2024-01-27T20:30:59Z' H='[A:1/M:10]' hash='' mode='drwxr-xr-x' uid='0' object.name='/etc/nginx' 
+cmd=xray info=object size.human='0 B' size.bytes='0' gid='0' hash='' object.name='/etc' mode='drwxr-xr-x' uid='0' mtime='2025-11-17T02:17:38Z' H='[A:0/M:1,7,8,10]' 
+cmd=xray info=layer.objects.top.end
+cmd=xray info=layer.end
+cmd=xray info=image.shells full_name='Bourne shell' short_name='sh' exe_path='/bin/sh' link_path='/bin/busybox' reference='' verified='true' 
+cmd=xray info=image.shells verified='true' full_name='Ash shell' short_name='ash' exe_path='/bin/ash' link_path='/bin/busybox' reference='' 
+cmd=xray info=image.entry exe_path='/docker-entrypoint.sh' exe_args='nginx,-g,daemon off;' 
+cmd=xray info=image.entry.full_exe_path name='/docker-entrypoint.sh' layer='2' 
+cmd=xray info=image.special_perms.sticky name='/tmp' 
+cmd=xray info=image.special_perms.sticky name='/var/tmp' 
+cmd=xray state=completed
+cmd=xray state=done
+cmd=xray info=results artifacts.location='/opt/homebrew/bin/.mint-state/images/15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00/artifacts' 
+cmd=xray info=results artifacts.dockerfile.original='Dockerfile.fat' 
+cmd=xray info=version status='OUTDATED' local='1.41.7' current='x.1.42.5' 
+cmd=xray message='Your version of MinToolkit is out of date! Use `mint update` to get the latest version.'
+cmd=xray info=report file='slim.report.json' 
+app='mint' message='GitHub Discussions' info='https://github.com/mintoolkit/mint/discussions'
+app='mint' message='Join the CNCF Slack channel to ask questions or to share your feedback' info='https://cloud-native.slack.com/archives/C059QP1RH1S'
+app='mint' message='Join the Discord server to ask questions or to share your feedback' info='https://discord.gg/fAvq4ruKsG'

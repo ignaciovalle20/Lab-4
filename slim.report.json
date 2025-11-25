@@ -1,0 +1,4897 @@
+{
+  "document": "doc.report.command",
+  "version": "ov/command/xray/1.2.3",
+  "engine": "darwin/arm64|Aurora|1.41.7|latest|latest",
+  "containerized": false,
+  "host_distro": {
+    "name": "",
+    "version": "",
+    "display_name": "other"
+  },
+  "type": "xray",
+  "state": "done",
+  "target_reference": "tienda-frontend:lab4",
+  "source_image": {
+    "identity": {
+      "id": "sha256:15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00",
+      "tags": [
+        "lab4"
+      ],
+      "names": [
+        "tienda-frontend:lab4"
+      ]
+    },
+    "size": 0,
+    "size_human": "0 B",
+    "create_time": "2025-11-17T02:35:44Z",
+    "maintainers": [
+      "NGINX Docker Maintainers <docker-maint@nginx.com>"
+    ],
+    "runtime_name": "docker",
+    "architecture": "arm64",
+    "user": "nginx-app",
+    "exposed_ports": [
+      "80/tcp",
+      "8080/tcp"
+    ],
+    "os": "linux",
+    "labels": {
+      "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+    },
+    "env_vars": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "NGINX_VERSION=1.25.3",
+      "PKG_RELEASE=1",
+      "NJS_VERSION=0.8.2"
+    ],
+    "distro": {
+      "name": "Alpine Linux",
+      "version": "3.18.6",
+      "display_name": "Alpine Linux v3.18"
+    },
+    "container_entry": {
+      "entrypoint": [
+        "/docker-entrypoint.sh"
+      ],
+      "cmd": [
+        "nginx",
+        "-g",
+        "daemon off;"
+      ],
+      "exe_path": "/docker-entrypoint.sh",
+      "full_exe_path": {
+        "name": "/docker-entrypoint.sh",
+        "layer": 2
+      },
+      "exe_args": [
+        "nginx",
+        "-g",
+        "daemon off;"
+      ]
+    }
+  },
+  "artifact_location": "/opt/homebrew/bin/.mint-state/images/15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00/artifacts",
+  "image_report": {
+    "stats": {
+      "duplicate_file_count": 17,
+      "duplicate_file_total_count": 66,
+      "duplicate_file_size": 21622,
+      "duplicate_file_total_size": 47054,
+      "duplicate_file_wasted_size": 25432,
+      "deleted_count": 0,
+      "deleted_dir_content_count": 0,
+      "deleted_dir_count": 0,
+      "deleted_file_count": 0,
+      "deleted_link_count": 0,
+      "deleted_file_size": 0,
+      "sticky_count": 2
+    },
+    "duplicates": {
+      "053a92f87fd4532850bb31f0881978efe0532ae5": {
+        "file_count": 2,
+        "file_size": 451,
+        "all_file_size": 902,
+        "wasted_size": 451,
+        "files": {
+          "/etc/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub": 0,
+          "/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub": 0
+        }
+      },
+      "23d0f2ea1af269c2f66165e0f8a944e96bf011de": {
+        "file_count": 2,
+        "file_size": 800,
+        "all_file_size": 1600,
+        "wasted_size": 800,
+        "files": {
+          "/etc/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub": 0,
+          "/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub": 0
+        }
+      },
+      "258ab61690a3d3c96c2447483f55c6761ed21b01": {
+        "file_count": 2,
+        "file_size": 422,
+        "all_file_size": 844,
+        "wasted_size": 422,
+        "files": {
+          "/etc/shadow": 0,
+          "/etc/shadow-": 1
+        }
+      },
+      "39ac5d72c6ba018a0f74b8b453894edc9db07b5f": {
+        "file_count": 2,
+        "file_size": 451,
+        "all_file_size": 902,
+        "wasted_size": 451,
+        "files": {
+          "/etc/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub": 0,
+          "/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub": 0
+        }
+      },
+      "433d2b191f2665b1a6a4bd0eaf7921f84c2de195": {
+        "file_count": 8,
+        "file_size": 52,
+        "all_file_size": 416,
+        "wasted_size": 364,
+        "files": {
+          "/usr/share/X11/locale/ja_JP.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/km_KH.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/ko_KR.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/ru_RU.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/th_TH.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/zh_CN.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/zh_HK.UTF-8/Compose": 7,
+          "/usr/share/X11/locale/zh_TW.UTF-8/Compose": 7
+        }
+      },
+      "4dc86eb8b51fbabd22cef7d9419c6037f2c9841f": {
+        "file_count": 2,
+        "file_size": 1172,
+        "all_file_size": 2344,
+        "wasted_size": 1172,
+        "files": {
+          "/etc/passwd": 0,
+          "/etc/passwd-": 1
+        }
+      },
+      "57f6b93fda4a4496fab62844ddef0eeb168f80b5": {
+        "file_count": 2,
+        "file_size": 800,
+        "all_file_size": 1600,
+        "wasted_size": 800,
+        "files": {
+          "/etc/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub": 0,
+          "/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub": 0
+        }
+      },
+      "5b17a76b48ade1e757adb632c079b741781bcba9": {
+        "file_count": 2,
+        "file_size": 299,
+        "all_file_size": 598,
+        "wasted_size": 299,
+        "files": {
+          "/usr/share/X11/locale/km_KH.UTF-8/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/sr_RS.UTF-8/XI18N_OBJS": 7
+        }
+      },
+      "6d5dc22b2f25065920239ea92b21781ca6add33a": {
+        "file_count": 2,
+        "file_size": 1225,
+        "all_file_size": 2450,
+        "wasted_size": 1225,
+        "files": {
+          "/etc/passwd": 1,
+          "/etc/passwd-": 8
+        }
+      },
+      "73f16b16172aafe4bd0ccf1720620284b7c14679": {
+        "file_count": 2,
+        "file_size": 449,
+        "all_file_size": 898,
+        "wasted_size": 449,
+        "files": {
+          "/etc/shadow": 1,
+          "/etc/shadow-": 8
+        }
+      },
+      "7740c3e2e54504e3735d505c062a54d20bb5d263": {
+        "file_count": 2,
+        "file_size": 340,
+        "all_file_size": 680,
+        "wasted_size": 340,
+        "files": {
+          "/usr/share/X11/locale/C/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/iso8859-1/XI18N_OBJS": 7
+        }
+      },
+      "a2587c4e97408b64274e5e052b74e3754892c13a": {
+        "file_count": 2,
+        "file_size": 412,
+        "all_file_size": 824,
+        "wasted_size": 412,
+        "files": {
+          "/etc/ssl/ct_log_list.cnf": 0,
+          "/etc/ssl/ct_log_list.cnf.dist": 0
+        }
+      },
+      "c22e9d6430e914e1a6b72b22093b3cab5338f1cc": {
+        "file_count": 2,
+        "file_size": 12324,
+        "all_file_size": 24648,
+        "wasted_size": 12324,
+        "files": {
+          "/etc/ssl/openssl.cnf": 0,
+          "/etc/ssl/openssl.cnf.dist": 0
+        }
+      },
+      "c77edc36f505f284455177a0abf04c7db4d9fccf": {
+        "file_count": 5,
+        "file_size": 248,
+        "all_file_size": 1240,
+        "wasted_size": 992,
+        "files": {
+          "/usr/share/X11/locale/iso8859-13/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/iso8859-2/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/iso8859-5/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/iso8859-7/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/iso8859-9/XI18N_OBJS": 7
+        }
+      },
+      "da39a3ee5e6b4b0d3255bfef95601890afd80709": {
+        "file_count": 23,
+        "file_size": 0,
+        "all_file_size": 0,
+        "wasted_size": 0,
+        "files": {
+          "/lib/apk/db/lock": 0,
+          "/run/nginx.pid": 8,
+          "/usr/share/X11/locale/C/Compose": 7,
+          "/usr/share/X11/locale/am_ET.UTF-8/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/am_ET.UTF-8/XLC_LOCALE": 7,
+          "/usr/share/X11/locale/cs_CZ.UTF-8/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/cs_CZ.UTF-8/XLC_LOCALE": 7,
+          "/usr/share/X11/locale/el_GR.UTF-8/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/el_GR.UTF-8/XLC_LOCALE": 7,
+          "/usr/share/X11/locale/fi_FI.UTF-8/XI18N_OBJS": 7,
+          "/usr/share/X11/locale/fi_FI.UTF-8/XLC_LOCALE": 7,
+          "/usr/share/X11/locale/iscii-dev/Compose": 7,
+          "/usr/share/X11/locale/isiri-3342/Compose": 7,
+          "/usr/share/X11/locale/iso8859-11/Compose": 7,
+          "/usr/share/X11/locale/km_KH.UTF-8/XLC_LOCALE": 7,
+          "/usr/share/X11/locale/microsoft-cp1251/Compose": 7,
+          "/usr/share/X11/locale/microsoft-cp1255/Compose": 7,
+          "/usr/share/X11/locale/microsoft-cp1256/Compose": 7,
+          "/usr/share/X11/locale/nokhchi-1/Compose": 7,
+          "/usr/share/X11/locale/sr_RS.UTF-8/XLC_LOCALE": 7,
+          "/usr/share/X11/locale/tatar-cyr/Compose": 7,
+          "/usr/share/X11/locale/th_TH/Compose": 7,
+          "/usr/share/X11/locale/tscii-0/Compose": 7
+        }
+      },
+      "de1241307014aae3dba798e900f163408d98d6f4": {
+        "file_count": 2,
+        "file_size": 800,
+        "all_file_size": 1600,
+        "wasted_size": 800,
+        "files": {
+          "/etc/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub": 0,
+          "/usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub": 0
+        }
+      },
+      "e82c14a34d31e68cfa93c3844faf064825c71b6d": {
+        "file_count": 4,
+        "file_size": 1377,
+        "all_file_size": 5508,
+        "wasted_size": 4131,
+        "files": {
+          "/usr/share/licenses/nginx-module-geoip/COPYRIGHT": 7,
+          "/usr/share/licenses/nginx-module-image-filter/COPYRIGHT": 7,
+          "/usr/share/licenses/nginx-module-xslt/COPYRIGHT": 7,
+          "/usr/share/licenses/nginx/COPYRIGHT": 1
+        }
+      }
+    },
+    "special_perms": {
+      "sticky": [
+        "/tmp",
+        "/var/tmp"
+      ]
+    },
+    "shells": [
+      {
+        "full_name": "Bourne shell",
+        "short_name": "sh",
+        "exe_path": "/bin/sh",
+        "link_path": "/bin/busybox",
+        "verified": true
+      },
+      {
+        "full_name": "Ash shell",
+        "short_name": "ash",
+        "exe_path": "/bin/ash",
+        "link_path": "/bin/busybox",
+        "verified": true
+      }
+    ],
+    "certs": {
+      "bundles": [
+        "/etc/ssl/cert.pem",
+        "/etc/ssl/certs/ca-certificates.crt"
+      ],
+      "links": {
+        "/etc/ssl/certs/ca-cert-ACCVRAIZ1.pem": "/usr/share/ca-certificates/mozilla/ACCVRAIZ1.crt",
+        "/etc/ssl/certs/ca-cert-AC_RAIZ_FNMT-RCM.pem": "/usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM.crt",
+        "/etc/ssl/certs/ca-cert-AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem": "/usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.crt",
+        "/etc/ssl/certs/ca-cert-ANF_Secure_Server_Root_CA.pem": "/usr/share/ca-certificates/mozilla/ANF_Secure_Server_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-Actalis_Authentication_Root_CA.pem": "/usr/share/ca-certificates/mozilla/Actalis_Authentication_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-AffirmTrust_Commercial.pem": "/usr/share/ca-certificates/mozilla/AffirmTrust_Commercial.crt",
+        "/etc/ssl/certs/ca-cert-AffirmTrust_Networking.pem": "/usr/share/ca-certificates/mozilla/AffirmTrust_Networking.crt",
+        "/etc/ssl/certs/ca-cert-AffirmTrust_Premium.pem": "/usr/share/ca-certificates/mozilla/AffirmTrust_Premium.crt",
+        "/etc/ssl/certs/ca-cert-AffirmTrust_Premium_ECC.pem": "/usr/share/ca-certificates/mozilla/AffirmTrust_Premium_ECC.crt",
+        "/etc/ssl/certs/ca-cert-Amazon_Root_CA_1.pem": "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_1.crt",
+        "/etc/ssl/certs/ca-cert-Amazon_Root_CA_2.pem": "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_2.crt",
+        "/etc/ssl/certs/ca-cert-Amazon_Root_CA_3.pem": "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_3.crt",
+        "/etc/ssl/certs/ca-cert-Amazon_Root_CA_4.pem": "/usr/share/ca-certificates/mozilla/Amazon_Root_CA_4.crt",
+        "/etc/ssl/certs/ca-cert-Atos_TrustedRoot_2011.pem": "/usr/share/ca-certificates/mozilla/Atos_TrustedRoot_2011.crt",
+        "/etc/ssl/certs/ca-cert-Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem": "/usr/share/ca-certificates/mozilla/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.crt",
+        "/etc/ssl/certs/ca-cert-BJCA_Global_Root_CA1.pem": "/usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA1.crt",
+        "/etc/ssl/certs/ca-cert-BJCA_Global_Root_CA2.pem": "/usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA2.crt",
+        "/etc/ssl/certs/ca-cert-Baltimore_CyberTrust_Root.pem": "/usr/share/ca-certificates/mozilla/Baltimore_CyberTrust_Root.crt",
+        "/etc/ssl/certs/ca-cert-Buypass_Class_2_Root_CA.pem": "/usr/share/ca-certificates/mozilla/Buypass_Class_2_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-Buypass_Class_3_Root_CA.pem": "/usr/share/ca-certificates/mozilla/Buypass_Class_3_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-CA_Disig_Root_R2.pem": "/usr/share/ca-certificates/mozilla/CA_Disig_Root_R2.crt",
+        "/etc/ssl/certs/ca-cert-CFCA_EV_ROOT.pem": "/usr/share/ca-certificates/mozilla/CFCA_EV_ROOT.crt",
+        "/etc/ssl/certs/ca-cert-COMODO_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/COMODO_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-COMODO_ECC_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/COMODO_ECC_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-COMODO_RSA_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/COMODO_RSA_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-Certainly_Root_E1.pem": "/usr/share/ca-certificates/mozilla/Certainly_Root_E1.crt",
+        "/etc/ssl/certs/ca-cert-Certainly_Root_R1.pem": "/usr/share/ca-certificates/mozilla/Certainly_Root_R1.crt",
+        "/etc/ssl/certs/ca-cert-Certigna.pem": "/usr/share/ca-certificates/mozilla/Certigna.crt",
+        "/etc/ssl/certs/ca-cert-Certigna_Root_CA.pem": "/usr/share/ca-certificates/mozilla/Certigna_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-Certum_EC-384_CA.pem": "/usr/share/ca-certificates/mozilla/Certum_EC-384_CA.crt",
+        "/etc/ssl/certs/ca-cert-Certum_Trusted_Network_CA.pem": "/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt",
+        "/etc/ssl/certs/ca-cert-Certum_Trusted_Network_CA_2.pem": "/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA_2.crt",
+        "/etc/ssl/certs/ca-cert-Certum_Trusted_Root_CA.pem": "/usr/share/ca-certificates/mozilla/Certum_Trusted_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-Comodo_AAA_Services_root.pem": "/usr/share/ca-certificates/mozilla/Comodo_AAA_Services_root.crt",
+        "/etc/ssl/certs/ca-cert-D-TRUST_BR_Root_CA_1_2020.pem": "/usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_1_2020.crt",
+        "/etc/ssl/certs/ca-cert-D-TRUST_EV_Root_CA_1_2020.pem": "/usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_1_2020.crt",
+        "/etc/ssl/certs/ca-cert-D-TRUST_Root_Class_3_CA_2_2009.pem": "/usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_2009.crt",
+        "/etc/ssl/certs/ca-cert-D-TRUST_Root_Class_3_CA_2_EV_2009.pem": "/usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_EV_2009.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Assured_ID_Root_CA.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Assured_ID_Root_G2.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G2.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Assured_ID_Root_G3.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G3.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Global_Root_CA.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Global_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Global_Root_G2.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G2.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Global_Root_G3.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G3.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_High_Assurance_EV_Root_CA.pem": "/usr/share/ca-certificates/mozilla/DigiCert_High_Assurance_EV_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_TLS_ECC_P384_Root_G5.pem": "/usr/share/ca-certificates/mozilla/DigiCert_TLS_ECC_P384_Root_G5.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_TLS_RSA4096_Root_G5.pem": "/usr/share/ca-certificates/mozilla/DigiCert_TLS_RSA4096_Root_G5.crt",
+        "/etc/ssl/certs/ca-cert-DigiCert_Trusted_Root_G4.pem": "/usr/share/ca-certificates/mozilla/DigiCert_Trusted_Root_G4.crt",
+        "/etc/ssl/certs/ca-cert-E-Tugra_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/E-Tugra_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-E-Tugra_Global_Root_CA_ECC_v3.pem": "/usr/share/ca-certificates/mozilla/E-Tugra_Global_Root_CA_ECC_v3.crt",
+        "/etc/ssl/certs/ca-cert-E-Tugra_Global_Root_CA_RSA_v3.pem": "/usr/share/ca-certificates/mozilla/E-Tugra_Global_Root_CA_RSA_v3.crt",
+        "/etc/ssl/certs/ca-cert-Entrust.net_Premium_2048_Secure_Server_CA.pem": "/usr/share/ca-certificates/mozilla/Entrust.net_Premium_2048_Secure_Server_CA.crt",
+        "/etc/ssl/certs/ca-cert-Entrust_Root_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-Entrust_Root_Certification_Authority_-_EC1.pem": "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_EC1.crt",
+        "/etc/ssl/certs/ca-cert-Entrust_Root_Certification_Authority_-_G2.pem": "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_G2.crt",
+        "/etc/ssl/certs/ca-cert-Entrust_Root_Certification_Authority_-_G4.pem": "/usr/share/ca-certificates/mozilla/Entrust_Root_Certification_Authority_-_G4.crt",
+        "/etc/ssl/certs/ca-cert-GDCA_TrustAUTH_R5_ROOT.pem": "/usr/share/ca-certificates/mozilla/GDCA_TrustAUTH_R5_ROOT.crt",
+        "/etc/ssl/certs/ca-cert-GLOBALTRUST_2020.pem": "/usr/share/ca-certificates/mozilla/GLOBALTRUST_2020.crt",
+        "/etc/ssl/certs/ca-cert-GTS_Root_R1.pem": "/usr/share/ca-certificates/mozilla/GTS_Root_R1.crt",
+        "/etc/ssl/certs/ca-cert-GTS_Root_R2.pem": "/usr/share/ca-certificates/mozilla/GTS_Root_R2.crt",
+        "/etc/ssl/certs/ca-cert-GTS_Root_R3.pem": "/usr/share/ca-certificates/mozilla/GTS_Root_R3.crt",
+        "/etc/ssl/certs/ca-cert-GTS_Root_R4.pem": "/usr/share/ca-certificates/mozilla/GTS_Root_R4.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_ECC_Root_CA_-_R4.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R4.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_ECC_Root_CA_-_R5.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R5.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_Root_CA.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_Root_CA_-_R3.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R3.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_Root_CA_-_R6.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R6.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_Root_E46.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_Root_E46.crt",
+        "/etc/ssl/certs/ca-cert-GlobalSign_Root_R46.pem": "/usr/share/ca-certificates/mozilla/GlobalSign_Root_R46.crt",
+        "/etc/ssl/certs/ca-cert-Go_Daddy_Class_2_CA.pem": "/usr/share/ca-certificates/mozilla/Go_Daddy_Class_2_CA.crt",
+        "/etc/ssl/certs/ca-cert-Go_Daddy_Root_Certificate_Authority_-_G2.pem": "/usr/share/ca-certificates/mozilla/Go_Daddy_Root_Certificate_Authority_-_G2.crt",
+        "/etc/ssl/certs/ca-cert-HARICA_TLS_ECC_Root_CA_2021.pem": "/usr/share/ca-certificates/mozilla/HARICA_TLS_ECC_Root_CA_2021.crt",
+        "/etc/ssl/certs/ca-cert-HARICA_TLS_RSA_Root_CA_2021.pem": "/usr/share/ca-certificates/mozilla/HARICA_TLS_RSA_Root_CA_2021.crt",
+        "/etc/ssl/certs/ca-cert-Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem": "/usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.crt",
+        "/etc/ssl/certs/ca-cert-Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem": "/usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_RootCA_2015.crt",
+        "/etc/ssl/certs/ca-cert-HiPKI_Root_CA_-_G1.pem": "/usr/share/ca-certificates/mozilla/HiPKI_Root_CA_-_G1.crt",
+        "/etc/ssl/certs/ca-cert-Hongkong_Post_Root_CA_1.pem": "/usr/share/ca-certificates/mozilla/Hongkong_Post_Root_CA_1.crt",
+        "/etc/ssl/certs/ca-cert-Hongkong_Post_Root_CA_3.pem": "/usr/share/ca-certificates/mozilla/Hongkong_Post_Root_CA_3.crt",
+        "/etc/ssl/certs/ca-cert-ISRG_Root_X1.pem": "/usr/share/ca-certificates/mozilla/ISRG_Root_X1.crt",
+        "/etc/ssl/certs/ca-cert-ISRG_Root_X2.pem": "/usr/share/ca-certificates/mozilla/ISRG_Root_X2.crt",
+        "/etc/ssl/certs/ca-cert-IdenTrust_Commercial_Root_CA_1.pem": "/usr/share/ca-certificates/mozilla/IdenTrust_Commercial_Root_CA_1.crt",
+        "/etc/ssl/certs/ca-cert-IdenTrust_Public_Sector_Root_CA_1.pem": "/usr/share/ca-certificates/mozilla/IdenTrust_Public_Sector_Root_CA_1.crt",
+        "/etc/ssl/certs/ca-cert-Izenpe.com.pem": "/usr/share/ca-certificates/mozilla/Izenpe.com.crt",
+        "/etc/ssl/certs/ca-cert-Microsec_e-Szigno_Root_CA_2009.pem": "/usr/share/ca-certificates/mozilla/Microsec_e-Szigno_Root_CA_2009.crt",
+        "/etc/ssl/certs/ca-cert-Microsoft_ECC_Root_Certificate_Authority_2017.pem": "/usr/share/ca-certificates/mozilla/Microsoft_ECC_Root_Certificate_Authority_2017.crt",
+        "/etc/ssl/certs/ca-cert-Microsoft_RSA_Root_Certificate_Authority_2017.pem": "/usr/share/ca-certificates/mozilla/Microsoft_RSA_Root_Certificate_Authority_2017.crt",
+        "/etc/ssl/certs/ca-cert-NAVER_Global_Root_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/NAVER_Global_Root_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem": "/usr/share/ca-certificates/mozilla/NetLock_Arany_=Class_Gold=_Főtanúsítvány.crt",
+        "/etc/ssl/certs/ca-cert-OISTE_WISeKey_Global_Root_GB_CA.pem": "/usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GB_CA.crt",
+        "/etc/ssl/certs/ca-cert-OISTE_WISeKey_Global_Root_GC_CA.pem": "/usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GC_CA.crt",
+        "/etc/ssl/certs/ca-cert-QuoVadis_Root_CA_1_G3.pem": "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_1_G3.crt",
+        "/etc/ssl/certs/ca-cert-QuoVadis_Root_CA_2.pem": "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2.crt",
+        "/etc/ssl/certs/ca-cert-QuoVadis_Root_CA_2_G3.pem": "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2_G3.crt",
+        "/etc/ssl/certs/ca-cert-QuoVadis_Root_CA_3.pem": "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3.crt",
+        "/etc/ssl/certs/ca-cert-QuoVadis_Root_CA_3_G3.pem": "/usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3_G3.crt",
+        "/etc/ssl/certs/ca-cert-SSL.com_EV_Root_Certification_Authority_ECC.pem": "/usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_ECC.crt",
+        "/etc/ssl/certs/ca-cert-SSL.com_EV_Root_Certification_Authority_RSA_R2.pem": "/usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_RSA_R2.crt",
+        "/etc/ssl/certs/ca-cert-SSL.com_Root_Certification_Authority_ECC.pem": "/usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_ECC.crt",
+        "/etc/ssl/certs/ca-cert-SSL.com_Root_Certification_Authority_RSA.pem": "/usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_RSA.crt",
+        "/etc/ssl/certs/ca-cert-SZAFIR_ROOT_CA2.pem": "/usr/share/ca-certificates/mozilla/SZAFIR_ROOT_CA2.crt",
+        "/etc/ssl/certs/ca-cert-SecureSign_RootCA11.pem": "/usr/share/ca-certificates/mozilla/SecureSign_RootCA11.crt",
+        "/etc/ssl/certs/ca-cert-SecureTrust_CA.pem": "/usr/share/ca-certificates/mozilla/SecureTrust_CA.crt",
+        "/etc/ssl/certs/ca-cert-Secure_Global_CA.pem": "/usr/share/ca-certificates/mozilla/Secure_Global_CA.crt",
+        "/etc/ssl/certs/ca-cert-Security_Communication_ECC_RootCA1.pem": "/usr/share/ca-certificates/mozilla/Security_Communication_ECC_RootCA1.crt",
+        "/etc/ssl/certs/ca-cert-Security_Communication_RootCA2.pem": "/usr/share/ca-certificates/mozilla/Security_Communication_RootCA2.crt",
+        "/etc/ssl/certs/ca-cert-Security_Communication_RootCA3.pem": "/usr/share/ca-certificates/mozilla/Security_Communication_RootCA3.crt",
+        "/etc/ssl/certs/ca-cert-Security_Communication_Root_CA.pem": "/usr/share/ca-certificates/mozilla/Security_Communication_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-Starfield_Class_2_CA.pem": "/usr/share/ca-certificates/mozilla/Starfield_Class_2_CA.crt",
+        "/etc/ssl/certs/ca-cert-Starfield_Root_Certificate_Authority_-_G2.pem": "/usr/share/ca-certificates/mozilla/Starfield_Root_Certificate_Authority_-_G2.crt",
+        "/etc/ssl/certs/ca-cert-Starfield_Services_Root_Certificate_Authority_-_G2.pem": "/usr/share/ca-certificates/mozilla/Starfield_Services_Root_Certificate_Authority_-_G2.crt",
+        "/etc/ssl/certs/ca-cert-SwissSign_Gold_CA_-_G2.pem": "/usr/share/ca-certificates/mozilla/SwissSign_Gold_CA_-_G2.crt",
+        "/etc/ssl/certs/ca-cert-SwissSign_Silver_CA_-_G2.pem": "/usr/share/ca-certificates/mozilla/SwissSign_Silver_CA_-_G2.crt",
+        "/etc/ssl/certs/ca-cert-T-TeleSec_GlobalRoot_Class_2.pem": "/usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_2.crt",
+        "/etc/ssl/certs/ca-cert-T-TeleSec_GlobalRoot_Class_3.pem": "/usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_3.crt",
+        "/etc/ssl/certs/ca-cert-TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem": "/usr/share/ca-certificates/mozilla/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.crt",
+        "/etc/ssl/certs/ca-cert-TWCA_Global_Root_CA.pem": "/usr/share/ca-certificates/mozilla/TWCA_Global_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-TWCA_Root_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/TWCA_Root_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-TeliaSonera_Root_CA_v1.pem": "/usr/share/ca-certificates/mozilla/TeliaSonera_Root_CA_v1.crt",
+        "/etc/ssl/certs/ca-cert-Telia_Root_CA_v2.pem": "/usr/share/ca-certificates/mozilla/Telia_Root_CA_v2.crt",
+        "/etc/ssl/certs/ca-cert-TrustCor_ECA-1.pem": "/usr/share/ca-certificates/mozilla/TrustCor_ECA-1.crt",
+        "/etc/ssl/certs/ca-cert-TrustCor_RootCert_CA-1.pem": "/usr/share/ca-certificates/mozilla/TrustCor_RootCert_CA-1.crt",
+        "/etc/ssl/certs/ca-cert-TrustCor_RootCert_CA-2.pem": "/usr/share/ca-certificates/mozilla/TrustCor_RootCert_CA-2.crt",
+        "/etc/ssl/certs/ca-cert-Trustwave_Global_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/Trustwave_Global_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-Trustwave_Global_ECC_P256_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/Trustwave_Global_ECC_P256_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-Trustwave_Global_ECC_P384_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/Trustwave_Global_ECC_P384_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-TunTrust_Root_CA.pem": "/usr/share/ca-certificates/mozilla/TunTrust_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-UCA_Extended_Validation_Root.pem": "/usr/share/ca-certificates/mozilla/UCA_Extended_Validation_Root.crt",
+        "/etc/ssl/certs/ca-cert-UCA_Global_G2_Root.pem": "/usr/share/ca-certificates/mozilla/UCA_Global_G2_Root.crt",
+        "/etc/ssl/certs/ca-cert-USERTrust_ECC_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/USERTrust_ECC_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-USERTrust_RSA_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/USERTrust_RSA_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-XRamp_Global_CA_Root.pem": "/usr/share/ca-certificates/mozilla/XRamp_Global_CA_Root.crt",
+        "/etc/ssl/certs/ca-cert-certSIGN_ROOT_CA.pem": "/usr/share/ca-certificates/mozilla/certSIGN_ROOT_CA.crt",
+        "/etc/ssl/certs/ca-cert-certSIGN_Root_CA_G2.pem": "/usr/share/ca-certificates/mozilla/certSIGN_Root_CA_G2.crt",
+        "/etc/ssl/certs/ca-cert-e-Szigno_Root_CA_2017.pem": "/usr/share/ca-certificates/mozilla/e-Szigno_Root_CA_2017.crt",
+        "/etc/ssl/certs/ca-cert-ePKI_Root_Certification_Authority.pem": "/usr/share/ca-certificates/mozilla/ePKI_Root_Certification_Authority.crt",
+        "/etc/ssl/certs/ca-cert-emSign_ECC_Root_CA_-_C3.pem": "/usr/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_C3.crt",
+        "/etc/ssl/certs/ca-cert-emSign_ECC_Root_CA_-_G3.pem": "/usr/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_G3.crt",
+        "/etc/ssl/certs/ca-cert-emSign_Root_CA_-_C1.pem": "/usr/share/ca-certificates/mozilla/emSign_Root_CA_-_C1.crt",
+        "/etc/ssl/certs/ca-cert-emSign_Root_CA_-_G1.pem": "/usr/share/ca-certificates/mozilla/emSign_Root_CA_-_G1.crt",
+        "/etc/ssl/certs/ca-cert-vTrus_ECC_Root_CA.pem": "/usr/share/ca-certificates/mozilla/vTrus_ECC_Root_CA.crt",
+        "/etc/ssl/certs/ca-cert-vTrus_Root_CA.pem": "/usr/share/ca-certificates/mozilla/vTrus_Root_CA.crt"
+      },
+      "hashes": {
+        "/etc/ssl/certs/002c0b4f.0": "ca-cert-GlobalSign_Root_R46.pem",
+        "/etc/ssl/certs/0179095f.0": "ca-cert-BJCA_Global_Root_CA1.pem",
+        "/etc/ssl/certs/02265526.0": "ca-cert-Entrust_Root_Certification_Authority_-_G2.pem",
+        "/etc/ssl/certs/062cdee6.0": "ca-cert-GlobalSign_Root_CA_-_R3.pem",
+        "/etc/ssl/certs/064e0aa9.0": "ca-cert-QuoVadis_Root_CA_2_G3.pem",
+        "/etc/ssl/certs/06dc52d5.0": "ca-cert-SSL.com_EV_Root_Certification_Authority_RSA_R2.pem",
+        "/etc/ssl/certs/08063a00.0": "ca-cert-Security_Communication_RootCA3.pem",
+        "/etc/ssl/certs/09789157.0": "ca-cert-Starfield_Services_Root_Certificate_Authority_-_G2.pem",
+        "/etc/ssl/certs/0a775a30.0": "ca-cert-GTS_Root_R3.pem",
+        "/etc/ssl/certs/0b1b94ef.0": "ca-cert-CFCA_EV_ROOT.pem",
+        "/etc/ssl/certs/0b9bc432.0": "ca-cert-ISRG_Root_X2.pem",
+        "/etc/ssl/certs/0bf05006.0": "ca-cert-SSL.com_Root_Certification_Authority_ECC.pem",
+        "/etc/ssl/certs/0f5dc4f3.0": "ca-cert-UCA_Extended_Validation_Root.pem",
+        "/etc/ssl/certs/0f6fa695.0": "ca-cert-GDCA_TrustAUTH_R5_ROOT.pem",
+        "/etc/ssl/certs/1001acf7.0": "ca-cert-GTS_Root_R1.pem",
+        "/etc/ssl/certs/106f3e4d.0": "ca-cert-Entrust_Root_Certification_Authority_-_EC1.pem",
+        "/etc/ssl/certs/14bc7599.0": "ca-cert-emSign_ECC_Root_CA_-_G3.pem",
+        "/etc/ssl/certs/18856ac4.0": "ca-cert-SecureSign_RootCA11.pem",
+        "/etc/ssl/certs/1d3472b9.0": "ca-cert-GlobalSign_ECC_Root_CA_-_R5.pem",
+        "/etc/ssl/certs/1e08bfd1.0": "ca-cert-IdenTrust_Public_Sector_Root_CA_1.pem",
+        "/etc/ssl/certs/1e09d511.0": "ca-cert-T-TeleSec_GlobalRoot_Class_2.pem",
+        "/etc/ssl/certs/244b5494.0": "ca-cert-DigiCert_High_Assurance_EV_Root_CA.pem",
+        "/etc/ssl/certs/2923b3f9.0": "ca-cert-emSign_Root_CA_-_G1.pem",
+        "/etc/ssl/certs/2ae6433e.0": "ca-cert-CA_Disig_Root_R2.pem",
+        "/etc/ssl/certs/2b349938.0": "ca-cert-AffirmTrust_Commercial.pem",
+        "/etc/ssl/certs/32888f65.0": "ca-cert-Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem",
+        "/etc/ssl/certs/3513523f.0": "ca-cert-DigiCert_Global_Root_CA.pem",
+        "/etc/ssl/certs/3bde41ac.0": "ca-cert-Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem",
+        "/etc/ssl/certs/3e359ba6.0": "ca-cert-BJCA_Global_Root_CA2.pem",
+        "/etc/ssl/certs/3e44d2f7.0": "ca-cert-TrustCor_RootCert_CA-2.pem",
+        "/etc/ssl/certs/3e45d192.0": "ca-cert-Hongkong_Post_Root_CA_1.pem",
+        "/etc/ssl/certs/3fb36b73.0": "ca-cert-NAVER_Global_Root_Certification_Authority.pem",
+        "/etc/ssl/certs/40193066.0": "ca-cert-Certum_Trusted_Network_CA_2.pem",
+        "/etc/ssl/certs/4042bcee.0": "ca-cert-ISRG_Root_X1.pem",
+        "/etc/ssl/certs/40547a79.0": "ca-cert-COMODO_Certification_Authority.pem",
+        "/etc/ssl/certs/406c9bb1.0": "ca-cert-emSign_Root_CA_-_C1.pem",
+        "/etc/ssl/certs/48bec511.0": "ca-cert-Certum_Trusted_Network_CA.pem",
+        "/etc/ssl/certs/4b718d9b.0": "ca-cert-emSign_ECC_Root_CA_-_C3.pem",
+        "/etc/ssl/certs/4bfab552.0": "ca-cert-Starfield_Root_Certificate_Authority_-_G2.pem",
+        "/etc/ssl/certs/4f316efb.0": "ca-cert-SwissSign_Gold_CA_-_G2.pem",
+        "/etc/ssl/certs/5273a94c.0": "ca-cert-E-Tugra_Certification_Authority.pem",
+        "/etc/ssl/certs/5443e9e3.0": "ca-cert-T-TeleSec_GlobalRoot_Class_3.pem",
+        "/etc/ssl/certs/54657681.0": "ca-cert-Buypass_Class_2_Root_CA.pem",
+        "/etc/ssl/certs/57bcb2da.0": "ca-cert-SwissSign_Silver_CA_-_G2.pem",
+        "/etc/ssl/certs/5860aaa6.0": "ca-cert-Security_Communication_ECC_RootCA1.pem",
+        "/etc/ssl/certs/5931b5bc.0": "ca-cert-D-TRUST_EV_Root_CA_1_2020.pem",
+        "/etc/ssl/certs/5a7722fb.0": "ca-cert-E-Tugra_Global_Root_CA_ECC_v3.pem",
+        "/etc/ssl/certs/5ad8a5d6.0": "ca-cert-GlobalSign_Root_CA.pem",
+        "/etc/ssl/certs/5cd81ad7.0": "ca-cert-TeliaSonera_Root_CA_v1.pem",
+        "/etc/ssl/certs/5d3033c5.0": "ca-cert-TrustCor_RootCert_CA-1.pem",
+        "/etc/ssl/certs/5e98733a.0": "ca-cert-Entrust_Root_Certification_Authority_-_G4.pem",
+        "/etc/ssl/certs/5f15c80c.0": "ca-cert-TWCA_Global_Root_CA.pem",
+        "/etc/ssl/certs/5f618aec.0": "ca-cert-certSIGN_Root_CA_G2.pem",
+        "/etc/ssl/certs/607986c7.0": "ca-cert-DigiCert_Global_Root_G2.pem",
+        "/etc/ssl/certs/626dceaf.0": "ca-cert-GTS_Root_R2.pem",
+        "/etc/ssl/certs/653b494a.0": "ca-cert-Baltimore_CyberTrust_Root.pem",
+        "/etc/ssl/certs/66445960.0": "ca-cert-E-Tugra_Global_Root_CA_RSA_v3.pem",
+        "/etc/ssl/certs/68dd7389.0": "ca-cert-Hongkong_Post_Root_CA_3.pem",
+        "/etc/ssl/certs/6b99d060.0": "ca-cert-Entrust_Root_Certification_Authority.pem",
+        "/etc/ssl/certs/6d41d539.0": "ca-cert-Amazon_Root_CA_2.pem",
+        "/etc/ssl/certs/6fa5da56.0": "ca-cert-SSL.com_Root_Certification_Authority_RSA.pem",
+        "/etc/ssl/certs/706f604c.0": "ca-cert-XRamp_Global_CA_Root.pem",
+        "/etc/ssl/certs/749e9e03.0": "ca-cert-QuoVadis_Root_CA_1_G3.pem",
+        "/etc/ssl/certs/75d1b2ed.0": "ca-cert-DigiCert_Trusted_Root_G4.pem",
+        "/etc/ssl/certs/76faf6c0.0": "ca-cert-QuoVadis_Root_CA_3.pem",
+        "/etc/ssl/certs/7719f463.0": "ca-cert-Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem",
+        "/etc/ssl/certs/773e07ad.0": "ca-cert-OISTE_WISeKey_Global_Root_GC_CA.pem",
+        "/etc/ssl/certs/7a3adc42.0": "ca-cert-vTrus_Root_CA.pem",
+        "/etc/ssl/certs/7a780d93.0": "ca-cert-Certainly_Root_R1.pem",
+        "/etc/ssl/certs/7aaf71c0.0": "ca-cert-TrustCor_ECA-1.pem",
+        "/etc/ssl/certs/7f3d5d1d.0": "ca-cert-DigiCert_Assured_ID_Root_G3.pem",
+        "/etc/ssl/certs/8160b96c.0": "ca-cert-Microsec_e-Szigno_Root_CA_2009.pem",
+        "/etc/ssl/certs/8508e720.0": "ca-cert-Certainly_Root_E1.pem",
+        "/etc/ssl/certs/8cb5ee0f.0": "ca-cert-Amazon_Root_CA_3.pem",
+        "/etc/ssl/certs/8d86cdd1.0": "ca-cert-certSIGN_ROOT_CA.pem",
+        "/etc/ssl/certs/8d89cda1.0": "ca-cert-Microsoft_ECC_Root_Certificate_Authority_2017.pem",
+        "/etc/ssl/certs/8f103249.0": "ca-cert-Telia_Root_CA_v2.pem",
+        "/etc/ssl/certs/90c5a3c8.0": "ca-cert-HiPKI_Root_CA_-_G1.pem",
+        "/etc/ssl/certs/930ac5d2.0": "ca-cert-Actalis_Authentication_Root_CA.pem",
+        "/etc/ssl/certs/93bc0acc.0": "ca-cert-AffirmTrust_Networking.pem",
+        "/etc/ssl/certs/9482e63a.0": "ca-cert-Certum_EC-384_CA.pem",
+        "/etc/ssl/certs/9846683b.0": "ca-cert-DigiCert_TLS_ECC_P384_Root_G5.pem",
+        "/etc/ssl/certs/988a38cb.0": "ca-cert-NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem",
+        "/etc/ssl/certs/9b5697b0.0": "ca-cert-Trustwave_Global_ECC_P256_Certification_Authority.pem",
+        "/etc/ssl/certs/9c8dfbd4.0": "ca-cert-AffirmTrust_Premium_ECC.pem",
+        "/etc/ssl/certs/9d04f354.0": "ca-cert-DigiCert_Assured_ID_Root_G2.pem",
+        "/etc/ssl/certs/9ef4a08a.0": "ca-cert-D-TRUST_BR_Root_CA_1_2020.pem",
+        "/etc/ssl/certs/9f727ac7.0": "ca-cert-HARICA_TLS_RSA_Root_CA_2021.pem",
+        "/etc/ssl/certs/a3418fda.0": "ca-cert-GTS_Root_R4.pem",
+        "/etc/ssl/certs/a94d09e5.0": "ca-cert-ACCVRAIZ1.pem",
+        "/etc/ssl/certs/aee5f10d.0": "ca-cert-Entrust.net_Premium_2048_Secure_Server_CA.pem",
+        "/etc/ssl/certs/b0e59380.0": "ca-cert-GlobalSign_ECC_Root_CA_-_R4.pem",
+        "/etc/ssl/certs/b1159c4c.0": "ca-cert-DigiCert_Assured_ID_Root_CA.pem",
+        "/etc/ssl/certs/b433981b.0": "ca-cert-ANF_Secure_Server_Root_CA.pem",
+        "/etc/ssl/certs/b66938e9.0": "ca-cert-Secure_Global_CA.pem",
+        "/etc/ssl/certs/b727005e.0": "ca-cert-AffirmTrust_Premium.pem",
+        "/etc/ssl/certs/b7a5b843.0": "ca-cert-TWCA_Root_Certification_Authority.pem",
+        "/etc/ssl/certs/b81b93f0.0": "ca-cert-AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem",
+        "/etc/ssl/certs/bf53fb88.0": "ca-cert-Microsoft_RSA_Root_Certificate_Authority_2017.pem",
+        "/etc/ssl/certs/c01eb047.0": "ca-cert-UCA_Global_G2_Root.pem",
+        "/etc/ssl/certs/c28a8a30.0": "ca-cert-D-TRUST_Root_Class_3_CA_2_2009.pem",
+        "/etc/ssl/certs/ca6e4ad9.0": "ca-cert-ePKI_Root_Certification_Authority.pem",
+        "/etc/ssl/certs/cbf06781.0": "ca-cert-Go_Daddy_Root_Certificate_Authority_-_G2.pem",
+        "/etc/ssl/certs/cc450945.0": "ca-cert-Izenpe.com.pem",
+        "/etc/ssl/certs/cd58d51e.0": "ca-cert-Security_Communication_RootCA2.pem",
+        "/etc/ssl/certs/cd8c0d63.0": "ca-cert-AC_RAIZ_FNMT-RCM.pem",
+        "/etc/ssl/certs/ce5e74ef.0": "ca-cert-Amazon_Root_CA_1.pem",
+        "/etc/ssl/certs/d4dae3dd.0": "ca-cert-D-TRUST_Root_Class_3_CA_2_EV_2009.pem",
+        "/etc/ssl/certs/d52c538d.0": "ca-cert-DigiCert_TLS_RSA4096_Root_G5.pem",
+        "/etc/ssl/certs/d6325660.0": "ca-cert-COMODO_RSA_Certification_Authority.pem",
+        "/etc/ssl/certs/d7e8dc79.0": "ca-cert-QuoVadis_Root_CA_2.pem",
+        "/etc/ssl/certs/d887a5bb.0": "ca-cert-Trustwave_Global_ECC_P384_Certification_Authority.pem",
+        "/etc/ssl/certs/dc4d6a89.0": "ca-cert-GlobalSign_Root_CA_-_R6.pem",
+        "/etc/ssl/certs/dd8e9d41.0": "ca-cert-DigiCert_Global_Root_G3.pem",
+        "/etc/ssl/certs/de6d66f3.0": "ca-cert-Amazon_Root_CA_4.pem",
+        "/etc/ssl/certs/e113c810.0": "ca-cert-Certigna.pem",
+        "/etc/ssl/certs/e18bfb83.0": "ca-cert-QuoVadis_Root_CA_3_G3.pem",
+        "/etc/ssl/certs/e35234b1.0": "ca-cert-Certum_Trusted_Root_CA.pem",
+        "/etc/ssl/certs/e36a6752.0": "ca-cert-Atos_TrustedRoot_2011.pem",
+        "/etc/ssl/certs/e73d606e.0": "ca-cert-OISTE_WISeKey_Global_Root_GB_CA.pem",
+        "/etc/ssl/certs/e868b802.0": "ca-cert-e-Szigno_Root_CA_2017.pem",
+        "/etc/ssl/certs/e8de2f56.0": "ca-cert-Buypass_Class_3_Root_CA.pem",
+        "/etc/ssl/certs/ecccd8db.0": "ca-cert-HARICA_TLS_ECC_Root_CA_2021.pem",
+        "/etc/ssl/certs/ed858448.0": "ca-cert-vTrus_ECC_Root_CA.pem",
+        "/etc/ssl/certs/ee64a828.0": "ca-cert-Comodo_AAA_Services_root.pem",
+        "/etc/ssl/certs/eed8c118.0": "ca-cert-COMODO_ECC_Certification_Authority.pem",
+        "/etc/ssl/certs/ef954a4e.0": "ca-cert-IdenTrust_Commercial_Root_CA_1.pem",
+        "/etc/ssl/certs/f081611a.0": "ca-cert-Go_Daddy_Class_2_CA.pem",
+        "/etc/ssl/certs/f0c70a8d.0": "ca-cert-SSL.com_EV_Root_Certification_Authority_ECC.pem",
+        "/etc/ssl/certs/f249de83.0": "ca-cert-Trustwave_Global_Certification_Authority.pem",
+        "/etc/ssl/certs/f30dd6ad.0": "ca-cert-USERTrust_ECC_Certification_Authority.pem",
+        "/etc/ssl/certs/f3377b1b.0": "ca-cert-Security_Communication_Root_CA.pem",
+        "/etc/ssl/certs/f387163d.0": "ca-cert-Starfield_Class_2_CA.pem",
+        "/etc/ssl/certs/f39fc864.0": "ca-cert-SecureTrust_CA.pem",
+        "/etc/ssl/certs/f51bb24c.0": "ca-cert-Certigna_Root_CA.pem",
+        "/etc/ssl/certs/fa5da96b.0": "ca-cert-GLOBALTRUST_2020.pem",
+        "/etc/ssl/certs/fc5a8f99.0": "ca-cert-USERTrust_RSA_Certification_Authority.pem",
+        "/etc/ssl/certs/fd64f3fc.0": "ca-cert-TunTrust_Root_CA.pem",
+        "/etc/ssl/certs/fe8a2cd8.0": "ca-cert-SZAFIR_ROOT_CA2.pem",
+        "/etc/ssl/certs/feffd413.0": "ca-cert-GlobalSign_Root_E46.pem",
+        "/etc/ssl/certs/ff34af3f.0": "ca-cert-TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem"
+      }
+    },
+    "ca_certs": {},
+    "identities": {
+      "users": {
+        "adm": {
+          "username": "adm",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 3,
+          "gid": 4,
+          "extra_info": "adm",
+          "home": "/var/adm",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "at": {
+          "username": "at",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 25,
+          "gid": 25,
+          "extra_info": "at",
+          "home": "/var/spool/cron/atjobs",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "bin": {
+          "username": "bin",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 1,
+          "gid": 1,
+          "extra_info": "bin",
+          "home": "/bin",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "cron": {
+          "username": "cron",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 16,
+          "gid": 16,
+          "extra_info": "cron",
+          "home": "/var/spool/cron",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "cyrus": {
+          "username": "cyrus",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 85,
+          "gid": 12,
+          "extra_info": "",
+          "home": "/usr/cyrus",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "daemon": {
+          "username": "daemon",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 2,
+          "gid": 2,
+          "extra_info": "daemon",
+          "home": "/sbin",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "ftp": {
+          "username": "ftp",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 21,
+          "gid": 21,
+          "extra_info": "",
+          "home": "/var/lib/ftp",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "games": {
+          "username": "games",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 35,
+          "gid": 35,
+          "extra_info": "games",
+          "home": "/usr/games",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "guest": {
+          "username": "guest",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 405,
+          "gid": 100,
+          "extra_info": "guest",
+          "home": "/dev/null",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "halt": {
+          "username": "halt",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 7,
+          "gid": 0,
+          "extra_info": "halt",
+          "home": "/sbin",
+          "shell": "/sbin/halt",
+          "no_login_shell": false,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "lp": {
+          "username": "lp",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 4,
+          "gid": 7,
+          "extra_info": "lp",
+          "home": "/var/spool/lpd",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "mail": {
+          "username": "mail",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 8,
+          "gid": 12,
+          "extra_info": "mail",
+          "home": "/var/mail",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "man": {
+          "username": "man",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 13,
+          "gid": 15,
+          "extra_info": "man",
+          "home": "/usr/man",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "news": {
+          "username": "news",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 9,
+          "gid": 13,
+          "extra_info": "news",
+          "home": "/usr/lib/news",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "nginx": {
+          "username": "nginx",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 101,
+          "gid": 101,
+          "extra_info": "nginx",
+          "home": "/var/cache/nginx",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": 19749,
+          "last_change_date": "2023-12-26T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": 99999,
+          "warning_period": 7,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "nobody": {
+          "username": "nobody",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 65534,
+          "gid": 65534,
+          "extra_info": "nobody",
+          "home": "/",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "ntp": {
+          "username": "ntp",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 123,
+          "gid": 123,
+          "extra_info": "NTP",
+          "home": "/var/empty",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "operator": {
+          "username": "operator",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 11,
+          "gid": 0,
+          "extra_info": "operator",
+          "home": "/root",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "postmaster": {
+          "username": "postmaster",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 14,
+          "gid": 12,
+          "extra_info": "postmaster",
+          "home": "/var/mail",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "root": {
+          "username": "root",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 0,
+          "gid": 0,
+          "extra_info": "root",
+          "home": "/root",
+          "shell": "/bin/ash",
+          "no_login_shell": false,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "shutdown": {
+          "username": "shutdown",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 6,
+          "gid": 0,
+          "extra_info": "shutdown",
+          "home": "/sbin",
+          "shell": "/sbin/shutdown",
+          "no_login_shell": false,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "smmsp": {
+          "username": "smmsp",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 209,
+          "gid": 209,
+          "extra_info": "smmsp",
+          "home": "/var/spool/mqueue",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "squid": {
+          "username": "squid",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 31,
+          "gid": 31,
+          "extra_info": "Squid",
+          "home": "/var/cache/squid",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "sshd": {
+          "username": "sshd",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 22,
+          "gid": 22,
+          "extra_info": "sshd",
+          "home": "/dev/null",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "sync": {
+          "username": "sync",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 5,
+          "gid": 0,
+          "extra_info": "sync",
+          "home": "/sbin",
+          "shell": "/bin/sync",
+          "no_login_shell": false,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "uucp": {
+          "username": "uucp",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 10,
+          "gid": 14,
+          "extra_info": "uucp",
+          "home": "/var/spool/uucppublic",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "vpopmail": {
+          "username": "vpopmail",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 89,
+          "gid": 89,
+          "extra_info": "",
+          "home": "/var/vpopmail",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        },
+        "xfs": {
+          "username": "xfs",
+          "passwd_password": "x",
+          "shadow_password": {
+            "no_password_login": true
+          },
+          "uid": 33,
+          "gid": 33,
+          "extra_info": "X Font Server",
+          "home": "/etc/X11/fs",
+          "shell": "/sbin/nologin",
+          "no_login_shell": true,
+          "last_change_raw": -1,
+          "last_change_date": "0001-01-01T00:00:00Z",
+          "minimum_age": 0,
+          "maximum_age": -1,
+          "warning_period": -1,
+          "inactive_days": -1,
+          "expiration_raw": -1,
+          "expiration_date": "0001-01-01T00:00:00Z"
+        }
+      },
+      "groups": {
+        "abuild": {
+          "name": "abuild",
+          "id": 300,
+          "members": null,
+          "password": "x"
+        },
+        "adm": {
+          "name": "adm",
+          "id": 4,
+          "members": [
+            "root",
+            "adm",
+            "daemon"
+          ],
+          "password": "x"
+        },
+        "at": {
+          "name": "at",
+          "id": 25,
+          "members": [
+            "at"
+          ],
+          "password": "x"
+        },
+        "audio": {
+          "name": "audio",
+          "id": 18,
+          "members": null,
+          "password": "x"
+        },
+        "bin": {
+          "name": "bin",
+          "id": 1,
+          "members": [
+            "root",
+            "bin",
+            "daemon"
+          ],
+          "password": "x"
+        },
+        "cdrom": {
+          "name": "cdrom",
+          "id": 19,
+          "members": null,
+          "password": "x"
+        },
+        "cdrw": {
+          "name": "cdrw",
+          "id": 80,
+          "members": null,
+          "password": "x"
+        },
+        "console": {
+          "name": "console",
+          "id": 17,
+          "members": null,
+          "password": "x"
+        },
+        "cron": {
+          "name": "cron",
+          "id": 16,
+          "members": [
+            "cron"
+          ],
+          "password": "x"
+        },
+        "daemon": {
+          "name": "daemon",
+          "id": 2,
+          "members": [
+            "root",
+            "bin",
+            "daemon"
+          ],
+          "password": "x"
+        },
+        "dialout": {
+          "name": "dialout",
+          "id": 20,
+          "members": [
+            "root"
+          ],
+          "password": "x"
+        },
+        "disk": {
+          "name": "disk",
+          "id": 6,
+          "members": [
+            "root",
+            "adm"
+          ],
+          "password": "x"
+        },
+        "floppy": {
+          "name": "floppy",
+          "id": 11,
+          "members": [
+            "root"
+          ],
+          "password": "x"
+        },
+        "ftp": {
+          "name": "ftp",
+          "id": 21,
+          "members": null,
+          "password": "x"
+        },
+        "games": {
+          "name": "games",
+          "id": 35,
+          "members": null,
+          "password": "x"
+        },
+        "input": {
+          "name": "input",
+          "id": 23,
+          "members": null,
+          "password": "x"
+        },
+        "kmem": {
+          "name": "kmem",
+          "id": 9,
+          "members": null,
+          "password": "x"
+        },
+        "kvm": {
+          "name": "kvm",
+          "id": 34,
+          "members": [
+            "kvm"
+          ],
+          "password": "x"
+        },
+        "locate": {
+          "name": "locate",
+          "id": 245,
+          "members": null,
+          "password": "x"
+        },
+        "lp": {
+          "name": "lp",
+          "id": 7,
+          "members": [
+            "lp"
+          ],
+          "password": "x"
+        },
+        "mail": {
+          "name": "mail",
+          "id": 12,
+          "members": [
+            "mail"
+          ],
+          "password": "x"
+        },
+        "man": {
+          "name": "man",
+          "id": 15,
+          "members": [
+            "man"
+          ],
+          "password": "x"
+        },
+        "mem": {
+          "name": "mem",
+          "id": 8,
+          "members": null,
+          "password": "x"
+        },
+        "netdev": {
+          "name": "netdev",
+          "id": 28,
+          "members": null,
+          "password": "x"
+        },
+        "news": {
+          "name": "news",
+          "id": 13,
+          "members": [
+            "news"
+          ],
+          "password": "x"
+        },
+        "nginx": {
+          "name": "nginx",
+          "id": 101,
+          "members": [
+            "nginx"
+          ],
+          "password": "x"
+        },
+        "nobody": {
+          "name": "nobody",
+          "id": 65534,
+          "members": null,
+          "password": "x"
+        },
+        "nofiles": {
+          "name": "nofiles",
+          "id": 200,
+          "members": null,
+          "password": "x"
+        },
+        "nogroup": {
+          "name": "nogroup",
+          "id": 65533,
+          "members": null,
+          "password": "x"
+        },
+        "ntp": {
+          "name": "ntp",
+          "id": 123,
+          "members": null,
+          "password": "x"
+        },
+        "ping": {
+          "name": "ping",
+          "id": 999,
+          "members": null,
+          "password": "x"
+        },
+        "readproc": {
+          "name": "readproc",
+          "id": 30,
+          "members": null,
+          "password": "x"
+        },
+        "root": {
+          "name": "root",
+          "id": 0,
+          "members": [
+            "root"
+          ],
+          "password": "x"
+        },
+        "shadow": {
+          "name": "shadow",
+          "id": 42,
+          "members": null,
+          "password": "x"
+        },
+        "smmsp": {
+          "name": "smmsp",
+          "id": 209,
+          "members": [
+            "smmsp"
+          ],
+          "password": "x"
+        },
+        "squid": {
+          "name": "squid",
+          "id": 31,
+          "members": [
+            "squid"
+          ],
+          "password": "x"
+        },
+        "sshd": {
+          "name": "sshd",
+          "id": 22,
+          "members": null,
+          "password": "x"
+        },
+        "sys": {
+          "name": "sys",
+          "id": 3,
+          "members": [
+            "root",
+            "bin",
+            "adm"
+          ],
+          "password": "x"
+        },
+        "tape": {
+          "name": "tape",
+          "id": 26,
+          "members": [
+            "root"
+          ],
+          "password": "x"
+        },
+        "tty": {
+          "name": "tty",
+          "id": 5,
+          "members": null,
+          "password": "x"
+        },
+        "usb": {
+          "name": "usb",
+          "id": 85,
+          "members": null,
+          "password": "x"
+        },
+        "users": {
+          "name": "users",
+          "id": 100,
+          "members": [
+            "games"
+          ],
+          "password": "x"
+        },
+        "utmp": {
+          "name": "utmp",
+          "id": 406,
+          "members": null,
+          "password": "x"
+        },
+        "uucp": {
+          "name": "uucp",
+          "id": 14,
+          "members": [
+            "uucp"
+          ],
+          "password": "x"
+        },
+        "video": {
+          "name": "video",
+          "id": 27,
+          "members": [
+            "root"
+          ],
+          "password": "x"
+        },
+        "vpopmail": {
+          "name": "vpopmail",
+          "id": 89,
+          "members": null,
+          "password": "x"
+        },
+        "wheel": {
+          "name": "wheel",
+          "id": 10,
+          "members": [
+            "root"
+          ],
+          "password": "x"
+        },
+        "www-data": {
+          "name": "www-data",
+          "id": 82,
+          "members": null,
+          "password": "x"
+        },
+        "xfs": {
+          "name": "xfs",
+          "id": 33,
+          "members": [
+            "xfs"
+          ],
+          "password": "x"
+        }
+      },
+      "sources": [
+        {
+          "file_path": "/etc/passwd",
+          "metadata": {
+            "file_size": 0,
+            "mode": ""
+          }
+        },
+        {
+          "file_path": "/etc/shadow",
+          "metadata": {
+            "file_size": 0,
+            "mode": ""
+          }
+        },
+        {
+          "file_path": "/etc/group",
+          "metadata": {
+            "file_size": 0,
+            "mode": ""
+          }
+        }
+      ]
+    }
+  },
+  "image_stack": [
+    {
+      "is_top_image": true,
+      "id": "sha256:15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00",
+      "full_name": "tienda-frontend:lab4",
+      "repo_name": "tienda-frontend",
+      "version_tag": "lab4",
+      "raw_tags": [
+        "tienda-frontend:lab4"
+      ],
+      "create_time": "2025-11-17T02:35:44Z",
+      "new_size": 45376002,
+      "new_size_human": "45 MB",
+      "instructions": [
+        {
+          "type": "ADD",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "layer_id": "7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "layer_fsdiff_id": "sha256:7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "size": 7660183,
+          "size_human": "7.7 MB",
+          "params": "file:6dc287a22d6cc7723b0576dd3a9a644468d133c54d42c8a8eda403e3117648f7 in /",
+          "command_snippet": "ADD file:6dc287a22d6cc7723b0576dd3a9a644468d...",
+          "command_all": "ADD file:6dc287a22d6cc7723b0576dd3a9a644468d133c54d42c8a8eda403e3117648f7 /",
+          "target": "/",
+          "source_type": "file",
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "CMD",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "layer_id": "7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "layer_fsdiff_id": "sha256:7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "size": 0,
+          "params": "[\"/bin/sh\"]\n",
+          "command_snippet": "CMD [\"/bin/sh\"]\n",
+          "command_all": "CMD [\"/bin/sh\"]\n",
+          "empty_layer": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "LABEL",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "layer_id": "7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "layer_fsdiff_id": "sha256:7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "size": 0,
+          "params": "maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>",
+          "command_snippet": "LABEL maintainer=NGINX Docker Maintainers <d...",
+          "command_all": "LABEL maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "ENV",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "layer_id": "7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "layer_fsdiff_id": "sha256:7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "size": 0,
+          "params": "NGINX_VERSION=1.25.3",
+          "command_snippet": "ENV NGINX_VERSION=1.25.3",
+          "command_all": "ENV NGINX_VERSION=1.25.3",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "ENV",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "layer_id": "7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "layer_fsdiff_id": "sha256:7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+          "size": 0,
+          "params": "PKG_RELEASE=1",
+          "command_snippet": "ENV PKG_RELEASE=1",
+          "command_all": "ENV PKG_RELEASE=1",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "RUN",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 1,
+          "layer_id": "d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d",
+          "layer_fsdiff_id": "sha256:d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d",
+          "size": 4837606,
+          "size_human": "4.8 MB",
+          "command_snippet": "RUN set -x && \\\n\taddgroup -g 101 -S nginx &&...",
+          "command_all": "RUN set -x && \\\n\taddgroup -g 101 -S nginx && \\\n\tadduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx && \\\n\tapkArch=\"$(cat /etc/apk/arch)\" && \\\n\tnginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}     \" && \\\n\tapk add --no-cache --virtual .checksum-deps         openssl && \\\n\tcase \"$apkArch\" in         x86_64|aarch64)             set -x && \\\n\tKEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\" && \\\n\twget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \\\n\tif echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi && \\\n\tapk add -X \"https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x && \\\n\ttempDir=\"$(mktemp -d)\" && \\\n\tchown nobody:nobody $tempDir && \\\n\tapk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 bash                 alpine-sdk                 findutils && \\\n\tsu nobody -s /bin/sh -c \"                 export HOME=${tempDir} && \\\n\tcd ${tempDir} && \\\n\tcurl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tPKGOSSCHECKSUM=\\\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\\\" && \\\n\tif [ \\\"\\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\\\" = \\\"\\$PKGOSSCHECKSUM\\\" ]; then                     echo \\\"pkg-oss tarball checksum verification succeeded!\\\";                 else                     echo \\\"pkg-oss tarball checksum verification failed!\\\";                     exit 1;                 fi && \\\n\ttar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tcd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} && \\\n\tcd alpine && \\\n\tmake base && \\\n\tapk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk && \\\n\tabuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \" && \\\n\tcp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/ && \\\n\tapk del --no-network .build-deps && \\\n\tapk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac && \\\n\tapk del --no-network .checksum-deps && \\\n\tif [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi && \\\n\tif [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi && \\\n\tif [ -f \"/etc/apk/keys/nginx_signing.rsa.pub\" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi && \\\n\tapk add --no-cache --virtual .gettext gettext && \\\n\tmv /usr/bin/envsubst /tmp/ && \\\n\trunDeps=\"$(         scanelf --needed --nobanner /tmp/envsubst             | awk '{ gsub(/,/, \"\\nso:\", $2); print \"so:\" $2 }'             | sort -u             | xargs -r apk info --installed             | sort -u     )\" && \\\n\tapk add --no-cache $runDeps && \\\n\tapk del --no-network .gettext && \\\n\tmv /tmp/envsubst /usr/local/bin/ && \\\n\tapk add --no-cache tzdata && \\\n\tln -sf /dev/stdout /var/log/nginx/access.log && \\\n\tln -sf /dev/stderr /var/log/nginx/error.log && \\\n\tmkdir /docker-entrypoint.d",
+          "system_commands": [
+            "set -x",
+            "addgroup -g 101 -S nginx",
+            "adduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx",
+            "apkArch=\"$(cat /etc/apk/arch)\"",
+            "nginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}     \"",
+            "apk add --no-cache --virtual .checksum-deps         openssl",
+            "case \"$apkArch\" in         x86_64|aarch64)             set -x",
+            "KEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\"",
+            "wget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub",
+            "if echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi",
+            "apk add -X \"https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x",
+            "tempDir=\"$(mktemp -d)\"",
+            "chown nobody:nobody $tempDir",
+            "apk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 bash                 alpine-sdk                 findutils",
+            "su nobody -s /bin/sh -c \"                 export HOME=${tempDir}",
+            "cd ${tempDir}",
+            "curl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz",
+            "PKGOSSCHECKSUM=\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\"",
+            "if [ \"$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\" = \"$PKGOSSCHECKSUM\" ]; then                     echo \"pkg-oss tarball checksum verification succeeded!\";                 else                     echo \"pkg-oss tarball checksum verification failed!\";                     exit 1;                 fi",
+            "tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz",
+            "cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE}",
+            "cd alpine",
+            "make base",
+            "apk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk",
+            "abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \"",
+            "cp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/",
+            "apk del --no-network .build-deps",
+            "apk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac",
+            "apk del --no-network .checksum-deps",
+            "if [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi",
+            "if [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi",
+            "if [ -f \"/etc/apk/keys/nginx_signing.rsa.pub\" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi",
+            "apk add --no-cache --virtual .gettext gettext",
+            "mv /usr/bin/envsubst /tmp/",
+            "runDeps=\"$(         scanelf --needed --nobanner /tmp/envsubst             | awk '{ gsub(/,/, \"nso:\", $2); print \"so:\" $2 }'             | sort -u             | xargs -r apk info --installed             | sort -u     )\"",
+            "apk add --no-cache $runDeps",
+            "apk del --no-network .gettext",
+            "mv /tmp/envsubst /usr/local/bin/",
+            "apk add --no-cache tzdata",
+            "ln -sf /dev/stdout /var/log/nginx/access.log",
+            "ln -sf /dev/stderr /var/log/nginx/error.log",
+            "mkdir /docker-entrypoint.d"
+          ],
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "COPY",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 2,
+          "layer_id": "abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87",
+          "layer_fsdiff_id": "sha256:abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87",
+          "size": 1620,
+          "size_human": "1.6 kB",
+          "params": "docker-entrypoint.sh /",
+          "command_snippet": "COPY docker-entrypoint.sh /",
+          "command_all": "COPY docker-entrypoint.sh /",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "COPY",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 3,
+          "layer_id": "a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab",
+          "layer_fsdiff_id": "sha256:a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab",
+          "size": 2125,
+          "size_human": "2.1 kB",
+          "params": "10-listen-on-ipv6-by-default.sh /docker-entrypoint.d",
+          "command_snippet": "COPY 10-listen-on-ipv6-by-default.sh /docker...",
+          "command_all": "COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "COPY",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 4,
+          "layer_id": "586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e",
+          "layer_fsdiff_id": "sha256:586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e",
+          "size": 298,
+          "size_human": "298 B",
+          "params": "15-local-resolvers.envsh /docker-entrypoint.d",
+          "command_snippet": "COPY 15-local-resolvers.envsh /docker-entryp...",
+          "command_all": "COPY 15-local-resolvers.envsh /docker-entrypoint.d",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "COPY",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 5,
+          "layer_id": "12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988",
+          "layer_fsdiff_id": "sha256:12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988",
+          "size": 3018,
+          "size_human": "3.0 kB",
+          "params": "20-envsubst-on-templates.sh /docker-entrypoint.d",
+          "command_snippet": "COPY 20-envsubst-on-templates.sh /docker-ent...",
+          "command_all": "COPY 20-envsubst-on-templates.sh /docker-entrypoint.d",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "COPY",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 6,
+          "layer_id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "layer_fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "size": 4619,
+          "size_human": "4.6 kB",
+          "params": "30-tune-worker-processes.sh /docker-entrypoint.d",
+          "command_snippet": "COPY 30-tune-worker-processes.sh /docker-ent...",
+          "command_all": "COPY 30-tune-worker-processes.sh /docker-entrypoint.d",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "ENTRYPOINT",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 6,
+          "layer_id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "layer_fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "size": 0,
+          "params": "[\"/docker-entrypoint.sh\"]\n",
+          "command_snippet": "ENTRYPOINT [\"/docker-entrypoint.sh\"]\n",
+          "command_all": "ENTRYPOINT [\"/docker-entrypoint.sh\"]\n",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "EXPOSE",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 6,
+          "layer_id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "layer_fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "size": 0,
+          "params": "80/tcp",
+          "command_snippet": "EXPOSE 80/tcp",
+          "command_all": "EXPOSE 80/tcp",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "STOPSIGNAL",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 6,
+          "layer_id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "layer_fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "size": 0,
+          "params": "SIGQUIT",
+          "command_snippet": "STOPSIGNAL SIGQUIT",
+          "command_all": "STOPSIGNAL SIGQUIT",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "CMD",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 6,
+          "layer_id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "layer_fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "size": 0,
+          "params": "[\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "command_snippet": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "command_all": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "ENV",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 6,
+          "layer_id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "layer_fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+          "size": 0,
+          "params": "NJS_VERSION=0.8.2",
+          "command_snippet": "ENV NJS_VERSION=0.8.2",
+          "command_all": "ENV NJS_VERSION=0.8.2",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "RUN",
+          "time": "2023-10-24T22:44:45Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 7,
+          "layer_id": "238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd",
+          "layer_fsdiff_id": "sha256:238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd",
+          "size": 30998549,
+          "size_human": "31 MB",
+          "command_snippet": "RUN set -x && \\\n\tapkArch=\"$(cat /etc/apk/arc...",
+          "command_all": "RUN set -x && \\\n\tapkArch=\"$(cat /etc/apk/arch)\" && \\\n\tnginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-xslt=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-geoip=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-image-filter=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-njs=${NGINX_VERSION}.${NJS_VERSION}-r${PKG_RELEASE}     \" && \\\n\tapk add --no-cache --virtual .checksum-deps         openssl && \\\n\tcase \"$apkArch\" in         x86_64|aarch64)             set -x && \\\n\tKEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\" && \\\n\twget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \\\n\tif echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi && \\\n\tapk add -X \"https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x && \\\n\ttempDir=\"$(mktemp -d)\" && \\\n\tchown nobody:nobody $tempDir && \\\n\tapk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 libxslt-dev                 gd-dev                 geoip-dev                 libedit-dev                 bash                 alpine-sdk                 findutils && \\\n\tsu nobody -s /bin/sh -c \"                 export HOME=${tempDir} && \\\n\tcd ${tempDir} && \\\n\tcurl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tPKGOSSCHECKSUM=\\\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\\\" && \\\n\tif [ \\\"\\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\\\" = \\\"\\$PKGOSSCHECKSUM\\\" ]; then                     echo \\\"pkg-oss tarball checksum verification succeeded!\\\";                 else                     echo \\\"pkg-oss tarball checksum verification failed!\\\";                     exit 1;                 fi && \\\n\ttar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tcd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} && \\\n\tcd alpine && \\\n\tmake module-geoip module-image-filter module-njs module-xslt && \\\n\tapk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk && \\\n\tabuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \" && \\\n\tcp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/ && \\\n\tapk del --no-network .build-deps && \\\n\tapk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac && \\\n\tapk del --no-network .checksum-deps && \\\n\tif [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi && \\\n\tif [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi && \\\n\tif [ -f \"/etc/apk/keys/nginx_signing.rsa.pub\" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi && \\\n\tapk add --no-cache curl ca-certificates",
+          "system_commands": [
+            "set -x",
+            "apkArch=\"$(cat /etc/apk/arch)\"",
+            "nginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-xslt=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-geoip=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-image-filter=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-njs=${NGINX_VERSION}.${NJS_VERSION}-r${PKG_RELEASE}     \"",
+            "apk add --no-cache --virtual .checksum-deps         openssl",
+            "case \"$apkArch\" in         x86_64|aarch64)             set -x",
+            "KEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\"",
+            "wget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub",
+            "if echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi",
+            "apk add -X \"https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x",
+            "tempDir=\"$(mktemp -d)\"",
+            "chown nobody:nobody $tempDir",
+            "apk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 libxslt-dev                 gd-dev                 geoip-dev                 libedit-dev                 bash                 alpine-sdk                 findutils",
+            "su nobody -s /bin/sh -c \"                 export HOME=${tempDir}",
+            "cd ${tempDir}",
+            "curl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz",
+            "PKGOSSCHECKSUM=\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\"",
+            "if [ \"$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\" = \"$PKGOSSCHECKSUM\" ]; then                     echo \"pkg-oss tarball checksum verification succeeded!\";                 else                     echo \"pkg-oss tarball checksum verification failed!\";                     exit 1;                 fi",
+            "tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz",
+            "cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE}",
+            "cd alpine",
+            "make module-geoip module-image-filter module-njs module-xslt",
+            "apk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk",
+            "abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \"",
+            "cp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/",
+            "apk del --no-network .build-deps",
+            "apk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac",
+            "apk del --no-network .checksum-deps",
+            "if [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi",
+            "if [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi",
+            "if [ -f \"/etc/apk/keys/nginx_signing.rsa.pub\" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi",
+            "apk add --no-cache curl ca-certificates"
+          ],
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2023-10-24T19:30:00-03:00",
+          "inst_set_time_index": 0,
+          "inst_set_time_reverse_index": 2
+        },
+        {
+          "type": "RUN",
+          "time": "2025-11-17T02:17:39Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 8,
+          "layer_id": "2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e",
+          "layer_fsdiff_id": "sha256:2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e",
+          "size": 6032,
+          "size_human": "6.0 kB",
+          "command_snippet": "RUN addgroup -g 1001 -S nginx-app && \\\n\taddu...",
+          "command_all": "RUN addgroup -g 1001 -S nginx-app && \\\n\tadduser -S nginx-app -u 1001 -G nginx-app && \\\n\tchown -R nginx-app:nginx-app /usr/share/nginx/html && \\\n\tchown -R nginx-app:nginx-app /var/cache/nginx && \\\n\tchown -R nginx-app:nginx-app /var/log/nginx && \\\n\ttouch /var/run/nginx.pid && \\\n\tchown -R nginx-app:nginx-app /var/run/nginx.pid",
+          "system_commands": [
+            "addgroup -g 1001 -S nginx-app",
+            "adduser -S nginx-app -u 1001 -G nginx-app",
+            "chown -R nginx-app:nginx-app /usr/share/nginx/html",
+            "chown -R nginx-app:nginx-app /var/cache/nginx",
+            "chown -R nginx-app:nginx-app /var/log/nginx",
+            "touch /var/run/nginx.pid",
+            "chown -R nginx-app:nginx-app /var/run/nginx.pid"
+          ],
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2025-11-16T23:15:00-03:00",
+          "inst_set_time_index": 1,
+          "inst_set_time_reverse_index": 1
+        },
+        {
+          "type": "COPY",
+          "time": "2025-11-17T02:35:44Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 9,
+          "layer_id": "e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26",
+          "layer_fsdiff_id": "sha256:e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26",
+          "size": 1860682,
+          "size_human": "1.9 MB",
+          "params": "--chown=nginx-app:nginx-app /app/build /usr/share/nginx/html",
+          "command_snippet": "COPY --chown=nginx-app:nginx-app /app/build ...",
+          "command_all": "COPY --chown=nginx-app:nginx-app /app/build /usr/share/nginx/html",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2025-11-16T23:30:00-03:00",
+          "inst_set_time_index": 2,
+          "inst_set_time_reverse_index": 0
+        },
+        {
+          "type": "COPY",
+          "time": "2025-11-17T02:35:44Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 10,
+          "layer_id": "dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "layer_fsdiff_id": "sha256:dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "size": 1270,
+          "size_human": "1.3 kB",
+          "params": "--chown=nginx-app:nginx-app nginx.conf /etc/nginx/conf.d/default.conf",
+          "command_snippet": "COPY --chown=nginx-app:nginx-app nginx.conf ...",
+          "command_all": "COPY --chown=nginx-app:nginx-app nginx.conf /etc/nginx/conf.d/default.conf",
+          "comment": "buildkit.dockerfile.v0",
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2025-11-16T23:30:00-03:00",
+          "inst_set_time_index": 2,
+          "inst_set_time_reverse_index": 0
+        },
+        {
+          "type": "USER",
+          "time": "2025-11-17T02:35:44Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 10,
+          "layer_id": "dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "layer_fsdiff_id": "sha256:dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "size": 0,
+          "params": "nginx-app",
+          "command_snippet": "USER nginx-app",
+          "command_all": "USER nginx-app",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2025-11-16T23:30:00-03:00",
+          "inst_set_time_index": 2,
+          "inst_set_time_reverse_index": 0
+        },
+        {
+          "type": "EXPOSE",
+          "time": "2025-11-17T02:35:44Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 10,
+          "layer_id": "dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "layer_fsdiff_id": "sha256:dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "size": 0,
+          "params": "8080/tcp",
+          "command_snippet": "EXPOSE 8080/tcp",
+          "command_all": "EXPOSE 8080/tcp",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2025-11-16T23:30:00-03:00",
+          "inst_set_time_index": 2,
+          "inst_set_time_reverse_index": 0
+        },
+        {
+          "type": "CMD",
+          "time": "2025-11-17T02:35:44Z",
+          "is_last_instruction": true,
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": true,
+          "layer_index": 10,
+          "layer_id": "dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "layer_fsdiff_id": "sha256:dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+          "size": 0,
+          "params": "[\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "command_snippet": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "command_all": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true,
+          "raw_tags": [
+            "tienda-frontend:lab4"
+          ],
+          "is_buildkit_instruction": true,
+          "inst_set_time_bucket": "2025-11-16T23:30:00-03:00",
+          "inst_set_time_index": 2,
+          "inst_set_time_reverse_index": 0
+        }
+      ]
+    }
+  ],
+  "image_layers": [
+    {
+      "id": "7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+      "index": 0,
+      "path": "blobs/sha256/7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+      "fsdiff_id": "sha256:7c504f21be85c8ade51b7ade32a39a4269bcbcf0e593352923f1b8ea6278e5ef",
+      "stats": {
+        "all_size": 7655316,
+        "object_count": 527,
+        "dir_count": 101,
+        "file_count": 90,
+        "link_count": 336,
+        "max_file_size": 3811224,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 7655316,
+        "modified_size": 0,
+        "sticky_count": 2
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 527,
+        "modified": 0
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/lib/libcrypto.so.3",
+          "size": 3811224,
+          "size_human": "3.8 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "fd23f8925f6c9455c008e33f3abf7c11a1360dad",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/bin/busybox",
+          "size": 919152,
+          "size_human": "919 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-11-06T08:32:24-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "a2c91ca96e715ebd3f85ad169405ad49a73c6f6e",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/lib/ld-musl-aarch64.so.1",
+          "size": 657784,
+          "size_human": "658 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-06T06:30:53-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "a8b46891342d270df3b54fc989579e0878f66eac",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/lib/libssl.so.3",
+          "size": 606008,
+          "size_human": "606 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "070c5831a7970b4fef2342b59375bf2c08264ff4",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/etc/ssl/certs/ca-certificates.crt",
+          "size": 214509,
+          "size_human": "214 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-06T09:08:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 7
+              }
+            ]
+          },
+          "hash": "b132b312a42c8be5d632069aecc6797b629f1264",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/lib/libapk.so.2.14.0",
+          "size": 200152,
+          "size_human": "200 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-10T11:00:30-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "28a901d5e9d55e8c1497a12b3607d7ab99e61b5e",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/sbin/apk",
+          "size": 134640,
+          "size_human": "135 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-10T11:00:30-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "aed4c0e57064bb1dd7854ca5909addc8e2ea4c60",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/lib/libz.so.1.2.13",
+          "size": 132880,
+          "size_human": "133 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-11T13:01:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "c54b098ec11abf00fafb7a9bea89c65a9b1e5e74",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/ossl-modules/legacy.so",
+          "size": 132848,
+          "size_human": "133 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "933bbe745fcccca824ea978899ff1e4ea7c2f664",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/bin/scanelf",
+          "size": 132840,
+          "size_human": "133 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-11T13:01:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "08184dd4e2da763527d141099ed6670a737e816d",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/bin/getent",
+          "size": 94888,
+          "size_human": "95 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-06T06:30:53-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "3d603103a06c9e8be8f9109e1a3ecf1874d773f7",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/bin/getconf",
+          "size": 81344,
+          "size_human": "81 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-06T06:30:53-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "8b3656a2574e02a7935bb4e861d625b155dabf41",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/bin/iconv",
+          "size": 78704,
+          "size_human": "79 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-06T06:30:53-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "8416ce424ebd9129dae408c613749c2dc3227605",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/engines-3/loader_attic.so",
+          "size": 67792,
+          "size_human": "68 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "4a9733da4ff26a80d208475bb50be5287b9f813c",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/engines-3/afalg.so",
+          "size": 67512,
+          "size_human": "68 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "b17d05b03f7ae4d9364f6ae86dadc7ca066ffe5c",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/bin/ssl_client",
+          "size": 67336,
+          "size_human": "67 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-11-06T08:32:24-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "985a09092d119e18b442b1655f89927f5847de10",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/engines-3/padlock.so",
+          "size": 67016,
+          "size_human": "67 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "46694dbf9ec62c4ad3295f96ce469f885e2949d4",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/engines-3/capi.so",
+          "size": 67008,
+          "size_human": "67 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-25T22:52:51-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "52374128b1dd6e47f4c9cd833bc4bcbc4ac6c98c",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/lib/apk/db/installed",
+          "size": 14708,
+          "size_human": "15 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-26T17:45:49-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              }
+            ]
+          },
+          "hash": "eb9778c9f45a75d9963e9191e8aec0fabd40c488",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/etc/services",
+          "size": 12813,
+          "size_human": "13 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-09T11:21:47-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            }
+          },
+          "hash": "a0d7a229bf049f7fe17e8445226236e4024535d0",
+          "type": "file"
+        }
+      ],
+      "change_instruction": {
+        "index": 0,
+        "image_index": 0,
+        "type": "ADD",
+        "all": "ADD file:6dc287a22d6cc7723b0576dd3a9a644468d133c54d42c8a8eda403e3117648f7 /",
+        "snippet": "ADD file:6dc287a22d6cc7723b0576dd3a9a644468d..."
+      },
+      "other_instructions": [
+        {
+          "index": 1,
+          "image_index": 0,
+          "type": "CMD",
+          "all": "CMD [\"/bin/sh\"]\n",
+          "snippet": "CMD [\"/bin/sh\"]\n"
+        },
+        {
+          "index": 2,
+          "image_index": 0,
+          "type": "LABEL",
+          "all": "LABEL maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>",
+          "snippet": "LABEL maintainer=NGINX Docker Maintainers <d..."
+        },
+        {
+          "index": 3,
+          "image_index": 0,
+          "type": "ENV",
+          "all": "ENV NGINX_VERSION=1.25.3",
+          "snippet": "ENV NGINX_VERSION=1.25.3"
+        },
+        {
+          "index": 4,
+          "image_index": 0,
+          "type": "ENV",
+          "all": "ENV PKG_RELEASE=1",
+          "snippet": "ENV PKG_RELEASE=1"
+        }
+      ]
+    },
+    {
+      "id": "d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d",
+      "index": 1,
+      "path": "blobs/sha256/d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d",
+      "fsdiff_id": "sha256:d430ffabbd6bc87ee79f18170c68620f7fceac736b7b709fdca4e77537ab123d",
+      "stats": {
+        "all_size": 4837503,
+        "object_count": 1306,
+        "dir_count": 71,
+        "file_count": 738,
+        "link_count": 497,
+        "max_file_size": 1496152,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 4748020,
+        "modified_size": 89483
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 1282,
+        "modified": 24
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/usr/sbin/nginx-debug",
+          "size": 1496152,
+          "size_human": "1.5 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:48:50-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "9c3b781ccc9dd8dbd94a6f3dfe341db25f4f50b1",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/sbin/nginx",
+          "size": 1361904,
+          "size_human": "1.4 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:48:50-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "c60c3cd988f271f220b0cfb4fbf7e34a5818da60",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libpcre2-8.so.0.11.2",
+          "size": 591824,
+          "size_human": "592 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-11T13:01:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "b50b931ba9abd0bd35d3b0f2752df3e960b7c3dd",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/lib/apk/db/installed",
+          "size": 71051,
+          "size_human": "71 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              }
+            ]
+          },
+          "hash": "d2ba4aec30035cba197a395b90bd028fd641ec3a",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/local/bin/envsubst",
+          "size": 67248,
+          "size_human": "67 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-16T12:45:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "afd483334fe29e7493b680773863dedd690e479a",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libpcre2-posix.so.3.0.4",
+          "size": 67184,
+          "size_human": "67 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-11T13:01:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "929b9282062375e50266283d185d697bed847ffd",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libintl.so.8.3.0",
+          "size": 67176,
+          "size_human": "67 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-16T12:45:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "b9baf06f6e4c52d86c0473c2c138f35a52671ffe",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/zone.tab",
+          "size": 18846,
+          "size_human": "19 kB",
+          "mode": 292,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "c3242af3df53d6cc9cdb216dec8f1c8c1a72ca46",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/zone1970.tab",
+          "size": 17582,
+          "size_human": "18 kB",
+          "mode": 292,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "b70f8145471db010644593dcb01c9f2f5631f89e",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/lib/apk/db/scripts.tar",
+          "size": 15872,
+          "size_human": "16 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              }
+            ]
+          },
+          "hash": "972470255c6d0c7b148c3f4a811217ae0fe5e8d9",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/leap-seconds.list",
+          "size": 10662,
+          "size_human": "11 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "67a04420f72edbf6e8d02956d6236191e607dd8e",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/etc/nginx/mime.types",
+          "size": 5349,
+          "size_human": "5.3 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:48:50-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "9b85e5091018455091d7f135c4a160ad9487516a",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/iso3166.tab",
+          "size": 4791,
+          "size_human": "4.8 kB",
+          "mode": 292,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "8f7821bdaf1b0eaee43f7807f84323b14f096846",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/Asia/Hebron",
+          "size": 4430,
+          "size_human": "4.4 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "603df41ffbab041824d6b170b5712f31107a0729",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/Asia/Gaza",
+          "size": 4402,
+          "size_human": "4.4 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "e3d98d79999dc07f8dfdf61e3269d7612c526fcf",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/Europe/Belfast",
+          "size": 4204,
+          "size_human": "4.2 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "35e53cc471bcb41ea30fdd605d256827d40dfa3b",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/America/St_Johns",
+          "size": 4195,
+          "size_human": "4.2 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "275884d8816a77e945c3b6f6e8e0a5b8bbdb6d32",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/America/Chicago",
+          "size": 4132,
+          "size_human": "4.1 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "9400083ba972c74ab159ad7cc0ef4b70649bdd63",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/America/New_York",
+          "size": 4092,
+          "size_human": "4.1 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "b10f0378289c2e0075d8dcb1ebfc4a82b5991e5f",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/zoneinfo/right/Atlantic/Madeira",
+          "size": 4043,
+          "size_human": "4.0 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-22T21:08:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            }
+          },
+          "hash": "6afcc316faa559a7c6d6465871757a160051eafa",
+          "type": "file"
+        }
+      ],
+      "change_instruction": {
+        "index": 5,
+        "image_index": 0,
+        "type": "RUN",
+        "all": "RUN set -x && \\\n\taddgroup -g 101 -S nginx && \\\n\tadduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx && \\\n\tapkArch=\"$(cat /etc/apk/arch)\" && \\\n\tnginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}     \" && \\\n\tapk add --no-cache --virtual .checksum-deps         openssl && \\\n\tcase \"$apkArch\" in         x86_64|aarch64)             set -x && \\\n\tKEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\" && \\\n\twget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \\\n\tif echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi && \\\n\tapk add -X \"https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x && \\\n\ttempDir=\"$(mktemp -d)\" && \\\n\tchown nobody:nobody $tempDir && \\\n\tapk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 bash                 alpine-sdk                 findutils && \\\n\tsu nobody -s /bin/sh -c \"                 export HOME=${tempDir} && \\\n\tcd ${tempDir} && \\\n\tcurl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tPKGOSSCHECKSUM=\\\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\\\" && \\\n\tif [ \\\"\\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\\\" = \\\"\\$PKGOSSCHECKSUM\\\" ]; then                     echo \\\"pkg-oss tarball checksum verification succeeded!\\\";                 else                     echo \\\"pkg-oss tarball checksum verification failed!\\\";                     exit 1;                 fi && \\\n\ttar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tcd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} && \\\n\tcd alpine && \\\n\tmake base && \\\n\tapk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk && \\\n\tabuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \" && \\\n\tcp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/ && \\\n\tapk del --no-network .build-deps && \\\n\tapk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac && \\\n\tapk del --no-network .checksum-deps && \\\n\tif [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi && \\\n\tif [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi && \\\n\tif [ -f \"/etc/apk/keys/nginx_signing.rsa.pub\" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi && \\\n\tapk add --no-cache --virtual .gettext gettext && \\\n\tmv /usr/bin/envsubst /tmp/ && \\\n\trunDeps=\"$(         scanelf --needed --nobanner /tmp/envsubst             | awk '{ gsub(/,/, \"\\nso:\", $2); print \"so:\" $2 }'             | sort -u             | xargs -r apk info --installed             | sort -u     )\" && \\\n\tapk add --no-cache $runDeps && \\\n\tapk del --no-network .gettext && \\\n\tmv /tmp/envsubst /usr/local/bin/ && \\\n\tapk add --no-cache tzdata && \\\n\tln -sf /dev/stdout /var/log/nginx/access.log && \\\n\tln -sf /dev/stderr /var/log/nginx/error.log && \\\n\tmkdir /docker-entrypoint.d",
+        "snippet": "RUN set -x && \\\n\taddgroup -g 101 -S nginx &&..."
+      }
+    },
+    {
+      "id": "abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87",
+      "index": 2,
+      "path": "blobs/sha256/abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87",
+      "fsdiff_id": "sha256:abd9f61ef6fb1a033870b6cedce164dbd97914b6642c4696be2288fcc3fd2c87",
+      "stats": {
+        "all_size": 1620,
+        "object_count": 1,
+        "dir_count": 0,
+        "file_count": 1,
+        "link_count": 0,
+        "max_file_size": 1620,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 1620,
+        "modified_size": 0
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 1,
+        "modified": 0
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/docker-entrypoint.sh",
+          "size": 1620,
+          "size_human": "1.6 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 2
+            }
+          },
+          "hash": "d2e418bfd5a25fa0752e237286041526094bf86a",
+          "type": "file"
+        }
+      ],
+      "change_instruction": {
+        "index": 6,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY docker-entrypoint.sh /",
+        "snippet": "COPY docker-entrypoint.sh /"
+      }
+    },
+    {
+      "id": "a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab",
+      "index": 3,
+      "path": "blobs/sha256/a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab",
+      "fsdiff_id": "sha256:a8d24ccafe3253c0d651d64ea8a8c664f770688e21bc2c43188a85ad10b143ab",
+      "stats": {
+        "all_size": 2125,
+        "object_count": 2,
+        "dir_count": 1,
+        "file_count": 1,
+        "link_count": 0,
+        "max_file_size": 2125,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 2125,
+        "modified_size": 0
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 1,
+        "modified": 1
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/docker-entrypoint.d/10-listen-on-ipv6-by-default.sh",
+          "size": 2125,
+          "size_human": "2.1 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 3
+            }
+          },
+          "hash": "3222acb5f99934962f90df16c4091e9aa5d1ecb4",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/docker-entrypoint.d",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 3
+              },
+              {
+                "layer": 4
+              },
+              {
+                "layer": 5
+              },
+              {
+                "layer": 6
+              }
+            ]
+          },
+          "type": "dir"
+        }
+      ],
+      "change_instruction": {
+        "index": 7,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d",
+        "snippet": "COPY 10-listen-on-ipv6-by-default.sh /docker..."
+      }
+    },
+    {
+      "id": "586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e",
+      "index": 4,
+      "path": "blobs/sha256/586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e",
+      "fsdiff_id": "sha256:586c1a9aad48cf22f3aefea728f5407ab0d752af44ee7b012f5ad20c5ef3f36e",
+      "stats": {
+        "all_size": 298,
+        "object_count": 2,
+        "dir_count": 1,
+        "file_count": 1,
+        "link_count": 0,
+        "max_file_size": 298,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 298,
+        "modified_size": 0
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 1,
+        "modified": 1
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/docker-entrypoint.d/15-local-resolvers.envsh",
+          "size": 298,
+          "size_human": "298 B",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 4
+            }
+          },
+          "hash": "977408a2d8f947dfcf2b9291555d2a6f24a1725c",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/docker-entrypoint.d",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 3
+              },
+              {
+                "layer": 4
+              },
+              {
+                "layer": 5
+              },
+              {
+                "layer": 6
+              }
+            ]
+          },
+          "type": "dir"
+        }
+      ],
+      "change_instruction": {
+        "index": 8,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY 15-local-resolvers.envsh /docker-entrypoint.d",
+        "snippet": "COPY 15-local-resolvers.envsh /docker-entryp..."
+      }
+    },
+    {
+      "id": "12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988",
+      "index": 5,
+      "path": "blobs/sha256/12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988",
+      "fsdiff_id": "sha256:12c47a17e6c061411c9af8acd5d87d750f9cf36ad4879dfc5ae602be70f0f988",
+      "stats": {
+        "all_size": 3018,
+        "object_count": 2,
+        "dir_count": 1,
+        "file_count": 1,
+        "link_count": 0,
+        "max_file_size": 3018,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 3018,
+        "modified_size": 0
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 1,
+        "modified": 1
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/docker-entrypoint.d/20-envsubst-on-templates.sh",
+          "size": 3018,
+          "size_human": "3.0 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 5
+            }
+          },
+          "hash": "fd68b1ab3e27314493ffe24a275b8cef6483a083",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/docker-entrypoint.d",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 3
+              },
+              {
+                "layer": 4
+              },
+              {
+                "layer": 5
+              },
+              {
+                "layer": 6
+              }
+            ]
+          },
+          "type": "dir"
+        }
+      ],
+      "change_instruction": {
+        "index": 9,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY 20-envsubst-on-templates.sh /docker-entrypoint.d",
+        "snippet": "COPY 20-envsubst-on-templates.sh /docker-ent..."
+      }
+    },
+    {
+      "id": "2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+      "index": 6,
+      "path": "blobs/sha256/2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+      "fsdiff_id": "sha256:2a51b161467ddcae6fdf67eeba3502160032a55215965d7f209828cf11d115e9",
+      "stats": {
+        "all_size": 4619,
+        "object_count": 2,
+        "dir_count": 1,
+        "file_count": 1,
+        "link_count": 0,
+        "max_file_size": 4619,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 4619,
+        "modified_size": 0
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 1,
+        "modified": 1
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/docker-entrypoint.d/30-tune-worker-processes.sh",
+          "size": 4619,
+          "size_human": "4.6 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 6
+            }
+          },
+          "hash": "12d595b7d7c2d55b2634a5d9f2ea1057cb2f752f",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/docker-entrypoint.d",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 3
+              },
+              {
+                "layer": 4
+              },
+              {
+                "layer": 5
+              },
+              {
+                "layer": 6
+              }
+            ]
+          },
+          "type": "dir"
+        }
+      ],
+      "change_instruction": {
+        "index": 10,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY 30-tune-worker-processes.sh /docker-entrypoint.d",
+        "snippet": "COPY 30-tune-worker-processes.sh /docker-ent..."
+      },
+      "other_instructions": [
+        {
+          "index": 11,
+          "image_index": 0,
+          "type": "ENTRYPOINT",
+          "all": "ENTRYPOINT [\"/docker-entrypoint.sh\"]\n",
+          "snippet": "ENTRYPOINT [\"/docker-entrypoint.sh\"]\n"
+        },
+        {
+          "index": 12,
+          "image_index": 0,
+          "type": "EXPOSE",
+          "all": "EXPOSE 80/tcp",
+          "snippet": "EXPOSE 80/tcp"
+        },
+        {
+          "index": 13,
+          "image_index": 0,
+          "type": "STOPSIGNAL",
+          "all": "STOPSIGNAL SIGQUIT",
+          "snippet": "STOPSIGNAL SIGQUIT"
+        },
+        {
+          "index": 14,
+          "image_index": 0,
+          "type": "CMD",
+          "all": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "snippet": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n"
+        },
+        {
+          "index": 15,
+          "image_index": 0,
+          "type": "ENV",
+          "all": "ENV NJS_VERSION=0.8.2",
+          "snippet": "ENV NJS_VERSION=0.8.2"
+        }
+      ]
+    },
+    {
+      "id": "238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd",
+      "index": 7,
+      "path": "blobs/sha256/238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd",
+      "fsdiff_id": "sha256:238c54d12b4d4955e0bcc899f45e795b64568499b70ea9f0e0c25fd4352783fd",
+      "stats": {
+        "all_size": 30981620,
+        "object_count": 1020,
+        "dir_count": 116,
+        "file_count": 530,
+        "link_count": 374,
+        "max_file_size": 5070856,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 30614543,
+        "modified_size": 367077
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 995,
+        "modified": 25
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/usr/lib/libaom.so.3.6.1",
+          "size": 5070856,
+          "size_human": "5.1 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-10T14:42:45-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "33865b0095425c205de1f5f337a5265c00959a9a",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libunistring.so.5.0.0",
+          "size": 1771200,
+          "size_human": "1.8 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-11T13:01:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "e27b496e8fd8d86e44cb996ffcff2a539e0f9910",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libX11.so.6.4.0",
+          "size": 1258432,
+          "size_human": "1.3 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-11-01T04:51:44-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "3b125de54fe2fd7d1a8e7e92d2f22379c447b4e9",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libxml2.so.2.11.6",
+          "size": 1248456,
+          "size_human": "1.2 MB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-11-19T09:19:28-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "47e95846cfe484d1723d5d2db755f21078e4bcc1",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libgcrypt.so.20.4.2",
+          "size": 934688,
+          "size_human": "935 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-11T13:01:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "9c09cfa2673d0179bd81956981495505d77d639a",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/nginx/modules/ngx_http_js_module-debug.so",
+          "size": 917616,
+          "size_human": "918 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:50:31-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "74afddcc064e0ef0422ae859aa2accc093adfffe",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/nginx/modules/ngx_http_js_module.so",
+          "size": 917608,
+          "size_human": "918 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:50:31-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "514bc48c032d5a15ddea151f15a14d62e22d922e",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/nginx/modules/ngx_stream_js_module-debug.so",
+          "size": 916104,
+          "size_human": "916 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:50:31-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "e8a81a3cfe8aa1bb315a426cff4ff5f1eb28685b",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/nginx/modules/ngx_stream_js_module.so",
+          "size": 916096,
+          "size_human": "916 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:50:31-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "c8a77c72b4169fe709346294649660ae7821f2a8",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libfreetype.so.6.19.0",
+          "size": 788480,
+          "size_human": "788 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-22T10:00:09-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "db30fa1a0f5125edbfcefcdcdd882a3a3a18882c",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libdav1d.so.6.9.0",
+          "size": 788088,
+          "size_human": "788 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-06-01T23:03:34-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "db3f1d932ee72486f49b19a6283adeabc39acaa2",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/bin/njs",
+          "size": 774664,
+          "size_human": "775 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-10-24T13:50:31-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "270d5cfd1a3685a95fcf0a4a567c49ffc2dc1446",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libcurl.so.4.8.0",
+          "size": 666816,
+          "size_human": "667 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-12-07T01:12:03-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "9ed9f83ab7793a31c2f68c8f20e564d56c2a1c88",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libzstd.so.1.5.5",
+          "size": 657104,
+          "size_human": "657 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-06T13:12:08-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "be1a4d6d43c88bbbd2b62b3ff32ffdd5fe2affad",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libbrotlienc.so.1.0.9",
+          "size": 591920,
+          "size_human": "592 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-04-18T13:02:21-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "ac2f2e6967fe587a1fbd45c1d5c6ff576c4521c9",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libtiff.so.6.0.1",
+          "size": 460656,
+          "size_human": "461 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-06-14T18:27:04-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "2e779b84739fce6fc09c2951c03b6616c9bfa8fe",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/X11/locale/en_US.UTF-8/Compose",
+          "size": 454647,
+          "size_human": "455 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-11-01T04:51:44-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "74b58450307137ccf977c946dc12369d778de6b3",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libXt.so.6.0.0",
+          "size": 408584,
+          "size_human": "409 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-04T23:00:48-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "325a88a2d878f82f2f7792ec0f434a83c96ab662",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libncursesw.so.6.4",
+          "size": 396064,
+          "size_human": "396 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-05-07T23:03:35-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "94871e8c00b25f07a588c5c2cc5ed52e7a5a5c70",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/lib/libturbojpeg.so.0.2.0",
+          "size": 395336,
+          "size_human": "395 kB",
+          "mode": 493,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2023-06-14T16:12:28-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 7
+            }
+          },
+          "hash": "d716ab014a893d8cd4eb251a8f905b97a9263844",
+          "type": "file"
+        }
+      ],
+      "change_instruction": {
+        "index": 16,
+        "image_index": 0,
+        "type": "RUN",
+        "all": "RUN set -x && \\\n\tapkArch=\"$(cat /etc/apk/arch)\" && \\\n\tnginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-xslt=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-geoip=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-image-filter=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-njs=${NGINX_VERSION}.${NJS_VERSION}-r${PKG_RELEASE}     \" && \\\n\tapk add --no-cache --virtual .checksum-deps         openssl && \\\n\tcase \"$apkArch\" in         x86_64|aarch64)             set -x && \\\n\tKEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\" && \\\n\twget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \\\n\tif echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi && \\\n\tapk add -X \"https://nginx.org/packages/mainline/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x && \\\n\ttempDir=\"$(mktemp -d)\" && \\\n\tchown nobody:nobody $tempDir && \\\n\tapk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 libxslt-dev                 gd-dev                 geoip-dev                 libedit-dev                 bash                 alpine-sdk                 findutils && \\\n\tsu nobody -s /bin/sh -c \"                 export HOME=${tempDir} && \\\n\tcd ${tempDir} && \\\n\tcurl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tPKGOSSCHECKSUM=\\\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\\\" && \\\n\tif [ \\\"\\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\\\" = \\\"\\$PKGOSSCHECKSUM\\\" ]; then                     echo \\\"pkg-oss tarball checksum verification succeeded!\\\";                 else                     echo \\\"pkg-oss tarball checksum verification failed!\\\";                     exit 1;                 fi && \\\n\ttar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz && \\\n\tcd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} && \\\n\tcd alpine && \\\n\tmake module-geoip module-image-filter module-njs module-xslt && \\\n\tapk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk && \\\n\tabuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \" && \\\n\tcp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/ && \\\n\tapk del --no-network .build-deps && \\\n\tapk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac && \\\n\tapk del --no-network .checksum-deps && \\\n\tif [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi && \\\n\tif [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi && \\\n\tif [ -f \"/etc/apk/keys/nginx_signing.rsa.pub\" ]; then rm -f /etc/apk/keys/nginx_signing.rsa.pub; fi && \\\n\tapk add --no-cache curl ca-certificates",
+        "snippet": "RUN set -x && \\\n\tapkArch=\"$(cat /etc/apk/arc..."
+      }
+    },
+    {
+      "id": "2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e",
+      "index": 8,
+      "path": "blobs/sha256/2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e",
+      "fsdiff_id": "sha256:2e6a981b5e7aa5f88c2f870bc973a7cd92fdf8f0daccff7d6b6b420d716d3b7e",
+      "stats": {
+        "all_size": 6032,
+        "object_count": 24,
+        "dir_count": 13,
+        "file_count": 9,
+        "link_count": 2,
+        "max_file_size": 1291,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 0,
+        "modified_size": 6032
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 2,
+        "modified": 22
+      },
+      "top": [
+        {
+          "change": "M",
+          "name": "/etc/passwd",
+          "size": 1291,
+          "size_human": "1.3 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "8c186a9d17cadd5abee450fa3c1ada86b2de3a04",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/etc/passwd-",
+          "size": 1225,
+          "size_human": "1.2 kB",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "6d5dc22b2f25065920239ea92b21781ca6add33a",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/etc/group",
+          "size": 742,
+          "size_human": "742 B",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "27941117dd55a95596a646e0bc31aedac5c9b00d",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/etc/group-",
+          "size": 733,
+          "size_human": "733 B",
+          "mode": 420,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "c3e928ac4e928f4947661f3f29ed080c921ea5cb",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx/html/index.html",
+          "size": 615,
+          "size_human": "615 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2023-10-24T13:48:50-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "hash": "c51a3f0e6de4eb802d5630941c3fd9e1d0efae4b",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx/html/50x.html",
+          "size": 497,
+          "size_human": "497 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2023-10-24T13:48:50-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "835b9dec419c01420e78602527a9fba8c463521c",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/etc/shadow",
+          "size": 480,
+          "size_human": "480 B",
+          "mode": 416,
+          "uid": 0,
+          "gid": 42,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "5fe9cdb2e804ec61131b6ef27abd1ba267f3c02d",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/etc/shadow-",
+          "size": 449,
+          "size_human": "449 B",
+          "mode": 416,
+          "uid": 0,
+          "gid": 42,
+          "mod_time": "2024-01-27T17:30:56-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "hash": "73f16b16172aafe4bd0ccf1720620284b7c14679",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:59-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T21:37:00-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              },
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/usr",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-26T17:45:49-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              },
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "A",
+          "name": "/run/nginx.pid",
+          "size_human": "0 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 8
+            }
+          },
+          "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/var/cache/nginx",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2024-01-27T17:30:59-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx/html",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2024-01-27T17:30:59-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/run",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/var/cache",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T21:36:58-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              },
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/var",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-26T17:45:49-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              },
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "A",
+          "name": "/home/nginx-app",
+          "size_human": "0 B",
+          "mode": 2151678445,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 8
+            }
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/home",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/var/log/nginx/error.log",
+          "size_human": "0 B",
+          "mode": 134218239,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2024-01-27T17:31:01-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "link_target": "/dev/stderr",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              }
+            ]
+          },
+          "type": "symlink"
+        }
+      ],
+      "change_instruction": {
+        "index": 17,
+        "image_index": 0,
+        "type": "RUN",
+        "all": "RUN addgroup -g 1001 -S nginx-app && \\\n\tadduser -S nginx-app -u 1001 -G nginx-app && \\\n\tchown -R nginx-app:nginx-app /usr/share/nginx/html && \\\n\tchown -R nginx-app:nginx-app /var/cache/nginx && \\\n\tchown -R nginx-app:nginx-app /var/log/nginx && \\\n\ttouch /var/run/nginx.pid && \\\n\tchown -R nginx-app:nginx-app /var/run/nginx.pid",
+        "snippet": "RUN addgroup -g 1001 -S nginx-app && \\\n\taddu..."
+      }
+    },
+    {
+      "id": "e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26",
+      "index": 9,
+      "path": "blobs/sha256/e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26",
+      "fsdiff_id": "sha256:e00812cce8db67561fd1878584876063085c0891bfe54f7513f119d0295fde26",
+      "stats": {
+        "all_size": 1860682,
+        "object_count": 21,
+        "dir_count": 7,
+        "file_count": 14,
+        "link_count": 0,
+        "max_file_size": 1501528,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 1860038,
+        "modified_size": 644
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 16,
+        "modified": 5
+      },
+      "top": [
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/js/main.60cb7f0b.js.map",
+          "size": 1501528,
+          "size_human": "1.5 MB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "852e3dc94a6c92dc99ca2d770d11d190fcb41285",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/js/main.60cb7f0b.js",
+          "size": 281042,
+          "size_human": "281 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "b61aeb2b93a99bde6a45a385f62cf1674074b88d",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/css/main.30edaaa6.css.map",
+          "size": 27168,
+          "size_human": "27 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "45af5b2f94f924e89aceca0268a240640d7bb54d",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/css/main.30edaaa6.css",
+          "size": 13837,
+          "size_human": "14 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "59b5616e522f4bbfd092815999e976392f044942",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/js/453.670e15c7.chunk.js.map",
+          "size": 10597,
+          "size_human": "11 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "70831f3a7d0a3d24867dc290583b5171943070fb",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/logo512.png",
+          "size": 9664,
+          "size_human": "9.7 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:32-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "46915f9d02694ed49bfc7a9534947684103dc3fe",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/logo192.png",
+          "size": 5347,
+          "size_human": "5.3 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:32-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "7f4f2d68782a7fafceda84554ecab9b489877500",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/js/453.670e15c7.chunk.js",
+          "size": 4476,
+          "size_human": "4.5 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "af02d0ff3fc0c1356d6027444fe4413cdb9a4961",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/favicon.ico",
+          "size": 3870,
+          "size_human": "3.9 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:32-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "1120538c77ad1f28a89243b4b53fe2ac16cc3bc6",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/js/main.60cb7f0b.js.LICENSE.txt",
+          "size": 1433,
+          "size_human": "1.4 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "e0f10adace2d4ab799eb037561a8a30608a6158a",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx/html/index.html",
+          "size": 644,
+          "size_human": "644 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "hash": "a8ec9d4023862e8cbdabb36b3e661223d1cebee8",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/asset-manifest.json",
+          "size": 517,
+          "size_human": "517 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "63ee748460fa5d8753f7ccf7af4bc545ece3f55d",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/manifest.json",
+          "size": 492,
+          "size_human": "492 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:32-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "4e0afe7f81a71f41366cd7859ca34776b8107923",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/robots.txt",
+          "size": 67,
+          "size_human": "67 B",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:32-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "hash": "044ce68f83ee8543475fea16f6e3a73d28a1c6d5",
+          "type": "file"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/css",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "type": "dir"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:59-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "A",
+          "name": "/usr/share/nginx/html/static/js",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 9
+            }
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share/nginx/html",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:35:43-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/usr/share",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T21:37:00-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              },
+              {
+                "layer": 8
+              },
+              {
+                "layer": 9
+              }
+            ]
+          },
+          "type": "dir"
+        }
+      ],
+      "change_instruction": {
+        "index": 18,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY --chown=nginx-app:nginx-app /app/build /usr/share/nginx/html",
+        "snippet": "COPY --chown=nginx-app:nginx-app /app/build ..."
+      }
+    },
+    {
+      "id": "dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+      "index": 10,
+      "path": "blobs/sha256/dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+      "fsdiff_id": "sha256:dce66cec73104466ab997a1ad282e1039354495c2c4459b0212ae7d26d29e648",
+      "stats": {
+        "all_size": 1270,
+        "object_count": 4,
+        "dir_count": 3,
+        "file_count": 1,
+        "link_count": 0,
+        "max_file_size": 1270,
+        "max_dir_size": 0,
+        "deleted_count": 0,
+        "deleted_dir_content_count": 0,
+        "deleted_dir_count": 0,
+        "deleted_file_count": 0,
+        "deleted_link_count": 0,
+        "deleted_size": 0,
+        "added_size": 0,
+        "modified_size": 1270
+      },
+      "changes": {
+        "deleted": 0,
+        "added": 0,
+        "modified": 4
+      },
+      "top": [
+        {
+          "change": "M",
+          "name": "/etc/nginx/conf.d/default.conf",
+          "size": 1270,
+          "size_human": "1.3 kB",
+          "mode": 420,
+          "uid": 1001,
+          "gid": 1001,
+          "mod_time": "2025-11-16T23:15:50-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 10
+              }
+            ]
+          },
+          "hash": "54f32923ba25af9b7a235531a39da71f6557c086",
+          "type": "file"
+        },
+        {
+          "change": "M",
+          "name": "/etc/nginx/conf.d",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:35:44-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 10
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/etc/nginx",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2024-01-27T17:30:59-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 1
+            },
+            "M": [
+              {
+                "layer": 10
+              }
+            ]
+          },
+          "type": "dir"
+        },
+        {
+          "change": "M",
+          "name": "/etc",
+          "size_human": "0 B",
+          "mode": 2147484141,
+          "uid": 0,
+          "gid": 0,
+          "mod_time": "2025-11-16T23:17:38-03:00",
+          "change_time": "0001-01-01T00:00:00Z",
+          "history": {
+            "A": {
+              "layer": 0
+            },
+            "M": [
+              {
+                "layer": 1
+              },
+              {
+                "layer": 7
+              },
+              {
+                "layer": 8
+              },
+              {
+                "layer": 10
+              }
+            ]
+          },
+          "type": "dir"
+        }
+      ],
+      "change_instruction": {
+        "index": 19,
+        "image_index": 0,
+        "type": "COPY",
+        "all": "COPY --chown=nginx-app:nginx-app nginx.conf /etc/nginx/conf.d/default.conf",
+        "snippet": "COPY --chown=nginx-app:nginx-app nginx.conf ..."
+      },
+      "other_instructions": [
+        {
+          "index": 20,
+          "image_index": 0,
+          "type": "USER",
+          "all": "USER nginx-app",
+          "snippet": "USER nginx-app"
+        },
+        {
+          "index": 21,
+          "image_index": 0,
+          "type": "EXPOSE",
+          "all": "EXPOSE 8080/tcp",
+          "snippet": "EXPOSE 8080/tcp"
+        },
+        {
+          "index": 22,
+          "image_index": 0,
+          "type": "CMD",
+          "all": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n",
+          "snippet": "CMD [\"nginx\",\"-g\",\"daemon off;\"]\n"
+        }
+      ]
+    }
+  ],
+  "image_archive_location": "/opt/homebrew/bin/.mint-state/images/15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00/image/15aeefbb7be5ad61d7c585cb00064ad7193ca4fbda07146bda9d66e7ae663e00.tar"
+}
