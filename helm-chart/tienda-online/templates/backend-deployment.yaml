@@ -19,9 +19,8 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "tienda-online.selectorLabels" . | nindent 8 }}
+        {{- include "tienda-online.labels" . | nindent 8 }}
         app.kubernetes.io/component: backend
-        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
         app: {{ .Values.backend.name }}
         tier: backend
       annotations:
@@ -29,6 +28,9 @@ spec:
         prometheus.io/port: "{{ .Values.backend.service.port }}"
         prometheus.io/path: "/metrics"
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
       containers:
       - name: {{ .Values.backend.name }}
         image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"

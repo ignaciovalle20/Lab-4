@@ -19,12 +19,14 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "tienda-online.selectorLabels" . | nindent 8 }}
+        {{- include "tienda-online.labels" . | nindent 8 }}
         app.kubernetes.io/component: frontend
-        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
         app: {{ .Values.frontend.name }}
         tier: frontend
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
       containers:
       - name: {{ .Values.frontend.name }}
         image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
