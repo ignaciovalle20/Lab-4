@@ -58,7 +58,7 @@ echo ""
 
 print_step "Esperando a que MySQL esté listo..."
 for i in {1..30}; do
-    if kubectl exec -n tienda-online $BACKEND_POD -- nc -z tienda-database 3306 2>/dev/null; then
+    if kubectl exec -n tienda-online $BACKEND_POD -- nc -z mysql-service 3306 2>/dev/null; then
         print_success "MySQL está listo"
         break
     fi
