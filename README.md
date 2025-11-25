@@ -44,7 +44,7 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
 
 ### Diagrama General
 
-![Diagrama de Arquitectura](DiagramaDeArquitectura.svg)
+<img width="2446" height="2804" alt="Image" src="https://github.com/user-attachments/assets/179eae32-020a-4ef4-b957-4b67c575659a" />
 
 
 ### Flujo de Datos
