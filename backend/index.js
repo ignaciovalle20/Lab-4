@@ -267,6 +267,88 @@ app.get('/api/productos/:id', async (req, res) => {
 
 /**
  * @swagger
+ * /api/productos:
+ *   post:
+ *     summary: Crear un nuevo producto
+ *     description: Crea un nuevo producto en la tienda
+ *     tags: [Productos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - nombre
+ *               - precio
+ *             properties:
+ *               nombre:
+ *                 type: string
+ *                 example: "Laptop Dell XPS 15"
+ *               descripcion:
+ *                 type: string
+ *                 example: "Laptop profesional de alto rendimiento"
+ *               precio:
+ *                 type: number
+ *                 format: decimal
+ *                 example: 1299.99
+ *               stock:
+ *                 type: integer
+ *                 example: 15
+ *               categoria:
+ *                 type: string
+ *                 example: "Computadoras"
+ *               imagen_url:
+ *                 type: string
+ *                 example: "https://example.com/image.jpg"
+ *     responses:
+ *       201:
+ *         description: Producto creado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   example: 1
+ *                 message:
+ *                   type: string
+ *                   example: "Producto creado exitosamente"
+ *       400:
+ *         description: Datos de entrada inválidos
+ *       500:
+ *         description: Error interno del servidor
+ */
+app.post('/api/productos', async (req, res) => {
+  const start = Date.now();
+  try {
+    const { nombre, descripcion, precio, stock, categoria, imagen_url } = req.body;
+    
+    if (!nombre || !precio) {
+      return res.status(400).json({ error: 'Nombre y precio son requeridos' });
+    }
+    
+    const [result] = await db.execute(
+      'INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen_url) VALUES (?, ?, ?, ?, ?, ?)',
+      [nombre, descripcion || null, precio, stock || 0, categoria || null, imagen_url || null]
+    );
+    
+    const duration = (Date.now() - start) / 1000;
+    dbQueryDuration.labels('create_product').observe(duration);
+    
+    res.status(201).json({ 
+      id: result.insertId,
+      message: 'Producto creado exitosamente' 
+    });
+  } catch (error) {
+    console.error('Error creando producto:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+/**
+ * @swagger
  * /api/pedidos:
  *   post:
  *     summary: Crear un nuevo pedido

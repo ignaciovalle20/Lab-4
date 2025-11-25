@@ -75,7 +75,7 @@ print_header "PASO 2: Configurando port forward"
 echo ""
 
 print_step "Iniciando port forward del backend..."
-kubectl port-forward -n tienda-online svc/tienda-backend 5000:5000 &
+kubectl port-forward -n tienda-online svc/backend-service 5000:5000 &
 PF_PID=$!
 sleep 3
 print_success "Port forward activo (PID: $PF_PID)"
