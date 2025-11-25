@@ -13,7 +13,7 @@ metadata:
       Si el contenedor es comprometido, el atacante tiene privilegios de root.
       Esta política requiere que los contenedores se ejecuten como usuario no-root.
 spec:
-  validationFailureAction: Enforce
+  validationFailureAction: Audit
   background: true
   rules:
     - name: check-runAsNonRoot

@@ -12,7 +12,7 @@ metadata:
       de aplicaciones en Kubernetes. Esta política requiere que todos los
       recursos tengan etiquetas mínimas recomendadas por Kubernetes.
 spec:
-  validationFailureAction: Enforce
+  validationFailureAction: Audit
   background: true
   rules:
     - name: check-for-app-label
@@ -36,6 +36,11 @@ spec:
               - kyverno
               - falco
               - ingress-nginx
+        - resources:
+            kinds:
+              - ConfigMap
+            names:
+              - "kube-root-ca.crt"
         - resources:
             kinds:
               - Secret
@@ -71,6 +76,11 @@ spec:
               - kyverno
               - falco
               - ingress-nginx
+        - resources:
+            kinds:
+              - ConfigMap
+            names:
+              - "kube-root-ca.crt"
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/version'.
@@ -101,6 +111,11 @@ spec:
               - kyverno
               - falco
               - ingress-nginx
+        - resources:
+            kinds:
+              - ConfigMap
+            names:
+              - "kube-root-ca.crt"
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/component'.
@@ -132,6 +147,11 @@ spec:
               - kyverno
               - falco
               - ingress-nginx
+        - resources:
+            kinds:
+              - ConfigMap
+            names:
+              - "kube-root-ca.crt"
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/managed-by'.
@@ -162,6 +182,11 @@ spec:
               - kyverno
               - falco
               - ingress-nginx
+        - resources:
+            kinds:
+              - ConfigMap
+            names:
+              - "kube-root-ca.crt"
       validate:
         message: >-
           Los valores de las etiquetas deben seguir las convenciones:

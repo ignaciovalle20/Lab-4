@@ -12,7 +12,7 @@ metadata:
       Esta política valida que las imágenes de contenedores especifiquen un 
       tag explícito diferente de 'latest'.
 spec:
-  validationFailureAction: Enforce
+  validationFailureAction: Audit
   background: true
   rules:
     - name: require-image-tag

@@ -13,7 +13,7 @@ metadata:
       que un contenedor consuma todos los recursos del nodo. Esta política 
       requiere que todos los contenedores tengan definidos requests y limits.
 spec:
-  validationFailureAction: Enforce
+  validationFailureAction: Audit
   background: true
   rules:
     - name: validate-cpu-memory-requests

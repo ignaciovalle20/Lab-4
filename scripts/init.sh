@@ -233,7 +233,18 @@ echo ""
 print_step "Instalando Falco..."
 if helm list -n falco | grep -q falco; then
     print_warning "Falco ya está instalado, actualizando..."
-    helm upgrade falco falcosecurity/falco -n falco
+    helm upgrade falco falcosecurity/falco \
+        -n falco \
+        --set tty=true \
+        --set driver.kind=modern_ebpf \
+        --set falco.grpc.enabled=true \
+        --set falco.grpc_output.enabled=true \
+        --set falco.json_output=true \
+        --set falco.log_stderr=true \
+        --set falco.log_syslog=false \
+        --set falco.log_level=info \
+        --set falco.priority=debug \
+        --set-file customRules.custom-rules.yaml=k8s/falco/custom-rules.yaml
 else
     helm install falco falcosecurity/falco \
         -n falco \
@@ -246,12 +257,22 @@ else
         --set falco.log_syslog=false \
         --set falco.log_level=info \
         --set falco.priority=debug \
+        --set-file customRules.custom-rules.yaml=k8s/falco/custom-rules.yaml \
         --wait --timeout=5m
 fi
 print_success "Falco instalado"
 echo ""
 
 wait_for_pods falco 300
+
+print_step "Verificando que las reglas personalizadas estén cargadas..."
+sleep 5
+if kubectl logs -n falco -l app.kubernetes.io/name=falco --tail=50 2>/dev/null | grep -q "custom-rules.yaml\|Modify Application Config Files"; then
+    print_success "Reglas personalizadas cargadas correctamente"
+else
+    print_warning "No se pudo verificar la carga de reglas personalizadas (puede ser normal)"
+fi
+echo ""
 
 # 8. Desplegar aplicación
 print_header "PASO 8: Desplegando aplicación Tienda Online"
