@@ -229,8 +229,8 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/tienda-online.git
-cd tienda-online
+git clone https://github.com/ignaciovalle20/Lab-4.git
+cd Lab-4
 
 # 2. Ejecutar script de inicialización
 ./scripts/init.sh
@@ -242,7 +242,7 @@ cd tienda-online
 # Sigue las instrucciones que muestra el script init.sh
 ```
 
-¡Eso es todo! En ~10 minutos tendrás todo desplegado. 🎉
+¡Eso es todo! En ~10 minutos tendrás todo desplegado.
 
 ---
 
@@ -251,7 +251,7 @@ cd tienda-online
 ### 1. Iniciar Minikube
 
 ```bash
-minikube start --driver=docker --cpus=4 --memory=8192 --disk-size=20g
+minikube start
 ```
 
 ### 2. Construir Imágenes Docker
