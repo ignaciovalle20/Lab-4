@@ -240,11 +240,20 @@ cd Lab-4
 # 3. Poblar base de datos
 ./scripts/populate.sh
 
-# 4. Acceder a los servicios
-# Sigue las instrucciones que muestra el script init.sh
+# 4. Configurar acceso a la aplicación
+# En una terminal separada (se pedirá contraseña de sudo):
+minikube tunnel
+
+# Agregar dominio a /etc/hosts
+echo "127.0.0.1 tienda-online.local" | sudo tee -a /etc/hosts
+
+# 5. Acceder a la aplicación
+# Frontend: http://tienda-online.local
+# Backend API: http://tienda-online.local/api
+# Swagger: http://tienda-online.local/api/api-docs
 ```
 
-¡Eso es todo! En ~10 minutos tendrás todo desplegado.
+¡Eso es todo! En ~10 minutos tendrás todo desplegado y accesible en `http://tienda-online.local`.
 
 ---
 
@@ -342,6 +351,38 @@ kubectl apply -f k8s/monitoring/servicemonitor.yaml
 ```bash
 kubectl get pods -n tienda-online
 kubectl get svc -n tienda-online
+```
+
+### 10. Acceder a la Aplicación
+
+#### Opción 1: Usando Minikube Tunnel (Recomendado)
+
+```bash
+# 1. En una terminal separada, ejecutar minikube tunnel (déjalo corriendo)
+sudo minikube tunnel
+
+# 2. Agregar dominio a /etc/hosts
+echo "127.0.0.1 tienda-online.local" | sudo tee -a /etc/hosts
+
+# 3. Acceder en el navegador
+# Frontend: http://tienda-online.local
+# Backend API: http://tienda-online.local/api
+# Swagger: http://tienda-online.local/api/api-docs
+```
+
+**Nota importante**: `minikube tunnel` requiere permisos de administrador (sudo) para exponer los puertos 80 y 443. Cuando ejecutes el comando, se te pedirá la contraseña. Mantén esta terminal abierta mientras uses la aplicación.
+
+#### Opción 2: Usando Port Forward
+
+```bash
+# Frontend
+kubectl port-forward -n tienda-online svc/frontend-service 3001:80
+# Acceder en: http://localhost:3001
+
+# Backend
+kubectl port-forward -n tienda-online svc/backend-service 5000:5000
+# Acceder en: http://localhost:5000
+# Swagger: http://localhost:5000/api-docs
 ```
 
 ---

@@ -22,10 +22,11 @@ pipeline {
         ).trim()
         BUILD_VERSION = "${env.BUILD_NUMBER}-${GIT_COMMIT_SHORT}"
         
-        // Image tags
-        BACKEND_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}/backend:${BUILD_VERSION}"
-        FRONTEND_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}/frontend:${BUILD_VERSION}"
-        DATABASE_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}/database:${BUILD_VERSION}"
+        // Image tags (se configurarán dinámicamente en el stage de Checkout)
+        BACKEND_IMAGE = ''
+        FRONTEND_IMAGE = ''
+        DATABASE_IMAGE = ''
+        USE_MINIKUBE = 'false'
     }
     
     // Opciones del pipeline
@@ -55,11 +56,48 @@ pipeline {
                         script: 'git log -1 --pretty=%an',
                         returnStdout: true
                     ).trim()
+                    
+                    // Detectar si estamos usando Minikube
+                    try {
+                        withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
+                            def currentContext = sh(
+                                script: 'kubectl config current-context 2>/dev/null || echo ""',
+                                returnStdout: true
+                            ).trim()
+                            
+                            if (currentContext.contains('minikube')) {
+                                env.USE_MINIKUBE = 'true'
+                                // Para Minikube: usar nombres simples sin registry
+                                env.BACKEND_IMAGE = "tienda-backend:${BUILD_VERSION}"
+                                env.FRONTEND_IMAGE = "tienda-frontend:${BUILD_VERSION}"
+                                env.DATABASE_IMAGE = "tienda-database:${BUILD_VERSION}"
+                                echo "✓ Detectado Minikube - Usando imágenes locales"
+                            } else {
+                                env.USE_MINIKUBE = 'false'
+                                // Para producción: usar registry completo
+                                env.BACKEND_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}/backend:${BUILD_VERSION}"
+                                env.FRONTEND_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}/frontend:${BUILD_VERSION}"
+                                env.DATABASE_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REPO}/database:${BUILD_VERSION}"
+                                echo "✓ Usando Docker Hub registry"
+                            }
+                        }
+                    } catch (Exception e) {
+                        // Si no hay kubeconfig, asumir miniku
+                        env.USE_MINIKUBE = 'true'
+                        env.BACKEND_IMAGE = "tienda-backend:${BUILD_VERSION}"
+                        env.FRONTEND_IMAGE = "tienda-frontend:${BUILD_VERSION}"
+                        env.DATABASE_IMAGE = "tienda-database:${BUILD_VERSION}"
+                        echo "⚠️  No se pudo detectar contexto de Kubernetes, usando Minikube"
+                    }
                 }
                 
                 echo "Commit: ${env.GIT_COMMIT_SHORT}"
                 echo "Autor: ${env.GIT_AUTHOR}"
                 echo "Mensaje: ${env.GIT_COMMIT_MSG}"
+                echo "Entorno: ${env.USE_MINIKUBE == 'true' ? 'Minikube (imágenes locales)' : 'Producción (Docker Hub)'}"
+                echo "Backend Image: ${env.BACKEND_IMAGE}"
+                echo "Frontend Image: ${env.FRONTEND_IMAGE}"
+                echo "Database Image: ${env.DATABASE_IMAGE}"
             }
         }
         
@@ -262,43 +300,68 @@ pipeline {
             }
         }
         
-        stage('7. Docker Push') {
+        stage('7. Docker Push / Load Images') {
             when {
                 branch 'main'
             }
             steps {
                 echo '========================================='
-                echo 'Stage 7: Publicando imágenes a registry'
+                echo 'Stage 7: Publicando/cargando imágenes'
                 echo '========================================='
                 
                 script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                        // Push backend
-                        echo "Pushing ${BACKEND_IMAGE}"
-                        sh "docker push ${BACKEND_IMAGE}"
+                    if (env.USE_MINIKUBE == 'true') {
+                        // Para Minikube: cargar imágenes directamente
+                        echo "Cargando imágenes en Minikube..."
                         
-                        // Push frontend
-                        echo "Pushing ${FRONTEND_IMAGE}"
-                        sh "docker push ${FRONTEND_IMAGE}"
+                        withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
+                            // Verificar que Minikube esté corriendo
+                            sh """
+                                if ! minikube status > /dev/null 2>&1; then
+                                    echo "⚠️  Minikube no está corriendo. Las imágenes se construirán pero no se cargarán automáticamente."
+                                    echo "⚠️  Para cargar manualmente, ejecuta: minikube image load <imagen>"
+                                else
+                                    echo "✓ Minikube está corriendo"
+                                    
+                                    # Cargar imágenes en Minikube
+                                    echo "Cargando ${BACKEND_IMAGE} en Minikube..."
+                                    minikube image load ${BACKEND_IMAGE} || echo "⚠️  Falló carga de ${BACKEND_IMAGE}"
+                                    
+                                    echo "Cargando ${FRONTEND_IMAGE} en Minikube..."
+                                    minikube image load ${FRONTEND_IMAGE} || echo "⚠️  Falló carga de ${FRONTEND_IMAGE}"
+                                    
+                                    echo "Cargando ${DATABASE_IMAGE} en Minikube..."
+                                    minikube image load ${DATABASE_IMAGE} || echo "⚠️  Falló carga de ${DATABASE_IMAGE}"
+                                    
+                                    # Verificar que las imágenes estén disponibles
+                                    echo "Imágenes disponibles en Minikube:"
+                                    minikube image ls | grep tienda || echo "⚠️  No se encontraron imágenes tienda-* en Minikube"
+                                fi
+                            """
+                        }
                         
-                        // Push database
-                        echo "Pushing ${DATABASE_IMAGE}"
-                        sh "docker push ${DATABASE_IMAGE}"
+                        echo '✓ Images loaded into Minikube successfully'
+                    } else {
+                        // Para producción: pushear a Docker Hub
+                        echo "Pusheando imágenes a Docker Hub..."
                         
-                        // Tag as latest
-                        sh """
-                            docker tag ${BACKEND_IMAGE} ${DOCKER_REGISTRY}/${DOCKER_REPO}/backend:latest
-                            docker tag ${FRONTEND_IMAGE} ${DOCKER_REGISTRY}/${DOCKER_REPO}/frontend:latest
-                            docker tag ${DATABASE_IMAGE} ${DOCKER_REGISTRY}/${DOCKER_REPO}/database:latest
+                        docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
+                            // Push backend
+                            echo "Pushing ${BACKEND_IMAGE}"
+                            sh "docker push ${BACKEND_IMAGE}"
                             
-                            docker push ${DOCKER_REGISTRY}/${DOCKER_REPO}/backend:latest
-                            docker push ${DOCKER_REGISTRY}/${DOCKER_REPO}/frontend:latest
-                            docker push ${DOCKER_REGISTRY}/${DOCKER_REPO}/database:latest
-                        """
+                            // Push frontend
+                            echo "Pushing ${FRONTEND_IMAGE}"
+                            sh "docker push ${FRONTEND_IMAGE}"
+                            
+                            // Push database
+                            echo "Pushing ${DATABASE_IMAGE}"
+                            sh "docker push ${DATABASE_IMAGE}"
+                        }
+                        
+                        echo '✓ Images pushed to Docker Hub successfully'
                     }
                 }
-                
-                echo '✓ Images pushed successfully'
             }
         }
         
@@ -322,14 +385,34 @@ pipeline {
                             kubectl create namespace ${K8S_NAMESPACE} --dry-run=client -o yaml | kubectl apply -f -
                             
                             # Desplegar o actualizar con Helm
-                            helm upgrade --install tienda-online ./helm-chart/tienda-online \\
-                                --namespace ${K8S_NAMESPACE} \\
-                                --set backend.image.tag=${BUILD_VERSION} \\
-                                --set frontend.image.tag=${BUILD_VERSION} \\
-                                --set database.image.tag=${BUILD_VERSION} \\
-                                --values helm-chart/tienda-online/values-dev.yaml \\
-                                --wait \\
-                                --timeout 5m
+                            # Configurar imágenes según el entorno
+                            if [ "${USE_MINIKUBE}" = "true" ]; then
+                                # Para Minikube: usar nombres simples sin registry
+                                helm upgrade --install tienda-online ./helm-chart/tienda-online \\
+                                    --namespace ${K8S_NAMESPACE} \\
+                                    --set backend.image.repository=tienda-backend \\
+                                    --set backend.image.tag=${BUILD_VERSION} \\
+                                    --set frontend.image.repository=tienda-frontend \\
+                                    --set frontend.image.tag=${BUILD_VERSION} \\
+                                    --set database.image.repository=tienda-database \\
+                                    --set database.image.tag=${BUILD_VERSION} \\
+                                    --values helm-chart/tienda-online/values-dev.yaml \\
+                                    --wait \\
+                                    --timeout 5m
+                            else
+                                # Para producción: usar registry completo
+                                helm upgrade --install tienda-online ./helm-chart/tienda-online \\
+                                    --namespace ${K8S_NAMESPACE} \\
+                                    --set backend.image.repository=${DOCKER_REGISTRY}/${DOCKER_REPO}/backend \\
+                                    --set backend.image.tag=${BUILD_VERSION} \\
+                                    --set frontend.image.repository=${DOCKER_REGISTRY}/${DOCKER_REPO}/frontend \\
+                                    --set frontend.image.tag=${BUILD_VERSION} \\
+                                    --set database.image.repository=${DOCKER_REGISTRY}/${DOCKER_REPO}/database \\
+                                    --set database.image.tag=${BUILD_VERSION} \\
+                                    --values helm-chart/tienda-online/values-dev.yaml \\
+                                    --wait \\
+                                    --timeout 5m
+                            fi
                             
                             # Verificar despliegue
                             kubectl get pods -n ${K8S_NAMESPACE}

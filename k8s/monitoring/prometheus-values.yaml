@@ -82,6 +82,16 @@ grafana:
   persistence:
     enabled: true
     size: 5Gi
+    storageClassName: standard
+    accessModes:
+      - ReadWriteOnce
+  
+  # Configuración de seguridad para permisos del volumen
+  securityContext:
+    runAsUser: 472
+    runAsGroup: 472
+    fsGroup: 472
+    runAsNonRoot: true
   
   # Datasources
   # Nota: El chart crea automáticamente un datasource de Prometheus por defecto

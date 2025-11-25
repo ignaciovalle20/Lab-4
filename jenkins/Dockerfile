@@ -15,6 +15,13 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+# Instalar Node.js (LTS) y npm
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/* \
+    && node --version \
+    && npm --version
+
 # Instalar Docker CLI
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 RUN echo \
@@ -26,6 +33,13 @@ RUN apt-get update && apt-get install -y docker-ce-cli && rm -rf /var/lib/apt/li
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/local/bin/
+
+# Instalar Minikube (para desarrollo local)
+RUN MINIKUBE_VERSION="v1.33.0" \
+    && curl -LO "https://github.com/kubernetes/minikube/releases/download/${MINIKUBE_VERSION}/minikube-linux-amd64" \
+    && chmod +x minikube-linux-amd64 \
+    && mv minikube-linux-amd64 /usr/local/bin/minikube \
+    && minikube version || echo "Minikube instalado"
 
 # Instalar Helm (versión fija para evitar rate limits de GitHub)
 RUN HELM_VERSION="v3.14.0" \

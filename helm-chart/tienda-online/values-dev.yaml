@@ -3,13 +3,13 @@
 
 global:
   namespace: tienda-online
-  imagePullPolicy: Always
+  imagePullPolicy: IfNotPresent
 
 backend:
   replicaCount: 1  # Solo 1 replica en dev
   
   image:
-    pullPolicy: Always  # Siempre pull en dev para testing
+    pullPolicy: IfNotPresent  # Usar imágenes locales en Minikube
   
   resources:
     requests:
@@ -55,7 +55,7 @@ frontend:
   replicaCount: 1
   
   image:
-    pullPolicy: Always
+    pullPolicy: IfNotPresent  # Usar imágenes locales en Minikube
   
   resources:
     requests:
@@ -69,7 +69,7 @@ database:
   replicaCount: 1
   
   image:
-    pullPolicy: Always
+    pullPolicy: IfNotPresent  # Usar imágenes locales en Minikube
   
   resources:
     requests:

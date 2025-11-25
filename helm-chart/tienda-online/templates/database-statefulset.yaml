@@ -20,9 +20,8 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "tienda-online.selectorLabels" . | nindent 8 }}
+        {{- include "tienda-online.labels" . | nindent 8 }}
         app.kubernetes.io/component: database
-        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
         app: {{ .Values.database.name }}
         tier: database
     spec:

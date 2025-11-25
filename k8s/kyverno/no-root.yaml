@@ -32,9 +32,24 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
         - resources:
             kinds:
               - Job
+        - resources:
+            kinds:
+              - StatefulSet
+            namespaces:
+              - tienda-online
+            name: mysql
+        - resources:
+            kinds:
+              - Pod
+            namespaces:
+              - tienda-online
+            selector:
+              matchLabels:
+                app: mysql
       validate:
         message: >-
           Los contenedores deben ejecutarse como usuario no-root. 
@@ -65,9 +80,24 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
         - resources:
             kinds:
               - Job
+        - resources:
+            kinds:
+              - StatefulSet
+            namespaces:
+              - tienda-online
+            name: mysql
+        - resources:
+            kinds:
+              - Pod
+            namespaces:
+              - tienda-online
+            selector:
+              matchLabels:
+                app: mysql
       validate:
         message: >-
           El campo 'runAsUser' no puede ser 0 (root). 
@@ -95,9 +125,24 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
         - resources:
             kinds:
               - Job
+        - resources:
+            kinds:
+              - StatefulSet
+            namespaces:
+              - tienda-online
+            name: mysql
+        - resources:
+            kinds:
+              - Pod
+            namespaces:
+              - tienda-online
+            selector:
+              matchLabels:
+                app: mysql
       preconditions:
         all:
         - key: "{{ request.object.spec.initContainers[] || `[]` | length(@) }}"
@@ -129,9 +174,24 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
         - resources:
             kinds:
               - Job
+        - resources:
+            kinds:
+              - StatefulSet
+            namespaces:
+              - tienda-online
+            name: mysql
+        - resources:
+            kinds:
+              - Pod
+            namespaces:
+              - tienda-online
+            selector:
+              matchLabels:
+                app: mysql
       validate:
         message: >-
           No se permite la escalada de privilegios. 
@@ -159,9 +219,24 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
         - resources:
             kinds:
               - Job
+        - resources:
+            kinds:
+              - StatefulSet
+            namespaces:
+              - tienda-online
+            name: mysql
+        - resources:
+            kinds:
+              - Pod
+            namespaces:
+              - tienda-online
+            selector:
+              matchLabels:
+                app: mysql
       validate:
         message: >-
           No se permiten contenedores privilegiados. 

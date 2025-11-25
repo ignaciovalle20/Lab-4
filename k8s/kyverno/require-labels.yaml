@@ -35,6 +35,7 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
         - resources:
             kinds:
               - Secret
@@ -69,6 +70,7 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/version'.
@@ -98,6 +100,7 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/component'.
@@ -128,6 +131,7 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
       validate:
         message: >-
           El recurso debe tener la etiqueta 'app.kubernetes.io/managed-by'.
@@ -157,6 +161,7 @@ spec:
               - kube-node-lease
               - kyverno
               - falco
+              - ingress-nginx
       validate:
         message: >-
           Los valores de las etiquetas deben seguir las convenciones:
