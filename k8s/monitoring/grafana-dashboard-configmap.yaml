@@ -79,7 +79,7 @@ data:
           "id": 3,
           "targets": [
             {
-              "expr": "tienda_online_pedidos_creados_total",
+              "expr": "sum(tienda_online_pedidos_creados_total)",
               "legendFormat": "Total Pedidos"
             }
           ],
@@ -97,7 +97,7 @@ data:
           "id": 4,
           "targets": [
             {
-              "expr": "tienda_online_productos_consultados_total",
+              "expr": "sum(tienda_online_productos_consultados_total)",
               "legendFormat": "Total Consultas"
             }
           ],

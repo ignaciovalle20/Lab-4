@@ -39,26 +39,6 @@ prometheus:
     podMonitorSelector: {}
     
     # Configuración adicional de scraping
-    additionalScrapeConfigs:
-      - job_name: 'tienda-backend'
-        kubernetes_sd_configs:
-          - role: endpoints
-            namespaces:
-              names:
-                - tienda-online
-        relabel_configs:
-          - source_labels: [__meta_kubernetes_service_label_app]
-            action: keep
-            regex: tienda-backend
-          - source_labels: [__meta_kubernetes_endpoint_port_name]
-            action: keep
-            regex: http
-          - source_labels: [__meta_kubernetes_namespace]
-            target_label: namespace
-          - source_labels: [__meta_kubernetes_service_name]
-            target_label: service
-          - source_labels: [__meta_kubernetes_pod_name]
-            target_label: pod
 
 # Grafana
 grafana:

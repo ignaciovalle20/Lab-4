@@ -4,12 +4,13 @@ metadata:
   name: tienda-backend-monitor
   namespace: tienda-online
   labels:
-    app: tienda-backend
+    app: backend
     release: prometheus
 spec:
   selector:
     matchLabels:
-      app: tienda-backend
+      app: backend
+      tier: backend
   endpoints:
     - port: http
       path: /metrics

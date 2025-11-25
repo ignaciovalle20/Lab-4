@@ -210,12 +210,12 @@ for cliente_info in "${CLIENTES[@]}"; do
         if [ $j -gt 0 ]; then
             ITEMS="$ITEMS,"
         fi
-        ITEMS="$ITEMS{\"productoId\":$PRODUCT_ID,\"cantidad\":$CANTIDAD,\"precioUnitario\":$PRECIO}"
+        ITEMS="$ITEMS{\"producto_id\":$PRODUCT_ID,\"cantidad\":$CANTIDAD,\"precio\":$PRECIO}"
         TOTAL=$((TOTAL + PRECIO * CANTIDAD))
     done
     ITEMS="$ITEMS]"
     
-    PEDIDO="{\"cliente\":\"$nombre\",\"email\":\"$email\",\"direccion\":\"Calle Falsa 123\",\"items\":$ITEMS,\"total\":$TOTAL}"
+    PEDIDO="{\"cliente_nombre\":\"$nombre\",\"cliente_email\":\"$email\",\"productos\":$ITEMS,\"total\":$TOTAL}"
     
     print_step "Creando pedido para $nombre..."
     RESPONSE=$(curl -s -X POST http://localhost:5000/api/pedidos \
