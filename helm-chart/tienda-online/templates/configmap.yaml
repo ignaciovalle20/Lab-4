@@ -4,6 +4,8 @@ metadata:
   name: mysql-config
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "tienda-online.labels" . | nindent 4 }}
+    app.kubernetes.io/component: database
     app: mysql
     tier: database
 data:
