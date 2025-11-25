@@ -1,0 +1,171 @@
+# Valores de configuración para Falco
+# Este archivo contiene la configuración de Falco incluyendo las reglas personalizadas
+
+tty: true
+
+driver:
+  kind: modern_ebpf
+
+falco:
+  grpc:
+    enabled: true
+  grpc_output:
+    enabled: true
+  json_output: true
+  log_stderr: true
+  log_syslog: false
+  log_level: info
+  priority: debug
+
+# Reglas personalizadas de Falco
+# El contenido del archivo custom-rules.yaml se incluye aquí
+customRules:
+  custom-rules.yaml: |
+    # Reglas personalizadas de Falco para Tienda Online
+    # Estas reglas complementan las reglas por defecto de Falco
+
+    # Regla 1: Detectar modificaciones en archivos de configuración de la aplicación
+    - rule: Modify Application Config Files
+      desc: Detecta cuando se modifican archivos de configuración de la aplicación
+      condition: >
+        open_write and
+        container and
+        fd.name pmatch (/app/*.env, /app/config.*, /etc/nginx/*.conf) and
+        not proc.name in (node, npm, nginx)
+      output: >
+        Archivo de configuración de aplicación modificado
+        (user=%user.name command=%proc.cmdline file=%fd.name container=%container.name image=%container.image.repository)
+      priority: WARNING
+      tags: [application, configuration, tienda-online]
+
+    # Regla 2: Detectar acceso no autorizado a credenciales de base de datos
+    - rule: Access Database Credentials
+      desc: Detecta intentos de leer archivos que contienen credenciales de base de datos
+      condition: >
+        open_read and
+        container and
+        fd.name pmatch (*/config.env, */.env, */database.yml, */secrets.yaml) and
+        not proc.name in (node, npm, kubectl, helm)
+      output: >
+        Acceso a archivo de credenciales de base de datos
+        (user=%user.name command=%proc.cmdline file=%fd.name container=%container.name image=%container.image.repository)
+      priority: WARNING
+      tags: [credentials, database, security, tienda-online]
+
+    # Regla 3: Detectar ejecución de package managers en contenedores en ejecución
+    - rule: Package Management in Container
+      desc: Detecta instalación de paquetes en contenedores en ejecución (posible compromiso)
+      condition: >
+        spawned_process and
+        container and
+        proc.name in (apk, apt, apt-get, yum, dnf, npm, pip, pip3) and
+        not container.image.repository in (jenkins/jenkins, node)
+      output: >
+        Package manager ejecutado en contenedor en ejecución (posible compromiso)
+        (user=%user.name command=%proc.cmdline container=%container.name image=%container.image.repository)
+      priority: WARNING
+      tags: [process, security, tienda-online]
+
+    # Regla 4: Detectar conexiones de red sospechosas desde contenedores
+    - rule: Suspicious Outbound Connection
+      desc: Detecta conexiones salientes a puertos sospechosos
+      condition: >
+        outbound and
+        container and
+        fd.sport in (4444, 5555, 6666, 7777, 8888, 31337) and
+        not container.image.repository endswith jenkins
+      output: >
+        Conexión saliente sospechosa desde contenedor
+        (user=%user.name command=%proc.cmdline connection=%fd.name container=%container.name image=%container.image.repository)
+      priority: WARNING
+      tags: [network, security, tienda-online]
+
+    # Regla 5: Detectar cambios en archivos del sistema desde contenedores
+    - rule: System Files Modified from Container
+      desc: Detecta modificaciones a archivos críticos del sistema desde un contenedor
+      condition: >
+        open_write and
+        container and
+        fd.name pmatch (/etc/passwd, /etc/shadow, /etc/sudoers, /etc/pam.d/*, /etc/security/*)
+      output: >
+        Archivo crítico del sistema modificado desde contenedor
+        (user=%user.name command=%proc.cmdline file=%fd.name container=%container.name image=%container.image.repository)
+      priority: CRITICAL
+      tags: [system, security, tienda-online]
+
+    # Regla 6: Detectar descarga de herramientas sospechosas
+    - rule: Download Suspicious Tools
+      desc: Detecta descarga de herramientas comúnmente usadas en ataques
+      condition: >
+        spawned_process and
+        container and
+        proc.name in (wget, curl) and
+        (proc.args contains "nmap" or
+        proc.args contains "netcat" or
+        proc.args contains "nc " or
+        proc.args contains "socat" or
+        proc.args contains "mimikatz" or
+        proc.args contains "metasploit")
+      output: >
+        Descarga de herramienta sospechosa detectada
+        (user=%user.name command=%proc.cmdline container=%container.name image=%container.image.repository)
+      priority: WARNING
+      tags: [process, security, tienda-online]
+
+    # Regla 7: Detectar intentos de escape de contenedor
+    - rule: Container Escape Attempt
+      desc: Detecta técnicas comunes de escape de contenedores
+      condition: >
+        spawned_process and
+        container and
+        (proc.name in (nsenter, unshare, capsh) or
+        proc.cmdline contains "docker.sock" or
+        proc.cmdline contains "/var/run/docker.sock" or
+        proc.cmdline contains "/proc/" and proc.cmdline contains "/root")
+      output: >
+        Posible intento de escape de contenedor detectado
+        (user=%user.name command=%proc.cmdline container=%container.name image=%container.image.repository)
+      priority: CRITICAL
+      tags: [container, escape, security, tienda-online]
+
+    # Regla 8: Detectar modificación de binarios en ejecución
+    - rule: Binary Modified While Running
+      desc: Detecta cuando un binario es modificado mientras está en ejecución
+      condition: >
+        open_write and
+        container and
+        fd.name in (/usr/bin/*, /usr/sbin/*, /bin/*, /sbin/*) and
+        proc.name != package-manager
+      output: >
+        Binario modificado mientras está en ejecución
+        (user=%user.name command=%proc.cmdline file=%fd.name container=%container.name)
+      priority: CRITICAL
+      tags: [process, security, tienda-online]
+
+    # Regla 9: Detectar ejecución de compiladores en contenedores de producción
+    - rule: Compiler Executed in Container
+      desc: Detecta ejecución de compiladores que no deberían estar en contenedores de producción
+      condition: >
+        spawned_process and
+        container and
+        proc.name in (gcc, g++, cc, clang, javac, rustc, go) and
+        container.image.repository pmatch (tienda-*)
+      output: >
+        Compilador ejecutado en contenedor de producción (posible compromiso)
+        (user=%user.name command=%proc.cmdline container=%container.name image=%container.image.repository)
+      priority: WARNING
+      tags: [process, security, tienda-online]
+
+    # Regla 10: Detectar cambios en archivos de logs
+    - rule: Log Files Tampered
+      desc: Detecta intentos de modificar o eliminar archivos de logs
+      condition: >
+        (evt.type in (open, openat, openat2) and evt.is_open_write=true or
+        evt.type in (unlink, unlinkat, rmdir)) and
+        container and
+        fd.name pmatch (/var/log/*, /app/logs/*, *.log)
+      output: >
+        Intento de modificar archivos de logs detectado
+        (user=%user.name command=%proc.cmdline file=%fd.name container=%container.name)
+      priority: WARNING
+      tags: [logs, security, tienda-online]

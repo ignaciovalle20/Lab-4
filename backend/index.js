@@ -108,14 +108,31 @@ const dbConfig = {
 
 let db;
 
-// Inicializar conexión a la base de datos
+// Inicializar conexión a la base de datos con reintentos
 async function initDB() {
-  try {
-    db = await mysql.createConnection(dbConfig);
-    console.log('Conectado a MySQL');
-  } catch (error) {
-    console.error('Error conectando a MySQL:', error);
-    dbConnectionErrors.inc();
+  const maxRetries = 10;
+  const retryDelay = 5000; // 5 segundos
+  let retries = 0;
+
+  while (retries < maxRetries) {
+    try {
+      db = await mysql.createConnection(dbConfig);
+      await db.ping(); // Verificar que la conexión funciona
+      console.log('Conectado a MySQL exitosamente');
+      return;
+    } catch (error) {
+      retries++;
+      console.error(`Error conectando a MySQL (intento ${retries}/${maxRetries}):`, error.message);
+      dbConnectionErrors.inc();
+      
+      if (retries < maxRetries) {
+        console.log(`Reintentando conexión en ${retryDelay/1000} segundos...`);
+        await new Promise(resolve => setTimeout(resolve, retryDelay));
+      } else {
+        console.error('No se pudo conectar a MySQL después de', maxRetries, 'intentos');
+        throw error;
+      }
+    }
   }
 }
 
@@ -538,10 +555,15 @@ app.get('/api', (req, res) => {
 
 // Iniciar servidor
 async function startServer() {
-  await initDB();
-  app.listen(PORT, () => {
-    console.log(`Servidor corriendo en puerto ${PORT}`);
-  });
+  try {
+    await initDB();
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en puerto ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Error crítico al iniciar el servidor:', error);
+    process.exit(1);
+  }
 }
 
 startServer();

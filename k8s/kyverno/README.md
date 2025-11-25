@@ -21,7 +21,12 @@ helm repo update
 helm install kyverno kyverno/kyverno \
   --namespace kyverno \
   --create-namespace \
+  -f k8s/kyverno/values.yaml \
   --version 3.1.4
+
+# El archivo values.yaml configura forceFailurePolicyIgnore: true
+# para que los webhooks usen failurePolicy: Ignore
+# Esto permite que las operaciones continúen incluso si Kyverno no está disponible
 
 # Opción 2: Con kubectl
 kubectl create -f https://github.com/kyverno/kyverno/releases/download/v1.11.0/install.yaml

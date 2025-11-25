@@ -1,0 +1,24 @@
+# Valores de configuración para Kyverno
+# Este archivo configura Kyverno para que use failurePolicy: Ignore
+# en los webhooks, permitiendo que las operaciones continúen incluso
+# si Kyverno no está disponible o falla.
+
+# Configuración global para forzar failurePolicy: Ignore en todos los webhooks
+# Esto evita que las operaciones se bloqueen cuando Kyverno no está disponible
+forceFailurePolicyIgnore: true
+
+# Configuración de webhooks
+webhooks:
+  # Excluir namespaces del sistema
+  namespaceSelector:
+    matchExpressions:
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+        - kube-system
+        - kube-public
+        - kube-node-lease
+
+# Excluir el namespace de Kyverno de las políticas
+excludeKyvernoNamespace: true
+

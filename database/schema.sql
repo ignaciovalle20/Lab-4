@@ -2,6 +2,11 @@
 CREATE DATABASE IF NOT EXISTS tienda_online;
 USE tienda_online;
 
+-- Crear usuario y otorgar permisos (si no existe)
+-- Esto asegura que el usuario pueda conectarse desde cualquier host en el cluster
+GRANT ALL PRIVILEGES ON tienda_online.* TO 'tienda_user'@'%';
+FLUSH PRIVILEGES;
+
 -- Tabla de productos
 CREATE TABLE IF NOT EXISTS productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
