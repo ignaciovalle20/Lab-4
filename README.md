@@ -153,21 +153,24 @@ Este proyecto es una implementación completa de DevOps y DevSecOps para una tie
 - Análisis de backend y frontend
 - 417 reglas ejecutadas
 - 3 findings documentados
-- Reporte detallado con recomendaciones
 - Vulnerabilidad CSRF identificada
 
 #### Dependency Scanning - Snyk
 - Escaneo de dependencias de Node.js
-- Reporte consolidado
 - Vulnerabilidades categorizadas por severidad
 - Recomendaciones de remediación
 
 #### Image Scanning - Trivy
 - 3 imágenes analizadas
-- Reporte completo con CVEs
 - Backend: 4 HIGH
 - Frontend: 3 CRITICAL, 18 HIGH
 - Database: 3 CRITICAL, 73 HIGH
+
+#### Image Optimization - Docker Slim
+- Análisis de tamaño de imágenes
+- Optimización automática
+
+**Comandos**: Ver sección [Comandos de Seguridad](#comandos-de-seguridad)
 
 #### Policy Engine - Kyverno
 - 4 políticas implementadas:
@@ -545,6 +548,53 @@ Eventos detectados durante testing:
 -  Unexpected program executed
 
 Ver `reports/falco-event.log` para detalles.
+
+### Comandos de Seguridad
+
+#### Semgrep - Análisis Estático
+```bash
+# Analizar código
+semgrep --config=auto backend/ frontend/ -o reports/semgrep-report.txt
+```
+
+#### Snyk - Escaneo de Dependencias
+```bash
+# Autenticar (requiere token de https://app.snyk.io)
+snyk auth <SNYK_TOKEN>
+
+# Escanear backend
+cd backend && snyk test
+
+# Escanear frontend
+cd frontend && snyk test
+```
+
+#### Trivy - Escaneo de Imágenes Docker
+```bash
+# Escanear imágenes
+trivy image tienda-backend:lab4
+trivy image tienda-frontend:lab4
+trivy image tienda-database:lab4
+
+# Solo vulnerabilidades críticas y altas
+trivy image tienda-backend:lab4 --severity CRITICAL,HIGH
+```
+
+#### Docker Slim - Optimización de Imágenes
+```bash
+# Instalar docker-slim
+brew install docker-slim
+
+# Configurar Docker para usar Minikube
+eval $(minikube docker-env)
+
+# Analizar tamaño y composición de capas (backend)
+mint xray --target tienda-backend:lab4 > reports/slim-xray-backend.txt
+
+# Analizar tamaño y composición de capas (frontend)
+mint xray --target tienda-frontend:lab4 > reports/slim-xray-frontend.txt
+
+```
 
 ---
 
