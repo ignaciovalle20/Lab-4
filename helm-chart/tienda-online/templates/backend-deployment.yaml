@@ -5,6 +5,8 @@ metadata:
   name: {{ .Values.backend.name }}
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "tienda-online.labels" . | nindent 4 }}
+    app.kubernetes.io/component: backend
     app: {{ .Values.backend.name }}
     tier: backend
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
@@ -17,6 +19,9 @@ spec:
   template:
     metadata:
       labels:
+        {{- include "tienda-online.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
         app: {{ .Values.backend.name }}
         tier: backend
       annotations:

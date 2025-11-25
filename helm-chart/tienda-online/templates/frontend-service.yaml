@@ -5,6 +5,8 @@ metadata:
   name: frontend-service
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "tienda-online.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
     app: {{ .Values.frontend.name }}
     tier: frontend
 spec:
