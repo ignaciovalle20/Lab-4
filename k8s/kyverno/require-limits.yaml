@@ -21,6 +21,19 @@ spec:
         - resources:
             kinds:
               - Pod
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
+        - resources:
+            kinds:
+              - Job
       validate:
         message: >-
           Todos los contenedores deben tener definidos CPU y memory requests.
@@ -40,6 +53,19 @@ spec:
         - resources:
             kinds:
               - Pod
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
+        - resources:
+            kinds:
+              - Job
       validate:
         message: >-
           Todos los contenedores deben tener definidos CPU y memory limits.
@@ -59,6 +85,19 @@ spec:
         - resources:
             kinds:
               - Pod
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
+        - resources:
+            kinds:
+              - Job
       preconditions:
         all:
         - key: "{{ request.object.spec.initContainers[] || `[]` | length(@) }}"
@@ -85,6 +124,19 @@ spec:
         - resources:
             kinds:
               - Pod
+      exclude:
+        any:
+        - resources:
+            namespaces:
+              - monitoring
+              - kube-system
+              - kube-public
+              - kube-node-lease
+              - kyverno
+              - falco
+        - resources:
+            kinds:
+              - Job
       validate:
         message: >-
           Los límites de memoria deben ser razonables (entre 64Mi y 8Gi).
